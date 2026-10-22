@@ -142,6 +142,17 @@ section[id]{scroll-margin-top:72px}
 .mbar i{display:block;height:12px;margin-top:8px;border-radius:4px;background:var(--g800);position:relative;overflow:hidden}
 .mbar i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--white);border-radius:4px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .2s}
 .mbar+.mbar i::after{background:var(--g400)}
+.mbar-t{position:relative}
+.mt p b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.live-tag{display:inline-flex;align-items:center;gap:8px;margin-left:16px;font-style:normal;font-size:13px;font-weight:600;color:var(--acid)}
+.live-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acid);animation:livep 1.6s ease-out infinite}
+@keyframes livep{0%{box-shadow:0 0 0 0 rgba(200,255,46,.6)}100%{box-shadow:0 0 0 8px rgba(200,255,46,0)}}
+.live-num.bump{animation:bump .6s ease-out}
+@keyframes bump{30%{color:var(--acid)}}
+.mt p .live-num.bump{animation-name:bumpd}
+@keyframes bumpd{30%{color:#5E7A00}}
+.plus{position:absolute;right:0;bottom:100%;font-size:14px;font-weight:600;color:var(--acid);white-space:nowrap;pointer-events:none;animation:plus 1.4s ease-out forwards}
+@keyframes plus{0%{opacity:0;transform:translateY(8px)}20%{opacity:1}100%{opacity:0;transform:translateY(-24px)}}
 .mbento.in .mbar i::after,html:not(.js) .mbar i::after{transform:none}
 
 /* process */
@@ -420,14 +431,14 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         <div class="v"><span data-count="275">275</span>%</div>
         <p>Return on ad spend</p>
         <div class="mbars">
-          <div class="mbar"><div class="mbar-t"><span>Player deposits</span><b>$1,244,198</b></div><i style="--w:100%"></i></div>
+          <div class="mbar"><div class="mbar-t"><span>Player deposits<em class="live-tag" hidden>Live</em></span><b class="live-num" id="live-dep">$1,244,198</b></div><i style="--w:100%"></i></div>
           <div class="mbar"><div class="mbar-t"><span>Paid to streamers</span><b>$430,000</b></div><i style="--w:34.6%"></i></div>
         </div>
       </div>
       <div class="mt">
         <div class="k">Cost per FTD</div>
         <div class="v">$<span data-count="89">89</span></div>
-        <p>Per first-time depositor, 4,828 players in total</p>
+        <p>Per first-time depositor, <b class="live-num" id="live-ftd">4,828</b> players in total</p>
       </div>
       <div class="mt">
         <div class="k">LTV</div>
@@ -591,6 +602,58 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     });
   }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv, #steps').forEach(function(el){ io.observe(el); });
+
+  // live deposits: over 5 minutes the totals grow to the real campaign numbers
+  (function(){
+    var dep = document.getElementById('live-dep'), ftd = document.getElementById('live-ftd');
+    if (!dep || reduce) return;
+    var END_DEP = 1244198, END_FTD = 4828, DURATION = 300000;
+    var pool = [10,10,15,20,20,20,25,25,30,35,40,50,50,50,50,60,75,80,100,100,100,120,150,200,250,300,500,18,23,37,45,68,90];
+    var ev = [], sum = 0, firsts = 0, t = 0, i;
+    for (i = 0; i < 90; i++){
+      var a = Math.random() < .03 ? 1000 : pool[Math.floor(Math.random() * pool.length)];
+      var first = Math.random() < .55;
+      ev.push({a: a, first: first, gap: .4 + Math.random() * 1.6});
+      sum += a; if (first) firsts++; t += ev[i].gap;
+    }
+    var k = DURATION / t;
+    var cur = END_DEP - sum, users = END_FTD - firsts;
+    function fmt(n){ return n.toLocaleString('en-US'); }
+    dep.textContent = '$' + fmt(cur); ftd.textContent = fmt(users);
+    function bump(el){ el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+    function roll(from, to){
+      var t0 = null;
+      (function step(ts){
+        if (!t0) t0 = ts;
+        var p = Math.min((ts - t0) / 600, 1);
+        dep.textContent = '$' + fmt(Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    function fire(n){
+      if (n >= ev.length) return;
+      var e = ev[n], from = cur;
+      cur += e.a; roll(from, cur); bump(dep);
+      var plus = document.createElement('span'); plus.className = 'plus'; plus.textContent = '+$' + fmt(e.a);
+      dep.parentNode.appendChild(plus); setTimeout(function(){ plus.remove(); }, 1500);
+      if (e.first){ users++; ftd.textContent = fmt(users); bump(ftd); }
+      if (n + 1 < ev.length) wait(ev[n + 1].gap * k, function(){ fire(n + 1); });
+      else dep.parentNode.parentNode.querySelector('.live-tag').hidden = true;
+    }
+    // pause while the tab is hidden so the totals do not jump
+    function wait(ms, fn){
+      var left = ms, last = Date.now(), id;
+      function tick(){ if (document.hidden){ last = Date.now(); id = setTimeout(tick, 500); return; } left -= Date.now() - last; last = Date.now(); if (left <= 0) fn(); else id = setTimeout(tick, Math.min(left, 500)); }
+      id = setTimeout(tick, Math.min(left, 500));
+    }
+    var started = false;
+    new IntersectionObserver(function(es, obs){
+      if (started || !es[0].isIntersecting) return;
+      started = true; obs.disconnect();
+      document.querySelector('.live-tag').hidden = false;
+      wait(1500, function(){ fire(0); });
+    }, {threshold:.4}).observe(document.querySelector('.mbento'));
+  })();
 
   // custom dropdowns
   document.querySelectorAll('[data-dd]').forEach(function(dd){
