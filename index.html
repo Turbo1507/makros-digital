@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makros Digital | Influencer marketing for Gaming, Casino &amp; Crypto</title>
+<meta name="description" content="Influencer marketing and creative production for Gaming, Casino and Crypto brands. Streamers and creators on Twitch, Kick, YouTube, Telegram and Instagram.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://makrosmedia.com/">
+<meta property="og:title" content="Makros Digital">
+<meta property="og:description" content="Influencer marketing and creative production for Gaming, Casino and Crypto brands.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23141517'/%3E%3Cpath d='M7 24V8h4l5 8 5-8h4v16h-4V15l-5 7-5-7v9z' fill='%23C8FF2E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g950:#141517; --g900:#1C1D20; --g850:#232428; --g800:#2A2C30; --g600:#4A4D53; --g400:#8B8E94; --g200:#C9CBCF;
+  --paper:#E9EAE4; --white:#F4F5F0; --acid:#C8FF2E; --ink:#141517;
+  --container:1280px; --pad:24px; --section:120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--g950);color:var(--white);font-family:Archivo,system-ui,sans-serif;font-size:18px;line-height:1.5;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--pad);width:100%}
+.display{font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:700;letter-spacing:-.03em;line-height:.92}
+.h2{font-size:clamp(40px,5vw,64px);font-stretch:118%;font-variation-settings:"wdth" 118;font-weight:700;letter-spacing:-.025em;line-height:1}
+.lead{font-size:24px;line-height:1.4}
+.muted{color:var(--g400)}
+section{padding:var(--section) 0}
+
+/* buttons: fill on hover, no arrows */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 32px;border-radius:8px;background:var(--acid);color:var(--ink);font-weight:600;font-size:17px;transition:background .2s,color .2s;border:0;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--white)}
+.btn-dark{background:var(--ink);color:var(--acid)}
+.btn-dark:hover{background:var(--g800);color:var(--acid)}
+.btn-ghost{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1px var(--g600)}
+.btn-ghost:hover{background:var(--white);color:var(--ink);box-shadow:none}
+
+/* header */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .25s}
+.hdr.solid{background:rgba(20,21,23,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:.02em;font-size:18px}
+.logo span{color:var(--g400);font-weight:500}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a.l{padding:8px 16px;border-radius:8px;color:var(--g200);font-size:16px;transition:background .2s,color .2s}
+.nav a.l:hover{background:var(--g850);color:var(--white)}
+.nav .btn{height:40px;padding:0 20px;font-size:15px;margin-left:8px}
+.burger{display:none;width:40px;height:40px;border:0;background:none;cursor:pointer;position:relative}
+.burger i{position:absolute;left:8px;right:8px;height:2px;background:var(--white);transition:transform .25s}
+.burger i:first-child{top:15px}.burger i:last-child{top:23px}
+.menu-open .burger i:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-open .burger i:last-child{transform:translateY(-4px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:40;background:var(--g950);padding:120px var(--pad) 40px;display:flex;flex-direction:column;gap:8px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.menu-open .mmenu{opacity:1;visibility:visible}
+.mmenu a.l{font-size:40px;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118;padding:8px 0}
+.mmenu .btn{margin-top:auto}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:120px 0 0;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--g850) 1px,transparent 1px),linear-gradient(90deg,var(--g850) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;opacity:.7;mask-image:linear-gradient(180deg,#000 40%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 40%,transparent 100%)}
+.hero .wrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:56px}
+.hero h1{font-size:clamp(56px,11.2vw,152px)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:inline-block}
+.hero-foot{display:grid;grid-template-columns:1fr minmax(0,480px);gap:40px;margin-top:56px;align-items:end}
+.hero-meta{font-size:16px;color:var(--g400);display:flex;gap:32px;flex-wrap:wrap}
+.hero-meta b{display:block;color:var(--white);font-weight:600}
+.hero-side .sub{font-size:24px;line-height:1.35;font-weight:500}
+.hero-side p.t{color:var(--g400);margin-top:16px;font-size:17px}
+.hero-side .btn{margin-top:32px}
+.marquee{position:relative;border-top:1px solid var(--g800);overflow:hidden;padding:24px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:56px;animation:mq 32s linear infinite;padding-left:56px}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{font-size:32px;font-weight:600;font-stretch:118%;font-variation-settings:"wdth" 118;color:var(--g600);transition:color .2s}
+.marquee span:hover{color:var(--white)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* about (paper) */
+.paper{background:var(--paper);color:var(--ink)}
+.paper .muted{color:#5B5E63}
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.about-grid .lead{font-size:clamp(24px,2.4vw,32px);line-height:1.3;font-weight:500;letter-spacing:-.01em}
+.about-grid p.t{margin-top:24px;max-width:640px;color:#3B3D42}
+
+/* verticals */
+.verts{margin-top:56px;border-top:1px solid var(--g800)}
+.vrow{display:grid;grid-template-columns:1fr minmax(0,420px);align-items:center;gap:24px;padding:24px 16px;border-bottom:1px solid var(--g800);transition:background .25s}
+.vrow h3{font-size:clamp(40px,7vw,96px);font-weight:700;font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:-.03em;line-height:1;color:var(--g400);transition:color .25s}
+.vrow p{color:var(--g400);font-size:17px;opacity:.0;transform:translateX(-8px);transition:opacity .25s,transform .25s}
+.vrow:hover{background:var(--g900)}
+.vrow:hover h3{color:var(--white)}
+.vrow:hover p{opacity:1;transform:none}
+.geo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.geo>div{background:var(--g900);border-radius:12px;padding:32px}
+.geo h4{font-size:24px;font-weight:600;margin-bottom:8px}
+.geo p{color:var(--g200)}
+.plats{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.plats li{padding:8px 16px;background:var(--g850);border-radius:8px;font-size:15px;color:var(--g200)}
+
+/* services */
+.svc-head{display:flex;justify-content:space-between;align-items:end;gap:40px}
+.svc-main{margin-top:56px;background:var(--g900);border-radius:12px;padding:56px;display:grid;grid-template-columns:5fr 7fr;gap:56px}
+.svc-main h3{font-size:48px;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118;letter-spacing:-.02em;line-height:1.05}
+.svc-main .intro{margin-top:24px;color:var(--g200);font-size:19px}
+.svc-main .tag{display:inline-block;margin-top:32px;font-size:15px;color:var(--ink);background:var(--acid);padding:4px 12px;border-radius:4px;font-weight:600}
+.ticks li{position:relative;padding:16px 0 16px 32px;border-bottom:1px solid var(--g800);font-size:18px}
+.ticks li:first-child{border-top:1px solid var(--g800)}
+.ticks li::before{content:"";position:absolute;left:0;top:26px;width:12px;height:4px;background:var(--acid);border-radius:1px}
+.svc-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.svc-pair>article{border-radius:12px;padding:40px;background:var(--g900)}
+.svc-pair h3{font-size:32px;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118;letter-spacing:-.02em}
+.svc-pair .intro{margin:16px 0 24px;color:var(--g200);font-size:17px}
+.svc-pair .ticks li{font-size:17px;padding:12px 0 12px 28px}
+.svc-pair .ticks li::before{top:22px;width:10px}
+.svc-pair article.ai{background:var(--g850)}
+.creatives{margin-top:24px;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 32px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--g800)}
+.creatives p{font-size:20px;font-weight:500}
+
+/* metrics (paper) */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid #C7C8C1}
+.metric{padding:40px 32px 0 0}
+.metric+.metric{padding-left:32px;border-left:1px solid #C7C8C1}
+.metric .k{font-size:17px;font-weight:600}
+.metric .v{font-size:64px;font-weight:500;letter-spacing:-.03em;line-height:1.1;margin-top:16px;font-variant-numeric:tabular-nums;font-stretch:112%;font-variation-settings:"wdth" 112}
+.metric .v small{font-size:24px;font-weight:500;letter-spacing:0;margin-right:8px;color:#5B5E63}
+.metric p{margin-top:8px;color:#5B5E63;font-size:16px}
+.note{margin-top:40px;font-size:15px;color:#5B5E63}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);margin-top:56px;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:7px;height:1px;background:var(--g800)}
+.steps .bar{position:absolute;left:0;top:6px;height:3px;background:var(--acid);width:0;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.steps.in .bar{width:100%}
+.step{position:relative;padding:40px 24px 0 0}
+.step::before{content:"";position:absolute;top:0;left:0;width:16px;height:16px;border-radius:4px;background:var(--g950);box-shadow:inset 0 0 0 2px var(--g600)}
+.steps.in .step::before{background:var(--acid);box-shadow:none;transition:background .3s calc(var(--i)*.25s)}
+.step .n{font-size:15px;color:var(--g400);font-variant-numeric:tabular-nums}
+.step h4{font-size:22px;font-weight:700;margin:8px 0;font-stretch:112%;font-variation-settings:"wdth" 112}
+.step p{font-size:16px;color:var(--g400)}
+
+/* cases */
+.cases-head{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:end}
+.cases-head p{color:var(--g200)}
+.rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:56px;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--g600) transparent}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.case{background:var(--g900);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.case .shot{aspect-ratio:16/10;background:var(--g850);display:flex;align-items:center;justify-content:center;color:var(--g600);font-size:15px;background-image:repeating-linear-gradient(135deg,transparent 0 12px,rgba(255,255,255,.02) 12px 24px)}
+.case .body{padding:24px 32px 32px}
+.case .top{display:flex;justify-content:space-between;font-size:15px;color:var(--g400)}
+.case h4{font-size:24px;font-weight:600;margin:16px 0}
+.case dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:15px}
+.case dt{color:var(--g400)}
+.case dd{color:var(--g200)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;padding-top:24px;border-top:1px solid var(--g800)}
+.kpis b{display:block;font-size:32px;font-weight:500;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums;font-stretch:112%;font-variation-settings:"wdth" 112}
+.kpis span{display:block;margin-top:4px;font-size:15px;color:var(--g400)}
+.band{margin:0;height:clamp(320px,40vw,640px);background:var(--g900);overflow:hidden}
+.band img,.band-ph{display:block;width:100%;height:100%;object-fit:cover}
+.band-ph,.case .shot{background:var(--g850) repeating-linear-gradient(135deg,transparent 0 12px,rgba(255,255,255,.02) 12px 24px)}
+
+/* cta (acid peak) */
+.cta{background:var(--acid);color:var(--ink)}
+.cta-grid{display:grid;grid-template-columns:6fr 6fr;gap:80px}
+.cta h2{font-size:clamp(48px,6.4vw,96px)}
+.cta p.t{margin-top:32px;font-size:20px;max-width:480px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:start}
+.f{display:flex;flex-direction:column;gap:8px}
+.f.full{grid-column:1/-1}
+.f label{font-size:15px;font-weight:600}
+.f input,.f select,.f textarea{background:transparent;border:0;border-bottom:2px solid rgba(20,21,23,.35);padding:8px 0 12px;font-size:18px;border-radius:0;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.f select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 12px) 20px,calc(100% - 6px) 20px;background-size:6px 6px;background-repeat:no-repeat}
+.f textarea{resize:vertical;min-height:96px}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
+.f ::placeholder{color:rgba(20,21,23,.45)}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
+.form-msg{font-size:15px}
+
+/* footer */
+.ftr{padding:80px 0 40px}
+.ftr-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.ftr .logo{font-size:clamp(40px,8vw,112px);line-height:.9;letter-spacing:-.02em}
+.ftr nav{display:grid;grid-template-columns:auto auto;gap:8px 56px;align-content:start;font-size:17px}
+.ftr nav a{color:var(--g200);transition:color .2s}
+.ftr nav a:hover{color:var(--acid)}
+.ftr-bot{display:flex;justify-content:space-between;gap:24px;margin-top:80px;padding-top:24px;border-top:1px solid var(--g800);font-size:15px;color:var(--g400);flex-wrap:wrap}
+
+/* reveal: hidden only with JS */
+html.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+html.js .rv.in{opacity:1;transform:none}
+html.js .hero h1 .ln>span{transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+html.js .hero.in h1 .ln>span{transform:none}
+html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
+
+@media (max-width:1024px){
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:40px}
+  .steps::before,.steps .bar{display:none}
+  .svc-main{grid-template-columns:1fr;gap:40px;padding:40px}
+}
+@media (max-width:860px){
+  :root{--section:64px}
+  .nav{display:none}.burger{display:block}
+  .hero-foot,.about-grid,.cases-head,.cta-grid,.svc-pair,.geo,.cases{grid-template-columns:1fr}
+  .hero-foot{gap:32px;margin-top:40px}
+  .about-grid,.cases-head,.cta-grid{gap:24px}
+  .cta-grid{gap:40px}
+  .vrow{grid-template-columns:1fr;gap:8px;padding:24px 0}
+  .vrow p{opacity:1;transform:none}
+  .vrow:hover{background:none}
+  .vrow h3{color:var(--white)}
+  .metrics{grid-template-columns:1fr}
+  .metric,.metric+.metric{padding:32px 0;border-left:0;border-bottom:1px solid #C7C8C1}
+  .svc-head{flex-direction:column;align-items:start}
+  .creatives{flex-direction:column;align-items:start}
+}
+@media (max-width:600px){
+  :root{--pad:16px}
+  body{font-size:17px}
+  .lead,.hero-side .sub{font-size:20px}
+  .marquee span{font-size:24px}
+  .svc-main,.svc-pair>article,.geo>div{padding:24px}
+  .svc-main h3{font-size:36px}
+  .steps{grid-template-columns:1fr;row-gap:32px}
+  .case .body{padding:24px}
+  form{grid-template-columns:1fr}
+  .form-foot{flex-direction:column;align-items:stretch}
+  .metric .v{font-size:56px}
+  .ftr nav{grid-template-columns:1fr 1fr;gap:8px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html.js .rv,html.js .hero h1 .ln>span{opacity:1;transform:none}
+  .steps .bar{width:100%}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#top" class="logo">MAKROS <span>DIGITAL</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="l" href="#about">About</a>
+      <a class="l" href="#services">Services</a>
+      <a class="l" href="#process">Process</a>
+      <a class="l" href="#cases">Cases</a>
+      <a class="btn" href="#contact">Let's talk</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mmenu" id="mmenu" aria-hidden="true" inert>
+  <a class="l" href="#about">About</a>
+  <a class="l" href="#services">Services</a>
+  <a class="l" href="#process">Process</a>
+  <a class="l" href="#cases">Cases</a>
+  <a class="btn" href="#contact">Let's talk</a>
+</div>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <canvas id="sig" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1 class="display"><span class="ln"><span>Where influence</span></span><span class="ln"><span>performs.</span></span></h1>
+    <div class="hero-foot">
+      <div class="hero-meta rv">
+        <div><b>Casino, Gaming, Crypto, GameFi</b>Verticals</div>
+        <div><b>Worldwide</b>Any GEO</div>
+      </div>
+      <div class="hero-side rv">
+        <p class="sub">Influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
+        <p class="t">We connect brands with relevant creators and deliver campaigns supported by strategic planning, performance tracking and high-impact creative production.</p>
+        <a class="btn" href="#contact">Let's discuss your project</a>
+      </div>
+    </div>
+  </div>
+  <div class="marquee" aria-label="Platforms">
+    <div class="marquee-track">
+      <span>Twitch</span><span>Kick</span><span>YouTube</span><span>Telegram</span><span>Instagram</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="about">
+  <div class="wrap about-grid">
+    <h2 class="h2 rv">About Makros Digital</h2>
+    <div class="rv">
+      <p class="lead">Makros Digital is a digital marketing agency specializing in influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
+      <p class="t">With our own network of streamers and content creators, combined with tailored sourcing for each project, we build campaigns around your target audience, GEO and business objectives. From influencer partnerships to AI-powered content and advertising creatives, we help brands expand their reach and strengthen their market presence.</p>
+    </div>
+  </div>
+</section>
+
+<figure class="band" id="photo-stream"><div class="band-ph" role="img" aria-label="Streamer at work, live broadcast on screen"></div></figure>
+
+<section id="verticals">
+  <div class="wrap">
+    <h2 class="h2 rv">Built for high-competition verticals</h2>
+    <div class="verts">
+      <div class="vrow rv"><h3>Casino</h3><p>Player acquisition through streams and sponsored integrations.</p></div>
+      <div class="vrow rv"><h3>Gaming</h3><p>Launches, updates and community growth with creators players already watch.</p></div>
+      <div class="vrow rv"><h3>Crypto</h3><p>Exchanges, wallets and projects where trust comes first.</p></div>
+      <div class="vrow rv"><h3>GameFi</h3><p>Players and holders reached in one campaign.</p></div>
+    </div>
+    <div class="geo">
+      <div class="rv">
+        <h4>Worldwide GEO</h4>
+        <p>We work with any GEO and pick creators who actually reach your market.</p>
+      </div>
+      <div class="rv">
+        <h4>Every relevant platform</h4>
+        <ul class="plats"><li>Twitch</li><li>Kick</li><li>YouTube</li><li>Telegram</li><li>Instagram</li><li>and other channels</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="svc-head">
+      <h2 class="h2 rv">What we do</h2>
+    </div>
+    <article class="svc-main rv">
+      <div>
+        <h3>Influencer Marketing</h3>
+        <p class="intro">We plan and manage influencer campaigns that connect brands with relevant audiences across streaming and social platforms.</p>
+        <span class="tag">Core service</span>
+      </div>
+      <ul class="ticks">
+        <li>Access to our network of streamers and creators</li>
+        <li>Tailored influencer sourcing for each project</li>
+        <li>Audience and channel selection based on GEO and campaign objectives</li>
+        <li>Campaign coordination and sponsored integrations</li>
+        <li>Performance tracking and reporting</li>
+      </ul>
+    </article>
+    <div class="svc-pair">
+      <article class="rv">
+        <h3>Creative Production</h3>
+        <p class="intro">We create advertising materials tailored to your brand, campaign objectives and distribution channels.</p>
+        <ul class="ticks">
+          <li>Static and animated banners</li>
+          <li>Advertising creatives and concepts</li>
+          <li>Promotional video assets</li>
+          <li>Creative variations for campaign testing</li>
+        </ul>
+      </article>
+      <article class="rv ai">
+        <h3>AI Production</h3>
+        <p class="intro">We use AI-powered tools to create distinctive visual content and advertising materials.</p>
+        <ul class="ticks">
+          <li>AI-generated videos and visuals</li>
+          <li>Cinematic advertising content</li>
+          <li>AI-assisted creative production</li>
+          <li>Custom visual concepts for digital campaigns</li>
+        </ul>
+      </article>
+    </div>
+    <div class="creatives rv">
+      <p>Need only creatives? We make banners and AI content for your in-house campaigns too.</p>
+      <a class="btn btn-ghost" href="#contact">Order creatives</a>
+    </div>
+  </div>
+</section>
+
+<figure class="band" id="photo-desk"><div class="band-ph" role="img" aria-label="Media buyer desk with campaign reports"></div></figure>
+
+<section class="paper" id="metrics">
+  <div class="wrap">
+    <h2 class="h2 rv">Numbers we work with</h2>
+    <div class="metrics rv">
+      <div class="metric"><div class="k">Cost per FTD</div><div class="v">$<span data-count="89">89</span></div><p>Cost of one first-time depositor</p></div>
+      <div class="metric"><div class="k">LTV</div><div class="v">$<span data-count="568">568</span></div><p>Lifetime value per player</p></div>
+      <div class="metric"><div class="k">ROAS</div><div class="v"><span data-count="275">275</span>%</div><p>Return on ad spend</p></div>
+    </div>
+    <p class="note rv">Results of our 10-month streamer campaign for an online casino in Latin America. Final numbers depend on GEO, vertical and traffic source.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2 class="h2 rv">How we work</h2>
+    <div class="steps" id="steps">
+      <div class="bar"></div>
+      <div class="step" style="--i:0"><div class="n">1</div><h4>Brief</h4><p>You share the product, target GEO, budget and goals.</p></div>
+      <div class="step" style="--i:1"><div class="n">2</div><h4>Strategy</h4><p>We choose platforms, creator formats and the KPI model.</p></div>
+      <div class="step" style="--i:2"><div class="n">3</div><h4>Sourcing</h4><p>We pick creators from our network and source new ones for your audience.</p></div>
+      <div class="step" style="--i:3"><div class="n">4</div><h4>Creatives</h4><p>We prepare banners, scripts and video assets for the integrations.</p></div>
+      <div class="step" style="--i:4"><div class="n">5</div><h4>Launch</h4><p>We coordinate publications and sponsored streams.</p></div>
+      <div class="step" style="--i:5"><div class="n">6</div><h4>Tracking</h4><p>We track FTDs, deposits and ROAS and report on every placement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases" style="padding-top:0">
+  <div class="wrap">
+    <div class="cases-head">
+      <h2 class="h2 rv">Selected case studies</h2>
+      <div class="rv">
+        <p class="lead" style="color:var(--white)">Real campaigns. Measurable results.</p>
+        <p style="margin-top:16px">Explore selected projects showcasing our influencer partnerships, campaign execution and creative solutions. Each case study highlights the campaign objectives, target GEO, selected creators and platforms, and key performance indicators.</p>
+      </div>
+    </div>
+    <div class="cases rv">
+      <article class="case">
+        <div class="shot" role="img" aria-label="Casino streamer campaign"></div>
+        <div class="body">
+          <div class="top"><span>Casino</span><span>Brazil, Mexico, Chile, Argentina</span></div>
+          <h4>Player acquisition for an online casino through streamers</h4>
+          <dl>
+            <dt>Objective</dt><dd>Grow first-time deposits and measure every placement</dd>
+            <dt>Creators</dt><dd>61 streamers, from niche creators to influencers known across Latin America</dd>
+            <dt>Platforms</dt><dd>Kick, Twitch, YouTube</dd>
+            <dt>Duration</dt><dd>10 months</dd>
+          </dl>
+          <ul class="kpis">
+            <li><b>4,828</b><span>first-time depositors</span></li>
+            <li><b>$1.24M</b><span>total deposits</span></li>
+            <li><b>275%</b><span>ROAS</span></li>
+            <li><b>$568</b><span>LTV</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="case">
+        <div class="shot" role="img" aria-label="Metaverse influencer campaign"></div>
+        <div class="body">
+          <div class="top"><span>Crypto, Web3, GameFi</span><span>UAE</span></div>
+          <h4>Launching a play-to-earn metaverse with creator Stories</h4>
+          <dl>
+            <dt>Objective</dt><dd>Bring in new users and drive token purchases</dd>
+            <dt>Creators</dt><dd>30 creators aged 18 to 30 with a mostly male audience</dd>
+            <dt>Format</dt><dd>A series of 3 Stories per creator, 90 Stories in total</dd>
+            <dt>Audience</dt><dd>Crypto investors and GameFi players aged 25 to 40</dd>
+          </dl>
+          <ul class="kpis">
+            <li><b>2,900</b><span>registered users</span></li>
+            <li><b>$45K</b><span>token purchases</span></li>
+            <li><b>$15K</b><span>ad budget</span></li>
+            <li><b>$5.17</b><span>cost per user</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap cta-grid">
+    <div class="rv">
+      <h2 class="display">Let's build your next campaign</h2>
+      <p class="t">Looking for the right creators, stronger creatives or a tailored influencer marketing strategy? Tell us about your project, target GEO and campaign goals. We'll help you identify the right approach.</p>
+    </div>
+    <form id="form" class="rv" novalidate>
+      <div class="f"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="f"><label for="f-contact">Telegram or email</label><input id="f-contact" name="contact" placeholder="@username" required></div>
+      <div class="f"><label for="f-vert">Vertical</label><select id="f-vert" name="vertical"><option>Casino</option><option>Gaming</option><option>Crypto</option><option>GameFi</option><option>Other</option></select></div>
+      <div class="f"><label for="f-geo">Target GEO</label><input id="f-geo" name="geo" placeholder="e.g. Brazil, Mexico"></div>
+      <div class="f full"><label for="f-msg">About the project</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="form-foot">
+        <button class="btn btn-dark" type="submit">Discuss your project</button>
+        <span class="form-msg" id="form-msg" role="status"></span>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <a href="#top" class="logo">MAKROS<br><span>DIGITAL</span></a>
+      <nav aria-label="Footer">
+        <a href="#about">About</a><a href="#" data-todo>Telegram</a>
+        <a href="#services">Services</a><a href="#" data-todo>Email</a>
+        <a href="#process">Process</a><a href="#contact">Contact</a>
+        <a href="#cases">Cases</a>
+      </nav>
+    </div>
+    <div class="ftr-bot"><span>© 2026 Makros Digital</span><span>makrosmedia.com</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // header + mobile menu
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('solid', scrollY > 24); }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var burger = document.getElementById('burger'), mm = document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    mm.setAttribute('aria-hidden', !open);
+    if (open) mm.removeAttribute('inert'); else mm.setAttribute('inert', '');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!document.body.classList.contains('menu-open')); });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+
+  // hero intro
+  requestAnimationFrame(function(){ document.getElementById('hero').classList.add('in'); });
+
+  // reveal, steps, counters
+  function count(el){
+    var to = +el.dataset.count, t0 = null;
+    if (reduce) return;
+    function tick(t){
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / 1200, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    el.textContent = '0'; requestAnimationFrame(tick);
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('[data-count]').forEach(count);
+      io.unobserve(e.target);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv, #steps').forEach(function(el){ io.observe(el); });
+
+  // form: preview only, not connected
+  document.getElementById('form').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target, msg = document.getElementById('form-msg');
+    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Please fill in your name and contact.'; return; }
+    msg.textContent = 'Preview: the form is not connected yet.';
+  });
+
+  // hero signal grid: cells near the cursor light up and fade
+  var cv = document.getElementById('sig');
+  if (reduce || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  var ctx = cv.getContext('2d'), hero = document.getElementById('hero'), S = 80, dpr = Math.min(devicePixelRatio || 1, 2);
+  var cells = {}, raf = null, w, h;
+  function size(){ w = hero.clientWidth; h = hero.clientHeight; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  size(); addEventListener('resize', size);
+  hero.addEventListener('pointermove', function(e){
+    var r = hero.getBoundingClientRect(), x = Math.floor((e.clientX - r.left) / S), y = Math.floor((e.clientY - r.top) / S);
+    cells[x + ',' + y] = 1;
+    if (!raf) raf = requestAnimationFrame(draw);
+  });
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    var alive = false;
+    for (var k in cells){
+      var a = cells[k], p = k.split(',');
+      ctx.fillStyle = 'rgba(200,255,46,' + (a * 0.07) + ')';
+      ctx.fillRect(p[0] * S, p[1] * S, S - 1, S - 1);
+      ctx.fillStyle = 'rgba(200,255,46,' + (a * 0.9) + ')';
+      ctx.fillRect(p[0] * S - 2, p[1] * S - 2, 4, 4);
+      cells[k] = a - 0.025;
+      if (cells[k] <= 0) delete cells[k]; else alive = true;
+    }
+    raf = alive ? requestAnimationFrame(draw) : null;
+  }
+})();
+</script>
+</body>
+</html>
