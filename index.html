@@ -62,10 +62,11 @@ section{padding:var(--section) 0}
 
 /* hero */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:120px 0 0;overflow:hidden}
-.hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero canvas{position:absolute;left:0;top:0;width:100%;pointer-events:none}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--g850) 1px,transparent 1px),linear-gradient(90deg,var(--g850) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;opacity:.7;mask-image:linear-gradient(180deg,#000 40%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 40%,transparent 100%)}
 .hero .wrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:56px}
 .hero h1{font-size:clamp(56px,11.2vw,152px)}
+@media (min-width:861px){.hero h1{font-size:min(132px,calc((100vw - 48px) / 9.4))}.hero h1 .ln>span{white-space:nowrap}}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln>span{display:inline-block}
 .hero-foot{display:grid;grid-template-columns:1fr minmax(0,480px);gap:40px;margin-top:56px;align-items:end}
@@ -157,9 +158,12 @@ section{padding:var(--section) 0}
 .case dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:15px}
 .case dt{color:var(--g400)}
 .case dd{color:var(--g200)}
-.kpis{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;padding-top:24px;border-top:1px solid var(--g800)}
+.case .body{flex:1;display:flex;flex-direction:column}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:32px}
+.kpis li{background:var(--g850);border-radius:8px;padding:16px 24px 24px}
 .kpis b{display:block;font-size:32px;font-weight:500;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums;font-stretch:112%;font-variation-settings:"wdth" 112}
-.kpis span{display:block;margin-top:4px;font-size:15px;color:var(--g400)}
+.kpis span{display:block;margin-top:8px;font-size:15px;color:var(--g400)}
+@media (min-width:861px){.kpis span{white-space:nowrap}}
 .band{margin:0;height:clamp(320px,40vw,640px);background:var(--g900);overflow:hidden}
 .band img,.band-ph{display:block;width:100%;height:100%;object-fit:cover}
 .band-ph,.case .shot{background:var(--g850) repeating-linear-gradient(135deg,transparent 0 12px,rgba(255,255,255,.02) 12px 24px)}
@@ -176,6 +180,16 @@ form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:star
 .f input,.f select,.f textarea{background:transparent;border:0;border-bottom:2px solid rgba(20,21,23,.35);padding:8px 0 12px;font-size:18px;border-radius:0;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
 .f select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 12px) 20px,calc(100% - 6px) 20px;background-size:6px 6px;background-repeat:no-repeat}
 .f textarea{resize:vertical;min-height:96px}
+.dd{position:relative}
+.dd-btn{width:100%;display:flex;justify-content:space-between;align-items:center;background:transparent;border:0;border-bottom:2px solid rgba(20,21,23,.35);padding:8px 0 12px;font-size:18px;text-align:left;cursor:pointer;transition:border-color .2s}
+.dd-btn::after{content:"";width:8px;height:8px;margin-right:4px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-3px) rotate(45deg);transition:transform .2s}
+.dd-btn[aria-expanded="true"]{border-color:var(--ink)}
+.dd-btn[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+.dd-btn:focus-visible{outline:none;border-color:var(--ink)}
+.dd-list{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 8px);background:var(--ink);color:var(--white);border-radius:8px;padding:8px;box-shadow:0 16px 40px rgba(20,21,23,.28);outline:none}
+.dd-list li{padding:12px 16px;border-radius:4px;cursor:pointer;font-size:17px;transition:background .15s}
+.dd-list li:hover,.dd-list li.act{background:var(--g800)}
+.dd-list li[aria-selected="true"]{color:var(--acid)}
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
 .f ::placeholder{color:rgba(20,21,23,.45)}
 .form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
@@ -227,6 +241,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   .svc-main h3{font-size:36px}
   .steps{grid-template-columns:1fr;row-gap:32px}
   .case .body{padding:24px}
+  .kpis li{padding:16px}
+  .kpis b{font-size:28px}
   form{grid-template-columns:1fr}
   .form-foot{flex-direction:column;align-items:stretch}
   .metric .v{font-size:56px}
@@ -463,7 +479,14 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <form id="form" class="rv" novalidate>
       <div class="f"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
       <div class="f"><label for="f-contact">Telegram or email</label><input id="f-contact" name="contact" placeholder="@username" required></div>
-      <div class="f"><label for="f-vert">Vertical</label><select id="f-vert" name="vertical"><option>Casino</option><option>Gaming</option><option>Crypto</option><option>GameFi</option><option>Other</option></select></div>
+      <div class="f"><label id="l-vert" for="f-vert">Vertical</label>
+        <div class="dd" data-dd>
+          <input type="hidden" name="vertical" value="Casino">
+          <button type="button" class="dd-btn" id="f-vert" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="l-vert f-vert"><span>Casino</span></button>
+          <ul class="dd-list" role="listbox" aria-labelledby="l-vert" tabindex="-1" hidden>
+            <li role="option" aria-selected="true">Casino</li><li role="option">Gaming</li><li role="option">Crypto</li><li role="option">GameFi</li><li role="option">Other</li>
+          </ul>
+        </div></div>
       <div class="f"><label for="f-geo">Target GEO</label><input id="f-geo" name="geo" placeholder="e.g. Brazil, Mexico"></div>
       <div class="f full"><label for="f-msg">About the project</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
       <div class="form-foot">
@@ -534,6 +557,25 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv, #steps').forEach(function(el){ io.observe(el); });
 
+  // custom dropdowns
+  document.querySelectorAll('[data-dd]').forEach(function(dd){
+    var btn = dd.querySelector('.dd-btn'), list = dd.querySelector('.dd-list'), input = dd.querySelector('input'), opts = [].slice.call(list.children), act = 0;
+    function mark(i){ opts.forEach(function(o, j){ o.classList.toggle('act', j === i); }); act = i; }
+    function open(){ list.hidden = false; btn.setAttribute('aria-expanded', 'true'); mark(Math.max(0, opts.findIndex(function(o){ return o.getAttribute('aria-selected') === 'true'; }))); list.focus(); }
+    function close(focus){ list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focus) btn.focus(); }
+    function pick(i){ opts.forEach(function(o, j){ o.setAttribute('aria-selected', j === i); }); input.value = opts[i].textContent; btn.firstChild.textContent = opts[i].textContent; close(true); }
+    btn.addEventListener('click', function(){ list.hidden ? open() : close(); });
+    btn.addEventListener('keydown', function(e){ if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){ e.preventDefault(); open(); } });
+    opts.forEach(function(o, i){ o.addEventListener('click', function(){ pick(i); }); o.addEventListener('mousemove', function(){ mark(i); }); });
+    list.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); mark(Math.min(act + 1, opts.length - 1)); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); mark(Math.max(act - 1, 0)); }
+      else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(act); }
+      else if (e.key === 'Escape' || e.key === 'Tab'){ close(e.key === 'Escape'); }
+    });
+    document.addEventListener('click', function(e){ if (!dd.contains(e.target) && !list.hidden) close(); });
+  });
+
   // form: preview only, not connected
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
@@ -547,10 +589,13 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   if (reduce || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
   var ctx = cv.getContext('2d'), hero = document.getElementById('hero'), S = 80, dpr = Math.min(devicePixelRatio || 1, 2);
   var cells = {}, raf = null, w, h;
-  function size(){ w = hero.clientWidth; h = hero.clientHeight; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+  var mq = hero.querySelector('.marquee');
+  function size(){ w = hero.clientWidth; h = mq.offsetTop; cv.width = w * dpr; cv.height = h * dpr; cv.style.height = h + 'px'; ctx.setTransform(dpr,0,0,dpr,0,0); }
   size(); addEventListener('resize', size);
   hero.addEventListener('pointermove', function(e){
-    var r = hero.getBoundingClientRect(), x = Math.floor((e.clientX - r.left) / S), y = Math.floor((e.clientY - r.top) / S);
+    var r = hero.getBoundingClientRect();
+    if (e.clientY - r.top >= h) return;
+    var x = Math.floor((e.clientX - r.left) / S), y = Math.floor((e.clientY - r.top) / S);
     cells[x + ',' + y] = 1;
     if (!raf) raf = requestAnimationFrame(draw);
   });
