@@ -102,10 +102,6 @@ section[id]{scroll-margin-top:72px}
 .geo>div{background:var(--g900);border-radius:12px;padding:32px}
 .geo h4{font-size:24px;font-weight:600;margin-bottom:8px}
 .geo p{color:var(--g200)}
-.plats{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.plats li{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:var(--g850);border-radius:8px;font-size:15px;color:var(--g200)}
-.plats svg{width:16px;height:16px;flex:none}
-.geo-x{margin-top:24px}
 .geo-x>div{--cp:32px;display:flex;flex-direction:column;padding-bottom:0;overflow:hidden}
 .geo-x .vis{position:relative;height:320px;margin:32px calc(var(--cp) * -1) 0;flex:none}
 .globe canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -157,7 +153,10 @@ section[id]{scroll-margin-top:72px}
 .mt p{margin-top:16px;color:#5B5E63;font-size:16px;max-width:320px}
 .mt-main{grid-row:1/3;background:var(--ink);color:var(--white)}
 .mt-main .k,.mt-main p{color:var(--g400)}
-.mt-main .v{font-size:clamp(88px,12.8vw,184px);margin-top:0}
+.mt-main .v{font-size:clamp(88px,12.8vw,184px);margin-top:0;color:var(--acid)}
+.mt-acc{background:var(--acid)}
+.mt-acc p{color:#3A4A00}
+.kpis li.hot b{color:var(--acid)}
 .mbars{margin-top:auto;padding-top:56px;display:grid;gap:24px}
 .mbar-t{display:flex;justify-content:space-between;gap:16px;font-size:16px;color:var(--g400)}
 .mbar-t b{color:var(--white);font-weight:600;font-variant-numeric:tabular-nums}
@@ -298,6 +297,19 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   .mt .v{padding-top:24px}
   .mbars{padding-top:40px}
   .ftr nav{grid-template-columns:1fr 1fr;gap:8px 24px}
+  .about-grid .lead{font-size:20px}
+  .cta-grid p.t{font-size:17px}
+  .svc-main .intro{font-size:17px}
+  .ticks li,.svc-pair .ticks li{font-size:16px;padding:12px 0 12px 28px}
+  .ticks li::before,.svc-pair .ticks li::before{top:22px;width:10px}
+  .steps{row-gap:24px}
+  .step{padding:0 0 0 48px}
+  .step::before{display:none}
+  .step .n{position:absolute;left:0;top:0;display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--g850);color:var(--acid);font-weight:600}
+  .step h4{font-size:20px;margin:4px 0}
+  .cases-intro{display:none}
+  .case .kpis{order:1;margin:0 0 24px;padding-top:0}
+  .case dl{order:2}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -380,16 +392,6 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       <div class="vrow rv"><h3>Crypto</h3><p>Exchanges, wallets and projects where trust comes first.</p></div>
       <div class="vrow rv"><h3>GameFi</h3><p>Players and holders reached in one campaign.</p></div>
     </div>
-    <div class="geo">
-      <div class="rv">
-        <h4>Worldwide GEO</h4>
-        <p>We work with any GEO and pick creators who actually reach your market.</p>
-      </div>
-      <div class="rv">
-        <h4>Every relevant platform</h4>
-        <ul class="plats"><li><svg viewBox="0 0 24 24" fill="#9146FF" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>Twitch</li><li><svg viewBox="0 0 24 24" fill="#53FC18" aria-hidden="true"><path d="M1.333 0h8v5.333H12V2.667h2.667V0h8v8H20v2.667h-2.667v2.666H20V16h2.667v8h-8v-2.667H12v-2.666H9.333V24h-8Z"/></svg>Kick</li><li><svg viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</li><li><svg viewBox="0 0 24 24" fill="#26A5E4" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram</li><li><svg viewBox="0 0 24 24" fill="url(#ig-grad)" aria-hidden="true"><defs><radialGradient id="ig-grad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#FDF497"/><stop offset=".05" stop-color="#FDF497"/><stop offset=".45" stop-color="#FD5949"/><stop offset=".6" stop-color="#D6249F"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>Instagram</li><li>and other channels</li></ul>
-      </div>
-    </div>
     <div class="geo geo-x">
       <div class="rv">
         <h4>Worldwide GEO</h4>
@@ -403,6 +405,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       </div>
     </div>
   </div>
+  <template id="plat-icons"><svg data-p="Twitch" viewBox="0 0 24 24" fill="#9146FF" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg><svg data-p="Kick" viewBox="0 0 24 24" fill="#53FC18" aria-hidden="true"><path d="M1.333 0h8v5.333H12V2.667h2.667V0h8v8H20v2.667h-2.667v2.666H20V16h2.667v8h-8v-2.667H12v-2.666H9.333V24h-8Z"/></svg><svg data-p="YouTube" viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><svg data-p="Telegram" viewBox="0 0 24 24" fill="#26A5E4" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><svg data-p="Instagram" viewBox="0 0 24 24" fill="url(#ig-grad)" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></template>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="ig-grad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#FDF497"/><stop offset=".05" stop-color="#FDF497"/><stop offset=".45" stop-color="#FD5949"/><stop offset=".6" stop-color="#D6249F"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs></svg>
 </section>
 
 <section id="services" style="padding-top:0">
@@ -476,7 +480,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         <div class="v">$<span data-count="89">89</span></div>
         <p>Per first-time depositor, <b class="live-num" id="live-ftd">4,828</b> players in total</p>
       </div>
-      <div class="mt">
+      <div class="mt mt-acc">
         <div class="k">LTV</div>
         <div class="v">$<span data-count="568">568</span></div>
         <p>Lifetime value per player, over 6 times the cost to acquire one</p>
@@ -506,7 +510,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       <h2 class="h2 rv">Selected case studies</h2>
       <div class="rv">
         <p class="lead" style="color:var(--white)">Real campaigns. Measurable results.</p>
-        <p style="margin-top:16px">Explore selected projects showcasing our influencer partnerships, campaign execution and creative solutions. Each case study highlights the campaign objectives, target GEO, selected creators and platforms, and key performance indicators.</p>
+        <p class="cases-intro" style="margin-top:16px">Explore selected projects showcasing our influencer partnerships, campaign execution and creative solutions. Each case study highlights the campaign objectives, target GEO, selected creators and platforms, and key performance indicators.</p>
       </div>
     </div>
     <div class="cases rv">
@@ -524,7 +528,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           <ul class="kpis">
             <li><b>4,828</b><span>first-time depositors</span></li>
             <li><b>$1.24M</b><span>total deposits</span></li>
-            <li><b>275%</b><span>ROAS</span></li>
+            <li class="hot"><b>275%</b><span>ROAS</span></li>
             <li><b>$568</b><span>LTV</span></li>
           </ul>
         </div>
@@ -542,7 +546,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           </dl>
           <ul class="kpis">
             <li><b>2,900</b><span>registered users</span></li>
-            <li><b>$45K</b><span>token purchases</span></li>
+            <li class="hot"><b>$45K</b><span>token purchases</span></li>
             <li><b>$15K</b><span>ad budget</span></li>
             <li><b>$5.17</b><span>cost per user</span></li>
           </ul>
@@ -691,9 +695,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     }, {threshold:.4}).observe(document.querySelector('.mbento'));
   })();
 
-  // platform icons are taken from the chips list above
+  // platform icons live in a template under the GEO cards
   var icons = {};
-  document.querySelectorAll('.plats li').forEach(function(li){ var s = li.querySelector('svg'); if (s) icons[li.textContent.trim()] = s.outerHTML; });
+  document.getElementById('plat-icons').content.querySelectorAll('svg').forEach(function(s){ icons[s.dataset.p] = s.outerHTML; });
 
   // runs fn(dt) every frame only while el is on screen and the tab is visible
   function loopWhileVisible(el, fn){
