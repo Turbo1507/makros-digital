@@ -212,10 +212,7 @@ section[id]{scroll-margin-top:72px}
 .kpis span{display:block;margin-top:8px;font-size:15px;color:var(--g400)}
 @media (min-width:861px){.kpis span{white-space:nowrap}}
 .band{margin:0;height:clamp(320px,40vw,640px);background:var(--g900);overflow:hidden}
-.band{position:relative}
 .band img{display:block;width:100%;height:100%;object-fit:cover}
-.px{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.shot-w{position:relative}
 
 /* cta (acid peak) */
 .cta{background:var(--acid);color:var(--ink)}
@@ -521,7 +518,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     </div>
     <div class="cases rv">
       <article class="case">
-        <div class="shot-w"><img class="shot" src="img/case-casino-800.webp" srcset="img/case-casino-800.webp 800w, img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="750" alt="Casino stream with a promo banner on screen" loading="lazy" decoding="async"></div>
+        <img class="shot" src="img/case-casino-800.webp" srcset="img/case-casino-800.webp 800w, img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="750" alt="Casino stream with a promo banner on screen" loading="lazy" decoding="async">
         <div class="body">
           <div class="top"><span>Casino</span><span>Brazil, Mexico, Chile, Argentina</span></div>
           <h4>Player acquisition for an online casino through streamers</h4>
@@ -540,7 +537,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         </div>
       </article>
       <article class="case">
-        <div class="shot-w"><img class="shot" src="img/case-metaverse-800.webp" srcset="img/case-metaverse-800.webp 800w, img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="750" alt="Phone with a play-to-earn game map, Dubai skyline behind" loading="lazy" decoding="async"></div>
+        <img class="shot" src="img/case-metaverse-800.webp" srcset="img/case-metaverse-800.webp 800w, img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="750" alt="Phone with a play-to-earn game map, Dubai skyline behind" loading="lazy" decoding="async">
         <div class="body">
           <div class="top"><span>Crypto, Web3, GameFi</span><span>UAE</span></div>
           <h4>Launching a play-to-earn metaverse with creator Stories</h4>
@@ -901,72 +898,6 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Please fill in your name and contact.'; return; }
     msg.textContent = 'Preview: the form is not connected yet.';
   });
-
-  // photo edges break into pixels in the colour of the next block
-  (function(){
-    function bg(el){
-      while (el){ var c = getComputedStyle(el).backgroundColor; if (c && c !== 'rgba(0, 0, 0, 0)' && c !== 'transparent') return c; el = el.parentElement; }
-      return getComputedStyle(document.body).backgroundColor;
-    }
-    function pixelEdge(box, opt){
-      var cv = document.createElement('canvas'); cv.className = 'px'; cv.setAttribute('aria-hidden', 'true');
-      box.appendChild(cv);
-      var cx = cv.getContext('2d'), W, H, S, cells, spots, dots, fade = null;
-      // a column grows from the edge: next cell only if the one before it is filled
-      var ODDS = [.3, .35, .3];
-      function build(){
-        var dpr = Math.min(devicePixelRatio || 1, 2);
-        W = box.clientWidth; H = box.clientHeight; S = opt.size(W);
-        cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        cells = []; spots = []; dots = [];
-        var cols = Math.ceil(W / S);
-        [['top', opt.top], ['bottom', opt.bottom]].forEach(function(e){
-          if (!e[1]) return;
-          for (var c = 0; c < cols; c++){
-            var spot = {x: c * S, y: e[0] === 'top' ? 0 : H - S, col: e[1], a: 1};
-            spots.push(spot);
-            for (var r = 0; r < 3 && Math.random() < ODDS[r]; r++)
-              cells.push(r ? {x: c * S, y: e[0] === 'top' ? r * S : H - (r + 1) * S, col: e[1], a: 1} : spot);
-          }
-        });
-        for (var k = 0; k < (opt.dots || 0); k++) dots.push([Math.floor(Math.random() * (cols - 1) + 1) * S, Math.floor(Math.random() * (H / S - 1) + 1) * S]);
-        draw();
-      }
-      function draw(){
-        cx.clearRect(0, 0, W, H);
-        cells.forEach(function(c){ cx.globalAlpha = c.a; cx.fillStyle = c.col; cx.fillRect(c.x, c.y, S, S); });
-        cx.globalAlpha = .8; cx.fillStyle = '#C8FF2E';
-        dots.forEach(function(d){ cx.fillRect(d[0] - 2, d[1] - 2, 4, 4); });
-        cx.globalAlpha = 1;
-      }
-      build();
-      new ResizeObserver(build).observe(box);
-      if (reduce) return;
-      // now and then one edge cell quietly appears or goes away
-      var acc = 0;
-      loopWhileVisible(box, function(dt){
-        acc += dt;
-        if (!fade && acc > 1800 && spots.length){
-          acc = 0;
-          var c = spots[Math.floor(Math.random() * spots.length)], i = cells.indexOf(c);
-          var stacked = cells.some(function(o){ return o !== c && o.x === c.x && o.col === c.col; });
-          if (i >= 0 && stacked) return;
-          if (i < 0){ c.a = 0; cells.push(c); fade = {c: c, to: 1}; } else fade = {c: c, to: 0};
-        }
-        if (fade){
-          var c2 = fade.c; c2.a += (fade.to ? 1 : -1) * dt / 700;
-          if (c2.a >= 1 || c2.a <= 0){ c2.a = fade.to; if (!fade.to) cells.splice(cells.indexOf(c2), 1); c2.a = 1; fade = null; }
-          draw();
-        }
-      });
-    }
-    document.querySelectorAll('.band').forEach(function(b){
-      pixelEdge(b, {size: function(w){ return w > 860 ? 48 : 32; }, top: bg(b.previousElementSibling), bottom: bg(b.nextElementSibling), dots: 2});
-    });
-    document.querySelectorAll('.shot-w').forEach(function(b){
-      pixelEdge(b, {size: function(w){ return w > 500 ? 24 : 16; }, bottom: bg(b.parentElement), dots: 1});
-    });
-  })();
 
   // hero signal grid: cells near the cursor light up and fade
   var cv = document.getElementById('sig');
