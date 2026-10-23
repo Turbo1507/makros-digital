@@ -749,12 +749,15 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       ['USA', 41.9, -87.6, 'Telegram'], ['USA', 32.8, -96.8, 'Twitch'], ['Canada', 49.3, -123.1, 'YouTube'],
       ['Mexico', 20.7, -103.3, 'Instagram']
     ].map(function(s){ return {name: s[0], v: vec(s[1], s[2]), plat: s[3], el: null}; });
-    var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt','nyc.reviews','la.reels','miami.kick','chi.alpha','tx.plays','van.vlogs','gdl.ana'];
+    var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt','nyc.plays','la.daily','miami.vibes','chi.alpha','tx.plays','van.vlogs','gdl.ana'];
     spots.forEach(function(s, k){ s.handle = handles[k]; });
     var FORMATS = {Twitch: ['Sponsored stream', 'Live now'], Kick: ['Sponsored stream', 'Live now'], YouTube: ['Review video', 'Shorts'], Telegram: ['Channel post', 'Pinned post'], Instagram: ['Stories', 'Reels']};
     var TINT = {Twitch: '#9146FF', Kick: '#53FC18', YouTube: '#FF4D4D', Telegram: '#26A5E4', Instagram: '#E1306C'};
     var AMOUNTS = [20, 35, 50, 75, 100, 150, 250, 500];
+    var PLATS = Object.keys(FORMATS);
     function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+    // each time a country pops up it shows a different channel
+    function nextPlat(s){ var p; do p = pick(PLATS); while (p === s.plat); s.plat = p; }
 
     var TILT = .35, ct = Math.cos(TILT), st = Math.sin(TILT), rot = 20 * Math.PI / 180;
     var W, H, R, X0, Y0, dpr;
@@ -825,6 +828,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var free = spots.filter(function(s){ if (s.el) return false; var q = proj(s.v); return q[2] > .45 && q[1] > 64 && q[1] < H - 24 && Math.abs(q[0] - X0) < R * .75 && q[0] > 96 && q[0] < W - 140 && !near(q); });
       if (!free.length) return;
       var s = pick(free);
+      nextPlat(s);
       s.el = pinEl(s); box.appendChild(s.el);
       s.hw = s.el.offsetWidth / 2; draw();
       if (reduce) return;
