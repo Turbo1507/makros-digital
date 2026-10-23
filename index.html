@@ -745,9 +745,12 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       ['Kazakhstan', 43.2, 76.9, 'Telegram'], ['India', 19.1, 72.9, 'YouTube'], ['Nigeria', 6.5, 3.4, 'Instagram'],
       ['South Africa', -26.2, 28, 'YouTube'], ['Thailand', 13.8, 100.5, 'YouTube'], ['Philippines', 14.6, 121, 'Kick'],
       ['Indonesia', -6.2, 106.8, 'Instagram'], ['Japan', 35.7, 139.7, 'YouTube'], ['Korea', 37.6, 127, 'Twitch'],
-      ['Australia', -33.9, 151.2, 'Twitch'], ['Vietnam', 21, 105.8, 'Telegram'], ['Portugal', 38.7, -9.1, 'Instagram']
+      ['Australia', -33.9, 151.2, 'Twitch'], ['Vietnam', 21, 105.8, 'Telegram'], ['Portugal', 38.7, -9.1, 'Instagram'],
+      ['New York', 40.7, -74, 'YouTube'], ['Los Angeles', 34, -118.2, 'Instagram'], ['Miami', 25.8, -80.2, 'Kick'],
+      ['Chicago', 41.9, -87.6, 'Telegram'], ['Dallas', 32.8, -96.8, 'Twitch'], ['Vancouver', 49.3, -123.1, 'YouTube'],
+      ['Guadalajara', 20.7, -103.3, 'Instagram']
     ].map(function(s){ return {name: s[0], v: vec(s[1], s[2]), plat: s[3], el: null}; });
-    var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt'];
+    var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt','nyc.reviews','la.reels','miami.kick','chi.alpha','tx.plays','van.vlogs','gdl.ana'];
     spots.forEach(function(s, k){ s.handle = handles[k]; });
     var FORMATS = {Twitch: ['Sponsored stream', 'Live now'], Kick: ['Sponsored stream', 'Live now'], YouTube: ['Review video', 'Shorts'], Telegram: ['Channel post', 'Pinned post'], Instagram: ['Stories', 'Reels']};
     var TINT = {Twitch: '#9146FF', Kick: '#53FC18', YouTube: '#FF4D4D', Telegram: '#26A5E4', Instagram: '#E1306C'};
