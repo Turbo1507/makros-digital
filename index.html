@@ -105,7 +105,7 @@ section[id]{scroll-margin-top:72px}
 .geo-x>div{--cp:32px;display:flex;flex-direction:column;padding-bottom:0;overflow:hidden}
 .geo-x .vis{position:relative;height:320px;margin:32px calc(var(--cp) * -1) 0;flex:none}
 .globe canvas{position:absolute;inset:0;width:100%;height:100%}
-.pin{position:absolute;left:0;top:0;pointer-events:none;transition:opacity .4s}
+.pin{position:absolute;left:0;top:0;z-index:2;pointer-events:none;transition:opacity .4s}
 .pin-in{display:flex;flex-direction:column;align-items:center;transform-origin:50% 100%;animation:pinup .5s cubic-bezier(.2,.9,.3,1.3) both}
 .pin.out .pin-in{animation:pindown .4s ease-in forwards}
 @keyframes pinup{from{opacity:0;transform:translateY(8px) scale(.6)}}
@@ -114,11 +114,6 @@ section[id]{scroll-margin-top:72px}
 .pin .tag i{font-style:normal;display:grid;place-items:center;width:20px;height:20px;border-radius:4px;background:var(--g950)}
 .pin .tag svg{width:12px;height:12px}
 .pin .tag em{font-style:normal;font-weight:500;color:var(--g400)}
-.pin .tag.av{padding-left:4px;border-radius:12px}
-.pin .tag.av i:first-child{border-radius:50%;background:var(--c);color:var(--ink);font-size:11px;font-weight:700}
-.pin .tag.av svg{width:10px;height:10px}
-.pin .tag.acc{background:var(--acid);color:var(--ink);padding-left:8px}
-.pin .tag.acc em{color:#3A4A00}
 .pin .tag b{font-weight:600;color:var(--acid)}
 .ping{position:absolute;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;pointer-events:none;transition:opacity .4s}
 .ping::before,.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--acid)}
@@ -749,12 +744,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       ['USA', 41.9, -87.6, 'Telegram'], ['USA', 32.8, -96.8, 'Twitch'], ['Canada', 49.3, -123.1, 'YouTube'],
       ['Mexico', 20.7, -103.3, 'Instagram']
     ].map(function(s){ return {name: s[0], v: vec(s[1], s[2]), plat: s[3], el: null}; });
-    var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt','nyc.plays','la.daily','miami.vibes','chi.alpha','tx.plays','van.vlogs','gdl.ana'];
-    spots.forEach(function(s, k){ s.handle = handles[k]; });
-    var FORMATS = {Twitch: ['a stream', 'a sponsored stream'], Kick: ['a stream', 'a sponsored stream'], YouTube: ['a review', 'Shorts'], Telegram: ['a channel post', 'a pinned post'], Instagram: ['Stories', 'Reels']};
-    var TINT = {Twitch: '#9146FF', Kick: '#53FC18', YouTube: '#FF4D4D', Telegram: '#26A5E4', Instagram: '#E1306C'};
+    var PLATS = ['Twitch', 'Kick', 'YouTube', 'Telegram', 'Instagram'];
     var AMOUNTS = [20, 35, 50, 75, 100, 150, 250, 500];
-    var PLATS = Object.keys(FORMATS);
     function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
     // each time a country pops up it shows a different channel
     function nextPlat(s){ var p; do p = pick(PLATS); while (p === s.plat); s.plat = p; }
@@ -794,13 +785,11 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         s.el.style.opacity = q[2] < .12 || q[1] > H - 8 || q[0] - hw < 8 || q[0] + hw > W - 8 ? 0 : 1;
       });
     }
-    // a few kinds of pins so the globe does not repeat itself
+    // pin = channel, result, country
     function tagHtml(s){
-      var ic = icons[s.plat] || '', r = Math.random();
-      if (r < .3) return '<span class="tag av" style="--c:' + TINT[s.plat] + '"><i>' + s.handle.charAt(0).toUpperCase() + '</i>' + s.handle + '<em>joined</em><i>' + ic + '</i></span>';
-      if (r < .5) return '<span class="tag acc">+1 FTD<em>' + s.name + '</em></span>';
-      if (r < .75) return '<span class="tag"><i>' + ic + '</i><b>+$' + pick(AMOUNTS) + '</b><em>' + s.name + '</em></span>';
-      return '<span class="tag"><i>' + ic + '</i>+1 FTD<em>from ' + pick(FORMATS[s.plat]) + '</em></span>';
+      var ic = icons[s.plat] || '';
+      var res = Math.random() < .5 ? '+1 FTD' : '+$' + pick(AMOUNTS);
+      return '<span class="tag"><i>' + ic + '</i><b>' + res + '</b><em>' + s.name + '</em></span>';
     }
     function pinEl(s){
       var el = document.createElement('div'); el.className = 'pin';
@@ -808,12 +797,18 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       return el;
     }
     // keep pins from stacking on each other
-    function near(q){
-      return spots.some(function(o){ if (!o.el || o.ping) return false; var p = proj(o.v); return Math.abs(p[0] - q[0]) < 120 && Math.abs(p[1] - q[1]) < 48; });
+    // tags hang above their point: about 150px wide, 64px tall with the stem
+    function near(q, ping){
+      return spots.some(function(o){
+        if (!o.el) return false;
+        if (o.ping){ if (ping) return false; var r = proj(o.v); return Math.abs(r[0] - q[0]) < 104 && r[1] > q[1] - 88 && r[1] < q[1] + 24; }
+        var p = proj(o.v), hw = (o.hw || 80) + (ping ? 40 : 88);
+        return Math.abs(p[0] - q[0]) < hw && q[1] > p[1] - (ping ? 104 : 88) && q[1] < p[1] + (ping ? 48 : 88);
+      });
     }
     // quick flash on the surface, no label
     function ping(){
-      var free = spots.filter(function(s){ if (s.el) return false; var q = proj(s.v); return q[2] > .3 && q[1] < H - 8; });
+      var free = spots.filter(function(s){ if (s.el) return false; var q = proj(s.v); return q[2] > .3 && q[1] < H - 8 && !near(q, true); });
       if (!free.length) return;
       var s = pick(free);
       s.ping = true; s.hw = 0; s.el = document.createElement('div'); s.el.className = 'ping'; box.appendChild(s.el); draw();
