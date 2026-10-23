@@ -751,7 +751,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     ].map(function(s){ return {name: s[0], v: vec(s[1], s[2]), plat: s[3], el: null}; });
     var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt','nyc.plays','la.daily','miami.vibes','chi.alpha','tx.plays','van.vlogs','gdl.ana'];
     spots.forEach(function(s, k){ s.handle = handles[k]; });
-    var FORMATS = {Twitch: ['Sponsored stream', 'Stream integration'], Kick: ['Sponsored stream', 'Stream integration'], YouTube: ['Review video', 'Shorts'], Telegram: ['Channel post', 'Pinned post'], Instagram: ['Stories', 'Reels']};
+    var FORMATS = {Twitch: ['a stream', 'a sponsored stream'], Kick: ['a stream', 'a sponsored stream'], YouTube: ['a review', 'Shorts'], Telegram: ['a channel post', 'a pinned post'], Instagram: ['Stories', 'Reels']};
     var TINT = {Twitch: '#9146FF', Kick: '#53FC18', YouTube: '#FF4D4D', Telegram: '#26A5E4', Instagram: '#E1306C'};
     var AMOUNTS = [20, 35, 50, 75, 100, 150, 250, 500];
     var PLATS = Object.keys(FORMATS);
@@ -797,11 +797,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     // a few kinds of pins so the globe does not repeat itself
     function tagHtml(s){
       var ic = icons[s.plat] || '', r = Math.random();
-      if (r < .3) return '<span class="tag av" style="--c:' + TINT[s.plat] + '"><i>' + s.handle.charAt(0).toUpperCase() + '</i>' + s.handle + '<i>' + ic + '</i></span>';
-      if (r < .45) return '<span class="tag acc">+1 FTD<em>' + s.name + '</em></span>';
-      if (r < .62) return '<span class="tag"><b>+$' + pick(AMOUNTS) + '</b><em>' + s.name + '</em></span>';
-      if (r < .85) return '<span class="tag"><i>' + ic + '</i>' + pick(FORMATS[s.plat]) + '</span>';
-      return '<span class="tag"><i>' + ic + '</i>' + s.name + '</span>';
+      if (r < .3) return '<span class="tag av" style="--c:' + TINT[s.plat] + '"><i>' + s.handle.charAt(0).toUpperCase() + '</i>' + s.handle + '<em>joined</em><i>' + ic + '</i></span>';
+      if (r < .5) return '<span class="tag acc">+1 FTD<em>' + s.name + '</em></span>';
+      if (r < .75) return '<span class="tag"><i>' + ic + '</i><b>+$' + pick(AMOUNTS) + '</b><em>' + s.name + '</em></span>';
+      return '<span class="tag"><i>' + ic + '</i>+1 FTD<em>from ' + pick(FORMATS[s.plat]) + '</em></span>';
     }
     function pinEl(s){
       var el = document.createElement('div'); el.className = 'pin';
