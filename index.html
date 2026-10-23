@@ -115,12 +115,10 @@ section[id]{scroll-margin-top:72px}
 .pin .tag svg{width:12px;height:12px}
 .pin .tag em{font-style:normal;font-weight:500;color:var(--g400)}
 .pin .tag b{font-weight:600;color:var(--acid)}
-.ping{position:absolute;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;pointer-events:none;transition:opacity .4s}
-.ping::before,.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--acid)}
-.ping::after{background:none;box-shadow:0 0 0 1px var(--acid);animation:ring 1.4s ease-out forwards}
-@keyframes ring{from{transform:scale(1);opacity:1}to{transform:scale(6);opacity:0}}
+@keyframes ring{from{transform:scale(1);opacity:1}to{transform:scale(5);opacity:0}}
 .pin .stem{width:1px;height:16px;background:var(--g400)}
-.pin .dot{width:6px;height:6px;margin-top:-1px;border-radius:50%;background:var(--acid);box-shadow:0 0 0 4px rgba(200,255,46,.15)}
+.pin .dot{width:6px;height:6px;margin-top:-1px;border-radius:50%;background:var(--acid);box-shadow:0 0 0 4px rgba(200,255,46,.15);position:relative}
+.pin .dot::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1px var(--acid);animation:ring 1.4s ease-out .15s both}
 .feed{-webkit-mask-image:linear-gradient(180deg,transparent,#000 45%);mask-image:linear-gradient(180deg,transparent,#000 45%);overflow:hidden}
 .feed ol{position:absolute;left:var(--cp);right:var(--cp);bottom:24px;display:flex;flex-direction:column;gap:8px}
 .msg{display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;background:var(--g850);border-radius:8px;font-size:15px;line-height:1.4;color:var(--g200)}
@@ -780,7 +778,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       spots.forEach(function(s){
         if (!s.el) return;
         var q = proj(s.v);
-        s.el.style.transform = 'translate(' + q[0].toFixed(1) + 'px,' + q[1].toFixed(1) + 'px)' + (s.ping ? '' : ' translate(-50%,-100%) translateY(3px)');
+        s.el.style.transform = 'translate(' + q[0].toFixed(1) + 'px,' + q[1].toFixed(1) + 'px) translate(-50%,-100%) translateY(3px)';
         var hw = s.hw || 0;
         s.el.style.opacity = q[2] < .12 || q[1] > H - 8 || q[0] - hw < 8 || q[0] + hw > W - 8 ? 0 : 1;
       });
@@ -798,25 +796,15 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     }
     // keep pins from stacking on each other
     // tags hang above their point: about 150px wide, 64px tall with the stem
-    function near(q, ping){
+    function near(q){
       return spots.some(function(o){
         if (!o.el) return false;
-        if (o.ping){ if (ping) return false; var r = proj(o.v); return Math.abs(r[0] - q[0]) < 104 && r[1] > q[1] - 88 && r[1] < q[1] + 24; }
-        var p = proj(o.v), hw = (o.hw || 80) + (ping ? 40 : 88);
-        return Math.abs(p[0] - q[0]) < hw && q[1] > p[1] - (ping ? 104 : 88) && q[1] < p[1] + (ping ? 48 : 88);
+        var p = proj(o.v);
+        return Math.abs(p[0] - q[0]) < (o.hw || 80) + 88 && Math.abs(q[1] - p[1]) < 88;
       });
     }
-    // quick flash on the surface, no label
-    function ping(){
-      var free = spots.filter(function(s){ if (s.el) return false; var q = proj(s.v); return q[2] > .3 && q[1] < H - 8 && !near(q, true); });
-      if (!free.length) return;
-      var s = pick(free);
-      s.ping = true; s.hw = 0; s.el = document.createElement('div'); s.el.className = 'ping'; box.appendChild(s.el); draw();
-      setTimeout(function(){ s.el.remove(); s.el = null; s.ping = false; }, 1400);
-    }
     function spawn(){
-      if (!reduce && Math.random() < .35) return ping();
-      var shown = spots.filter(function(s){ return s.el && !s.ping; }).length;
+      var shown = spots.filter(function(s){ return s.el; }).length;
       if (shown >= 4) return;
       var free = spots.filter(function(s){ if (s.el) return false; var q = proj(s.v); return q[2] > .45 && q[1] > 64 && q[1] < H - 24 && Math.abs(q[0] - X0) < R * .75 && q[0] > 96 && q[0] < W - 140 && !near(q); });
       if (!free.length) return;
