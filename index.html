@@ -797,10 +797,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     // a few kinds of pins so the globe does not repeat itself
     function tagHtml(s){
       var ic = icons[s.plat] || '', r = Math.random();
-      if (r < .28) return '<span class="tag av" style="--c:' + TINT[s.plat] + '"><i>' + s.handle.charAt(0).toUpperCase() + '</i>' + s.handle + '<i>' + ic + '</i></span>';
-      if (r < .6) return '<span class="tag acc">+1 FTD<em>' + s.name + '</em></span>';
-      if (r < .76) return '<span class="tag"><b>+$' + pick(AMOUNTS) + '</b><em>' + s.name + '</em></span>';
-      if (r < .9) return '<span class="tag"><i>' + ic + '</i>' + pick(FORMATS[s.plat]) + '</span>';
+      if (r < .3) return '<span class="tag av" style="--c:' + TINT[s.plat] + '"><i>' + s.handle.charAt(0).toUpperCase() + '</i>' + s.handle + '<i>' + ic + '</i></span>';
+      if (r < .45) return '<span class="tag acc">+1 FTD<em>' + s.name + '</em></span>';
+      if (r < .62) return '<span class="tag"><b>+$' + pick(AMOUNTS) + '</b><em>' + s.name + '</em></span>';
+      if (r < .85) return '<span class="tag"><i>' + ic + '</i>' + pick(FORMATS[s.plat]) + '</span>';
       return '<span class="tag"><i>' + ic + '</i>' + s.name + '</span>';
     }
     function pinEl(s){
