@@ -144,9 +144,9 @@ section[id]{scroll-margin-top:72px}
 .mbar+.mbar i::after{background:var(--g400)}
 .mbar-t{position:relative}
 .mt p b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.live-tag{display:inline-flex;align-items:center;gap:8px;margin-left:16px;font-style:normal;font-size:13px;font-weight:600;color:var(--acid)}
-.live-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acid);animation:livep 1.6s ease-out infinite}
-@keyframes livep{0%{box-shadow:0 0 0 0 rgba(200,255,46,.6)}100%{box-shadow:0 0 0 8px rgba(200,255,46,0)}}
+.mbar i::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;z-index:1;background:linear-gradient(90deg,rgba(200,255,46,0),var(--acid) 60%,rgba(200,255,46,0));transform:translateX(-100%);opacity:0;pointer-events:none}
+.mbar i.sweep::before{animation:sweep .9s cubic-bezier(.4,0,.2,1)}
+@keyframes sweep{0%{transform:translateX(-100%);opacity:1}85%{opacity:1}100%{transform:translateX(250%);opacity:0}}
 .live-num.bump{animation:bump .6s ease-out}
 @keyframes bump{30%{color:var(--acid)}}
 .mt p .live-num.bump{animation-name:bumpd}
@@ -431,7 +431,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         <div class="v"><span data-count="275">275</span>%</div>
         <p>Return on ad spend</p>
         <div class="mbars">
-          <div class="mbar"><div class="mbar-t"><span>Player deposits<em class="live-tag" hidden>Live</em></span><b class="live-num" id="live-dep">$1,244,198</b></div><i style="--w:100%"></i></div>
+          <div class="mbar"><div class="mbar-t"><span>Player deposits</span><b class="live-num" id="live-dep">$1,244,198</b></div><i style="--w:100%"></i></div>
           <div class="mbar"><div class="mbar-t"><span>Paid to streamers</span><b>$430,000</b></div><i style="--w:34.6%"></i></div>
         </div>
       </div>
@@ -607,6 +607,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   (function(){
     var dep = document.getElementById('live-dep'), ftd = document.getElementById('live-ftd');
     if (!dep || reduce) return;
+    var bar = dep.closest('.mbar').querySelector('i');
     var END_DEP = 1244198, END_FTD = 4828, DURATION = 300000;
     var pool = [10,10,15,20,20,20,25,25,30,35,40,50,50,50,50,60,75,80,100,100,100,120,150,200,250,300,500,18,23,37,45,68,90];
     var ev = [], sum = 0, firsts = 0, t = 0, i;
@@ -634,11 +635,11 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       if (n >= ev.length) return;
       var e = ev[n], from = cur;
       cur += e.a; roll(from, cur); bump(dep);
+      bar.classList.remove('sweep'); void bar.offsetWidth; bar.classList.add('sweep');
       var plus = document.createElement('span'); plus.className = 'plus'; plus.textContent = '+$' + fmt(e.a);
       dep.parentNode.appendChild(plus); setTimeout(function(){ plus.remove(); }, 1500);
       if (e.first){ users++; ftd.textContent = fmt(users); bump(ftd); }
       if (n + 1 < ev.length) wait(ev[n + 1].gap * k, function(){ fire(n + 1); });
-      else dep.parentNode.parentNode.querySelector('.live-tag').hidden = true;
     }
     // pause while the tab is hidden so the totals do not jump
     function wait(ms, fn){
@@ -650,7 +651,6 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     new IntersectionObserver(function(es, obs){
       if (started || !es[0].isIntersecting) return;
       started = true; obs.disconnect();
-      document.querySelector('.live-tag').hidden = false;
       wait(1500, function(){ fire(0); });
     }, {threshold:.4}).observe(document.querySelector('.mbento'));
   })();
