@@ -91,7 +91,8 @@ section[id]{scroll-margin-top:72px}
 .about-grid p.t{margin-top:24px;max-width:640px;color:#3B3D42}
 
 /* verticals */
-.verts{margin-top:56px;border-top:1px solid var(--g800)}
+.verts{margin-top:56px}
+.vrow:last-child{border-bottom:0}
 .vrow{display:grid;grid-template-columns:1fr minmax(0,420px);align-items:center;gap:24px;padding:24px 16px;border-bottom:1px solid var(--g800);transition:background .25s}
 .vrow h3{font-size:clamp(40px,7vw,96px);font-weight:700;font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:-.03em;line-height:1;color:var(--g400);transition:color .25s}
 .vrow p{color:var(--g400);font-size:17px;opacity:.0;transform:translateX(-8px);transition:opacity .25s,transform .25s}
@@ -135,7 +136,7 @@ section[id]{scroll-margin-top:72px}
 .svc-main .intro{margin-top:24px;color:var(--g200);font-size:19px}
 .svc-main .tag{display:inline-block;margin-top:32px;font-size:15px;color:var(--ink);background:var(--acid);padding:4px 12px;border-radius:4px;font-weight:600}
 .ticks li{position:relative;padding:16px 0 16px 32px;border-bottom:1px solid var(--g800);font-size:18px}
-.ticks li:first-child{border-top:1px solid var(--g800)}
+.ticks li:last-child{border-bottom:0}
 .ticks li::before{content:"";position:absolute;left:0;top:26px;width:12px;height:4px;background:var(--acid);border-radius:1px}
 .svc-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
 .svc-pair>article{border-radius:12px;padding:40px;background:var(--g900)}
