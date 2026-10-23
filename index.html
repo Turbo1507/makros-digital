@@ -119,7 +119,6 @@ section[id]{scroll-margin-top:72px}
 .pin .tag.av svg{width:10px;height:10px}
 .pin .tag.acc{background:var(--acid);color:var(--ink);padding-left:8px}
 .pin .tag.acc em{color:#3A4A00}
-.pin .tag .on{width:6px;height:6px;border-radius:50%;background:#FF3B30}
 .pin .tag b{font-weight:600;color:var(--acid)}
 .ping{position:absolute;left:0;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;pointer-events:none;transition:opacity .4s}
 .ping::before,.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--acid)}
@@ -746,9 +745,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       ['South Africa', -26.2, 28, 'YouTube'], ['Thailand', 13.8, 100.5, 'YouTube'], ['Philippines', 14.6, 121, 'Kick'],
       ['Indonesia', -6.2, 106.8, 'Instagram'], ['Japan', 35.7, 139.7, 'YouTube'], ['Korea', 37.6, 127, 'Twitch'],
       ['Australia', -33.9, 151.2, 'Twitch'], ['Vietnam', 21, 105.8, 'Telegram'], ['Portugal', 38.7, -9.1, 'Instagram'],
-      ['New York', 40.7, -74, 'YouTube'], ['Los Angeles', 34, -118.2, 'Instagram'], ['Miami', 25.8, -80.2, 'Kick'],
-      ['Chicago', 41.9, -87.6, 'Telegram'], ['Dallas', 32.8, -96.8, 'Twitch'], ['Vancouver', 49.3, -123.1, 'YouTube'],
-      ['Guadalajara', 20.7, -103.3, 'Instagram']
+      ['USA', 40.7, -74, 'YouTube'], ['USA', 34, -118.2, 'Instagram'], ['USA', 25.8, -80.2, 'Kick'],
+      ['USA', 41.9, -87.6, 'Telegram'], ['USA', 32.8, -96.8, 'Twitch'], ['Canada', 49.3, -123.1, 'YouTube'],
+      ['Mexico', 20.7, -103.3, 'Instagram']
     ].map(function(s){ return {name: s[0], v: vec(s[1], s[2]), plat: s[3], el: null}; });
     var handles = ['lucas_br','mxspins','santi.ar','vale_cl','pe.nico','juli.co','north.k','nina.es','berlinplays','kuba_pl','deniz.tv','crypto_ae','almaty.dao','rahul.live','ada.lagos','joburg_g','pim.th','manila_bet','dimas.id','neko.jp','minsu.kr','syd.stack','vn_holder','rui.pt','nyc.reviews','la.reels','miami.kick','chi.alpha','tx.plays','van.vlogs','gdl.ana'];
     spots.forEach(function(s, k){ s.handle = handles[k]; });
@@ -796,7 +795,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     function tagHtml(s){
       var ic = icons[s.plat] || '', r = Math.random();
       if (r < .28) return '<span class="tag av" style="--c:' + TINT[s.plat] + '"><i>' + s.handle.charAt(0).toUpperCase() + '</i>' + s.handle + '<i>' + ic + '</i></span>';
-      if (r < .46) return '<span class="tag"><i>' + ic + '</i>Live<span class="on"></span><em>' + s.name + '</em></span>';
+      if (r < .46) return '<span class="tag"><i>' + ic + '</i>Live<em>' + s.name + '</em></span>';
       if (r < .6) return '<span class="tag acc">+1 FTD<em>' + s.name + '</em></span>';
       if (r < .76) return '<span class="tag"><b>+$' + pick(AMOUNTS) + '</b><em>' + s.name + '</em></span>';
       if (r < .9) return '<span class="tag"><i>' + ic + '</i>' + pick(FORMATS[s.plat]) + '</span>';
