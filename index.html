@@ -158,7 +158,14 @@ section[id]{scroll-margin-top:72px}
 .mt p{margin-top:16px;color:#5B5E63;font-size:16px;max-width:320px}
 .mt-main{grid-row:1/3;background:var(--ink);color:var(--white)}
 .mt-main .k,.mt-main p{color:var(--g400)}
-.mt-main .v{font-size:clamp(88px,12.8vw,184px);color:var(--acid)}
+.mt-main .v{font-size:clamp(88px,12.8vw,184px);margin-top:0;color:var(--acid)}
+.mbars{margin-top:auto;padding-top:56px;display:grid;gap:24px}
+.mbar-t{display:flex;justify-content:space-between;gap:16px;font-size:16px;color:var(--g400)}
+.mbar-t b{color:var(--white);font-weight:600;font-variant-numeric:tabular-nums}
+.mbar i{display:block;height:12px;margin-top:8px;border-radius:4px;background:var(--g800);position:relative;overflow:hidden}
+.mbar i::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--g400);border-radius:4px;transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .2s}
+.mbar+.mbar i::after{background:var(--acid);transition-delay:.6s}
+.mbento.in .mbar i::after,html:not(.js) .mbar i::after{transform:none}
 .mt-acc{background:var(--acid)}
 .mt-acc p{color:#3A4A00}
 .kpis li.hot b{color:var(--acid)}
@@ -281,6 +288,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   form{grid-template-columns:1fr}
   .form-foot{flex-direction:column;align-items:stretch}
   .mbento{grid-template-columns:1fr;gap:8px}
+  .mbars{padding-top:40px}
   .mt{padding:24px}
   .mt .v{padding-top:24px}
   .ftr nav{grid-template-columns:1fr 1fr;gap:8px 24px}
@@ -302,6 +310,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html.js .rv,html.js .hero h1 .ln>span{opacity:1;transform:none}
   .steps .bar{width:100%}
+  .mbar i::after{transform:none}
 }
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -456,10 +465,15 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         <div class="k">ROAS</div>
         <div class="v"><span data-count="200">200</span>%</div>
         <p>Return on ad spend</p>
+        <div class="mbars">
+          <div class="mbar"><div class="mbar-t"><span>Ad spend</span><b>$1</b></div><i style="--w:50%"></i></div>
+          <div class="mbar"><div class="mbar-t"><span>Player deposits</span><b>$2</b></div><i style="--w:100%"></i></div>
+        </div>
       </div>
       <div class="mt">
         <div class="k">Cost per FTD</div>
-        <div class="v">~$<span data-count="45">45</span></div>
+        <div class="v">$<span data-count="45">45</span></div>
+        <p>Average cost to bring in one first-time depositor</p>
       </div>
       <div class="mt mt-acc">
         <div class="k">LTV</div>
