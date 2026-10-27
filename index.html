@@ -162,7 +162,6 @@ section[id]{scroll-margin-top:72px}
 .roas-plot{position:relative;height:240px;touch-action:pan-y;cursor:crosshair}
 .roas-plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .roas .grid{stroke:var(--g800);stroke-width:1}
-.roas .gl{fill:var(--g600);font-size:13px;font-family:inherit}
 .roas .ph{fill:var(--g400);font-size:13px;font-family:inherit}
 .roas .sp{fill:none;stroke:var(--g600);stroke-width:2;stroke-dasharray:6 6}
 .roas .dp{fill:none;stroke:var(--acid);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
@@ -927,7 +926,6 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       '<pattern id="roas-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#4A4D53" stroke-width="1.5"/></pattern></defs>';
     [0,1,2].forEach(function(v){
       el('line', {'class':'grid', x1:0, x2:W, y1:Y(v)+.5, y2:Y(v)+.5});
-      if(v) el('text', {'class':'gl', x:0, y:Y(v)-8}).textContent = '$' + v;
     });
     phases.forEach(function(t, i){
       el('text', {'class':'ph', x:i / (phases.length - 1) * W, y:H - 4,
