@@ -72,8 +72,7 @@ section[id]{scroll-margin-top:72px}
 .hero h1 .ln>span{display:inline-block}
 .hero-foot{display:grid;grid-template-columns:1fr minmax(0,480px);gap:40px;margin-top:56px;align-items:end}
 .hero-foot{align-items:stretch}
-.hero-shot{position:relative;margin:0;border-radius:12px;overflow:hidden;background:var(--g850)}
-.hero-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (min-width:861px){.hero-side{grid-column:2}}
 .hero-side .sub{font-size:24px;line-height:1.35;font-weight:500}
 .hero-side p.t{color:var(--g400);margin-top:16px;font-size:17px}
 .hero-side .btn{margin-top:32px}
@@ -279,7 +278,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   :root{--pad:16px}
   body{font-size:17px}
   .lead,.hero-side .sub{font-size:20px}
-  .hero-shot,.hero-side p.t{display:none}
+  .hero-side p.t{display:none}
   .hero-side .btn{margin-top:24px}
   .marquee span{font-size:24px}
   .svc-main,.svc-pair>article,.geo>div{padding:24px}
