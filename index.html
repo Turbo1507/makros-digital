@@ -71,8 +71,9 @@ section[id]{scroll-margin-top:72px}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln>span{display:inline-block}
 .hero-foot{display:grid;grid-template-columns:1fr minmax(0,480px);gap:40px;margin-top:56px;align-items:end}
-.hero-meta{font-size:16px;color:var(--g400);display:flex;gap:32px;flex-wrap:wrap}
-.hero-meta b{display:block;color:var(--white);font-weight:600}
+.hero-foot{align-items:stretch}
+.hero-shot{position:relative;margin:0;border-radius:12px;overflow:hidden;background:var(--g850)}
+.hero-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-side .sub{font-size:24px;line-height:1.35;font-weight:500}
 .hero-side p.t{color:var(--g400);margin-top:16px;font-size:17px}
 .hero-side .btn{margin-top:32px}
@@ -144,7 +145,6 @@ section[id]{scroll-margin-top:72px}
 .svc-pair .intro{margin:16px 0 24px;color:var(--g200);font-size:17px}
 .svc-pair .ticks li{font-size:17px;padding:12px 0 12px 28px}
 .svc-pair .ticks li::before{top:22px;width:10px}
-.svc-pair article.ai{background:var(--g850)}
 .creatives{margin-top:24px;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 32px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--g800)}
 .creatives p{font-size:20px;font-weight:500}
 
@@ -274,7 +274,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   :root{--pad:16px}
   body{font-size:17px}
   .lead,.hero-side .sub{font-size:20px}
-  .hero-meta,.hero-side p.t{display:none}
+  .hero-shot,.hero-side p.t{display:none}
   .hero-side .btn{margin-top:24px}
   .marquee span{font-size:24px}
   .svc-main,.svc-pair>article,.geo>div{padding:24px}
@@ -345,10 +345,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   <div class="wrap">
     <h1 class="display"><span class="ln"><span>Where influence</span></span><span class="ln"><span>performs.</span></span></h1>
     <div class="hero-foot">
-      <div class="hero-meta rv">
-        <div><b>Casino, Gaming, Crypto, GameFi</b>Verticals</div>
-        <div><b>Worldwide</b>Any GEO</div>
-      </div>
+      <figure class="hero-shot rv"><img src="img/case-casino-1200.webp" width="1200" height="750" alt="Streamer live on air with a sponsor banner on screen" decoding="async"></figure>
       <div class="hero-side rv">
         <p class="sub">Influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
         <p class="t">We connect brands with relevant creators and deliver campaigns supported by strategic planning, performance tracking and high-impact creative production.</p>
@@ -371,7 +368,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <h2 class="h2 rv">About Makros Digital</h2>
     <div class="rv">
       <p class="lead">Makros Digital is a digital marketing agency specializing in influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
-      <p class="t">With our own network of streamers and content creators, combined with tailored sourcing for each project, we build campaigns around your target audience, GEO and business objectives. From influencer partnerships to AI-powered content and advertising creatives, we help brands expand their reach and strengthen their market presence.</p>
+      <p class="t">With our own network of streamers and content creators, combined with tailored sourcing for each project, we build campaigns around your target audience, GEO and business objectives. From influencer partnerships to paid traffic and advertising creatives, we help brands expand their reach and strengthen their market presence.</p>
     </div>
   </div>
 </section>
@@ -434,19 +431,19 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           <li>Creative variations for campaign testing</li>
         </ul>
       </article>
-      <article class="rv ai">
-        <h3>AI Production</h3>
-        <p class="intro">We use AI-powered tools to create distinctive visual content and advertising materials.</p>
+      <article class="rv">
+        <h3>Traffic</h3>
+        <p class="intro">We buy and scale paid traffic for your offers across ad networks and social platforms.</p>
         <ul class="ticks">
-          <li>AI-generated videos and visuals</li>
-          <li>Cinematic advertising content</li>
-          <li>AI-assisted creative production</li>
-          <li>Custom visual concepts for digital campaigns</li>
+          <li>Media buying on ad networks and social platforms</li>
+          <li>Traffic sources matched to GEO and vertical</li>
+          <li>Campaign setup, testing and scaling</li>
+          <li>Tracking of FTDs, deposits and ROAS</li>
         </ul>
       </article>
     </div>
     <div class="creatives rv">
-      <p>Need only creatives? We make banners and AI content for your in-house campaigns too.</p>
+      <p>Need only creatives? We make banners and video creatives for your in-house campaigns too.</p>
       <a class="btn btn-ghost" href="#contact">Order creatives</a>
     </div>
   </div>
