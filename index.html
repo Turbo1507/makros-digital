@@ -159,17 +159,32 @@ section[id]{scroll-margin-top:72px}
 .mt-main .k,.mt-main p{color:var(--g400)}
 .mt-main .v{font-size:clamp(88px,12.8vw,184px);margin-top:0;color:var(--acid)}
 .roas{margin-top:auto;padding-top:40px}
-.roas svg{display:block;width:100%;height:200px;overflow:visible}
-.roas path{fill:none;vector-effect:non-scaling-stroke}
-.roas .sp{stroke:var(--g600);stroke-width:2;stroke-dasharray:6 6}
-.roas .dp{stroke:var(--acid);stroke-width:3;stroke-linecap:round}
-.roas .ar{fill:url(#roas-fill);stroke:none}
-.roas .base{stroke:var(--g800);stroke-width:1}
+.roas-plot{position:relative;height:240px;touch-action:pan-y;cursor:crosshair}
+.roas-plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.roas .grid{stroke:var(--g800);stroke-width:1}
+.roas .gl{fill:var(--g600);font-size:13px;font-family:inherit}
+.roas .ph{fill:var(--g400);font-size:13px;font-family:inherit}
+.roas .sp{fill:none;stroke:var(--g600);stroke-width:2;stroke-dasharray:6 6}
+.roas .dp{fill:none;stroke:var(--acid);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.roas .gain{fill:url(#roas-fill)}
+.roas .loss{fill:url(#roas-hatch)}
+.roas .be circle{fill:var(--ink);stroke:var(--g200);stroke-width:2}
+.roas .be text{fill:var(--g200);font-size:13px;font-family:inherit}
+.roas .xh{stroke:var(--g600);stroke-width:1}
+.roas .hd{fill:var(--acid)}
+.roas .hs{fill:var(--ink);stroke:var(--g400);stroke-width:2}
+.roas .pulse{fill:none;stroke:var(--acid);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:roas-pulse 2.4s ease-out infinite}
+@keyframes roas-pulse{from{transform:scale(1);opacity:.9}to{transform:scale(3.2);opacity:0}}
+.roas-tip{position:absolute;top:0;left:0;transform:translate(-50%,calc(-100% - 12px));background:var(--g850);border:1px solid var(--g800);border-radius:8px;padding:8px 12px;white-space:nowrap;pointer-events:none;display:flex;gap:8px;align-items:baseline;font-size:13px;color:var(--g400);transition:opacity .3s}
+.roas-tip b{color:var(--acid);font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
 .roas-leg{display:flex;gap:24px;margin-top:16px;font-size:15px;color:var(--g400)}
 .roas-leg span::before{content:"";display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:8px;vertical-align:middle;background:var(--acid)}
 .roas-leg span+span::before{background:var(--g600)}
-html.js .roas .grow{clip-path:inset(-8px 100% -8px 0);transition:clip-path 1.8s cubic-bezier(.4,0,.2,1) .2s}
-html.js .mbento.in .roas .grow{clip-path:inset(-8px -8px -8px 0)}
+html.js .roas .draw{clip-path:inset(-24px 100% -24px 0);transition:clip-path 1.8s cubic-bezier(.4,0,.2,1) .2s}
+html.js .mbento.in .roas .draw{clip-path:inset(-24px -24px -24px 0)}
+html.js .roas .late,html.js .roas-tip{opacity:0;transition:opacity .4s 1.9s}
+html.js .mbento.in .roas .late,html.js .mbento.in .roas-tip{opacity:1}
+html:not(.js) .roas-plot{display:none}
 .mt-acc{background:var(--acid)}
 .mt-acc p{color:#3A4A00}
 .kpis li.hot b{color:var(--acid)}
@@ -292,8 +307,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   form{grid-template-columns:1fr}
   .form-foot{flex-direction:column;align-items:stretch}
   .mbento{grid-template-columns:1fr;gap:8px}
-  .roas{padding-top:32px}
-  .roas svg{height:120px}
+  .roas{padding-top:48px}
+  .roas-plot{height:160px}
   .mt{padding:24px}
   .mt .v{padding-top:24px}
   .ftr nav{grid-template-columns:1fr 1fr;gap:8px 24px}
@@ -315,7 +330,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   *,*::before,*::after{animation:none!important;transition:none!important}
   html.js .rv,html.js .hero h1 .ln>span{opacity:1;transform:none}
   .steps .bar{width:100%}
-  html.js .roas .grow{clip-path:none}
+  html.js .roas .draw{clip-path:none}
+  .roas .pulse{animation:none;opacity:0}
 }
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -469,15 +485,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         <div class="v"><span data-count="200">200</span>%</div>
         <p>Return on ad spend</p>
         <div class="roas" aria-hidden="true">
-          <svg viewBox="0 0 600 200" preserveAspectRatio="none">
-            <defs><linearGradient id="roas-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8FF2E" stop-opacity=".28"/><stop offset="1" stop-color="#C8FF2E" stop-opacity="0"/></linearGradient></defs>
-            <path class="base" d="M0 199.5H600"/>
-            <path class="sp" d="M0 196L600 108"/>
-            <g class="grow">
-              <path class="ar" d="M0 196C150 193 290 172 410 116S560 28 600 20V200H0Z"/>
-              <path class="dp" d="M0 196C150 193 290 172 410 116S560 28 600 20"/>
-            </g>
-          </svg>
+          <div class="roas-plot">
+            <svg></svg>
+            <div class="roas-tip"><b>200%</b><span>Scale</span></div>
+          </div>
           <div class="roas-leg"><span>Player deposits</span><span>Ad spend</span></div>
         </div>
       </div>
@@ -880,6 +891,101 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     }
     raf = alive ? requestAnimationFrame(draw) : null;
   }
+})();
+
+/* ROAS: накопленные депозиты против расходов на $1 бюджета */
+(function(){
+  var box = document.querySelector('.roas-plot'); if(!box) return;
+  var svg = box.querySelector('svg'), tip = box.querySelector('.roas-tip');
+  var NS = 'http://www.w3.org/2000/svg';
+  var dep = [0,.03,.08,.16,.28,.45,.66,.9,1.22,1.6,2];
+  var n = dep.length - 1, ymax = 2.2;
+  var phases = ['Launch','Testing','Optimization','Scale'];
+  var W, H, top = 8, bot = 28, cur = n;
+  function X(i){ return i / n * W; }
+  function Y(v){ return top + (1 - v / ymax) * (H - top - bot); }
+  function spend(i){ return i / n; }
+  function curve(pts){
+    var d = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for(var i = 0; i < pts.length - 1; i++){
+      var p0 = pts[i-1] || pts[i], p1 = pts[i], p2 = pts[i+1], p3 = pts[i+2] || p2;
+      d += 'C' + (p1[0] + (p2[0]-p0[0])/6) + ' ' + (p1[1] + (p2[1]-p0[1])/6) + ' ' +
+           (p2[0] - (p3[0]-p1[0])/6) + ' ' + (p2[1] - (p3[1]-p1[1])/6) + ' ' + p2[0] + ' ' + p2[1];
+    }
+    return d;
+  }
+  function el(tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for(var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e); return e;
+  }
+  var xh, hd, hs;
+  function draw(){
+    W = box.clientWidth; H = box.clientHeight; if(!W) return;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = '<defs><linearGradient id="roas-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8FF2E" stop-opacity=".32"/><stop offset="1" stop-color="#C8FF2E" stop-opacity=".04"/></linearGradient>' +
+      '<pattern id="roas-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#4A4D53" stroke-width="1.5"/></pattern></defs>';
+    [0,1,2].forEach(function(v){
+      el('line', {'class':'grid', x1:0, x2:W, y1:Y(v)+.5, y2:Y(v)+.5});
+      if(v) el('text', {'class':'gl', x:0, y:Y(v)-8}).textContent = '$' + v;
+    });
+    phases.forEach(function(t, i){
+      el('text', {'class':'ph', x:i / (phases.length - 1) * W, y:H - 4,
+        'text-anchor': i == 0 ? 'start' : i == phases.length - 1 ? 'end' : 'middle'}).textContent = t;
+    });
+    var dp = dep.map(function(v, i){ return [X(i), Y(v)]; });
+    var dpath = curve(dp);
+    var sLine = 'M0 ' + Y(0) + 'L' + W + ' ' + Y(1);
+    var g = el('g', {'class':'draw'});
+    var cid = 'roas-up', cid2 = 'roas-dn';
+    var defs = svg.querySelector('defs');
+    var c1 = el('clipPath', {id:cid}, defs); el('path', {d:sLine + 'V-40H0Z'}, c1);
+    var c2 = el('clipPath', {id:cid2}, defs); el('path', {d:sLine + 'V' + (H + 40) + 'H0Z'}, c2);
+    var band = dpath + 'L' + W + ' ' + Y(1) + 'L0 ' + Y(0) + 'Z';
+    el('path', {'class':'gain', d:band, 'clip-path':'url(#' + cid + ')'}, g);
+    el('path', {'class':'loss', d:band, 'clip-path':'url(#' + cid2 + ')'}, g);
+    el('path', {'class':'sp', d:sLine}, g);
+    el('path', {'class':'dp', d:dpath}, g);
+    // точка окупаемости: где депозиты догоняют расходы
+    var k = 1; while(k < n && dep[k] < spend(k)) k++;
+    var a0 = dep[k-1] - spend(k-1), a1 = dep[k] - spend(k), f = a0 / (a0 - a1);
+    var bx = X(k - 1 + f), by = Y(spend(k - 1 + f));
+    var be = el('g', {'class':'be late'});
+    el('circle', {cx:bx, cy:by, r:5}, be);
+    el('text', {x:bx + 12, y:by + 18}, be).textContent = 'Break-even';
+    var hov = el('g', {'class':'late'});
+    xh = el('line', {'class':'xh', y1:top, y2:H - bot}, hov);
+    hs = el('circle', {'class':'hs', r:5}, hov);
+    hd = el('circle', {'class':'hd', r:6}, hov);
+    pulse = el('circle', {'class':'pulse', r:6}, hov);
+    show(cur);
+  }
+  var pulse;
+  function show(i){
+    cur = i;
+    var x = X(i), y = Y(dep[i]);
+    xh.setAttribute('x1', x); xh.setAttribute('x2', x);
+    hd.setAttribute('cx', x); hd.setAttribute('cy', y);
+    pulse.setAttribute('cx', x); pulse.setAttribute('cy', y);
+    pulse.style.display = i == n ? '' : 'none';
+    hs.setAttribute('cx', x); hs.setAttribute('cy', Y(spend(i)));
+    hs.style.display = i ? '' : 'none';
+    var r = i ? Math.round(dep[i] / spend(i) * 100) : 0;
+    var ph = phases[Math.min(phases.length - 1, Math.round(i / n * (phases.length - 1)))];
+    tip.innerHTML = '<b>' + r + '%</b><span>' + ph + '</span>';
+    var tw = tip.offsetWidth / 2;
+    tip.style.left = Math.max(tw, Math.min(W - tw, x)) + 'px';
+    tip.style.top = Math.min(y, Y(spend(i))) + 'px';
+  }
+  function pick(e){
+    var r = box.getBoundingClientRect();
+    var i = Math.round((e.clientX - r.left) / r.width * n);
+    i = Math.max(1, Math.min(n, i)); if(i != cur) show(i);
+  }
+  box.addEventListener('pointermove', pick);
+  box.addEventListener('pointerdown', pick);
+  box.addEventListener('pointerleave', function(){ show(n); });
+  new ResizeObserver(draw).observe(box);
 })();
 </script>
 </body>
