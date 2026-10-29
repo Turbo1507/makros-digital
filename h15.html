@@ -979,11 +979,11 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     }
     function queue(s, at){ for (var n = 0; n < N; n++){ TB[n] = L[s][n]; TT[n] = at + DL[n]; } }
 
-    var tm = 0, px = -1e4, py = -1e4, bx = -1e4, by = -1e4, bump = 0, mx = .5, my = .5;
+    var tm = 0, px = -1e4, py = -1e4, bx = -1e4, by = -1e4, bump = 0;
     function paint(){
       if (!ok) return;
-      // parallax: the vanishing point drifts with the cursor and the scroll, so raised pins shift against the field
-      var tx = vx0 - (mx - .5) * W * .5, ty = vy0 - (my - .5) * H * .4 + Math.min(scrollY, H) * .5;
+      // parallax: the vanishing point drifts with the scroll, so raised pins shift against the field
+      var tx = vx0, ty = vy0 + Math.min(scrollY, H) * .5;
       VX += (tx - VX) * .06; VY += (ty - VY) * .06;
       bx += (px - bx) * .2; by += (py - by) * .2;
       var m = 0, n, i, j;
@@ -1037,10 +1037,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     if (fine){
       hero.addEventListener('pointermove', function(e){
         var r = cv.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top;
-        mx = clamp(px / W, 0, 1); my = clamp(py / H, 0, 1);
         if (bx < -1e3){ bx = px; by = py; }
       });
-      hero.addEventListener('pointerleave', function(){ mx = .5; my = .5; px = py = -1e4; });
+      hero.addEventListener('pointerleave', function(){ px = py = -1e4; });
     }
     var last = 0, running = false, on = true, vis = true, next = 4.6;
     function frame(now){
