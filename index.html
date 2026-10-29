@@ -265,6 +265,20 @@ html.js .hero h1 .ln>span{transform:translateY(105%);transition:transform .9s cu
 html.js .hero.in h1 .ln>span{transform:none}
 html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
+/* варианты хиро для сравнения */
+
+.hv .wrap{padding-bottom:80px}
+.hv-tag{margin-bottom:auto;align-self:flex-start;background:var(--g850);border:1px solid var(--g800);border-radius:8px;padding:8px 16px;font-size:15px;color:var(--g200)}
+.hv .hx{font-size:clamp(56px,11.2vw,152px)}
+.hv .hx .ln{display:block}
+@media (min-width:861px){.hv .hx{font-size:min(132px,calc((100vw - 48px) / 9.4))}.hv .hx .ln{white-space:nowrap}}
+.hv-slot{grid-column:1;grid-row:1;min-height:240px;position:relative}
+.hv-count{display:flex;gap:56px;align-items:flex-end;align-self:end}
+.hv-count b{display:block;font-size:clamp(40px,3.9vw,56px);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;font-stretch:118%;font-variation-settings:"wdth" 118;transition:color .5s}
+.hv-count b.bump{color:var(--acid);transition:none}
+.hv-count span{display:block;margin-top:8px;font-size:15px;color:var(--g400)}
+.hv-count .acc{color:var(--acid)}
+@media (max-width:860px){.hv .hv-slot,.hv>canvas:not(#sig){display:none}}
 @media (max-width:1024px){
   .steps{grid-template-columns:repeat(3,1fr);row-gap:40px}
   .steps::before,.steps .bar{display:none}
@@ -332,6 +346,15 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   html.js .roas .draw{clip-path:none}
   .roas .pulse{animation:none;opacity:0}
 }
+
+/* переключатель вариантов хиро */
+.hvar{position:absolute;left:16px;top:calc(50% - 40px);transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:4px}
+.hvar a{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g400);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;text-decoration:none;transition:color .2s,border-color .2s}
+.hvar a:hover{color:var(--white);border-color:var(--g600)}
+.hvar a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
+@media (min-width:861px) and (max-height:820px){.hvar a{width:28px;height:28px;font-size:13px}}
+@media (min-width:861px) and (max-width:1399px){.hero .wrap{padding-left:72px}}
+@media (max-width:860px){.hvar{position:relative;left:auto;top:auto;transform:none;flex-direction:row;flex-wrap:wrap;gap:8px;margin:0 16px 24px}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -359,13 +382,16 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 </div>
 
 <main id="top">
-<section class="hero" id="hero">
+<section class="hero hv" id="hero" data-v="net">
+  <nav class="hvar" aria-label="Hero"><a href="index.html" aria-current="page">1</a><a href="h2.html">2</a><a href="h3.html">3</a><a href="h4.html">4</a><a href="h5.html">5</a><a href="h6.html">6</a><a href="h7.html">7</a><a href="h8.html">8</a><a href="h9.html">9</a><a href="h10.html">10</a><a href="h11.html">11</a><a href="h12.html">12</a><a href="h13.html">13</a><a href="h14.html">14</a></nav>
   <div class="hero-grid"></div>
-  <canvas id="sig" aria-hidden="true"></canvas>
+  <canvas></canvas>
+  <canvas id="sig" hidden></canvas>
   <div class="wrap">
-    <h1 class="display"><span class="ln"><span>Where influence</span></span><span class="ln"><span>performs.</span></span></h1>
+    <div class="display hx"><span class="ln">Where influence</span><span class="ln">performs.</span></div>
     <div class="hero-foot">
-      <div class="hero-side rv">
+      <div class="hv-slot"></div>
+      <div class="hero-side">
         <p class="sub">Influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
         <p class="t">We connect brands with relevant creators and deliver campaigns supported by strategic planning, performance tracking and high-impact creative production.</p>
         <a class="btn" href="#contact">Let's discuss your project</a>
@@ -531,7 +557,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     </div>
     <div class="cases rv">
       <article class="case">
-        <img class="shot" src="img/case-casino-800.webp" srcset="img/case-casino-800.webp 800w, img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Brazilian streamer live with a slot game and chat on screen" loading="lazy" decoding="async">
+        <img class="shot" src="img/case-casino-800.webp" srcset="img/case-casino-800.webp 800w, img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Casino chips, dice, a stream microphone and a Stream Deck on a concrete table" loading="lazy" decoding="async">
         <div class="body">
           <div class="top"><span>Casino</span><span>Brazil, Mexico, Chile, Argentina</span></div>
           <h4>Player acquisition for an online casino through streamers</h4>
@@ -550,7 +576,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         </div>
       </article>
       <article class="case">
-        <img class="shot" src="img/case-metaverse-800.webp" srcset="img/case-metaverse-800.webp 800w, img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Phone with a play-to-earn city map, Dubai skyline behind" loading="lazy" decoding="async">
+        <img class="shot" src="img/case-metaverse-800.webp" srcset="img/case-metaverse-800.webp 800w, img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Launch event in Dubai: guests watch a wireframe metaverse city on an LED wall" loading="lazy" decoding="async">
         <div class="body">
           <div class="top"><span>Crypto, Web3, GameFi</span><span>UAE</span></div>
           <h4>Launching a play-to-earn metaverse with creator Stories</h4>
@@ -984,6 +1010,244 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   box.addEventListener('pointerdown', pick);
   box.addEventListener('pointerleave', function(){ show(n); });
   new ResizeObserver(draw).observe(box);
+})();
+
+/* варианты хиро: общая сетка 80px + своя механика */
+(function(){
+  var secs = document.querySelectorAll('.hv'); if(!secs.length || !matchMedia('(min-width:861px)').matches) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var FONT = 'Archivo, system-ui, sans-serif', A = '200,255,46';
+  function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
+  function bump(el){ el.classList.add('bump'); clearTimeout(el._t); el._t = setTimeout(function(){ el.classList.remove('bump'); }, 60); }
+  function poly(pts){ // длины отрезков ломаной
+    var L = [0]; for(var i = 1; i < pts.length; i++) L.push(L[i-1] + Math.abs(pts[i][0]-pts[i-1][0]) + Math.abs(pts[i][1]-pts[i-1][1]));
+    return L;
+  }
+  function at(pts, L, d){
+    for(var i = 1; i < pts.length; i++) if(d <= L[i]){
+      var f = (d - L[i-1]) / ((L[i] - L[i-1]) || 1);
+      return [pts[i-1][0] + (pts[i][0]-pts[i-1][0]) * f, pts[i-1][1] + (pts[i][1]-pts[i-1][1]) * f];
+    }
+    return pts[pts.length-1];
+  }
+
+  var V = {};
+
+  // 1. сеть: бренд -> площадки -> FTD по линиям сетки
+  V.net = {
+    layout: function(st){
+      var S = st.S, sl = st.rel(st.sec.querySelector('.hv-slot'));
+      var c0 = Math.ceil((sl.l + 8) / S), cE = Math.floor((sl.r - 120) / S);
+      var r0 = Math.ceil((sl.t + 24) / S), r1 = Math.floor((sl.b - 8) / S);
+      var rows = []; for(var r = r0; r <= r1 && rows.length < 4; r++) rows.push(r);
+      var rm = Math.round((rows[0] + rows[rows.length-1]) / 2), cc = c0 + Math.round((cE - c0) * .45);
+      var P = function(c, r){ return [c * S - .5, r * S - .5]; };
+      var names = ['Twitch','Kick','YouTube','Telegram'];
+      st.brand = P(c0, rm); st.ftd = P(cE, rm);
+      st.cr = rows.map(function(r, i){
+        var a = [P(c0, rm), P(c0 + 1, rm), P(c0 + 1, r), P(cc, r)];
+        var b = [P(cc, r), P(cE - 1, r), P(cE - 1, rm), P(cE, rm)];
+        return {name:names[i], p:P(cc, r), a:a, b:b, full:a.concat(b.slice(1)), hot:0};
+      });
+      st.cr.forEach(function(c){ c.L = poly(c.full); c.Lb = poly(c.b); });
+      st.pulses = st.pulses || []; st.n = st.n || 1248; st.flash = st.flash || 0; st.next = st.next || 600;
+    },
+    spawn: function(st, c, fromCreator){
+      st.pulses.push({c:c, d:0, pts: fromCreator ? c.b : c.full, L: fromCreator ? c.Lb : c.L});
+    },
+    onMove: function(st, x, y){
+      st.cr.forEach(function(c){
+        var near = Math.abs(x - c.p[0]) < 40 && Math.abs(y - c.p[1]) < 32;
+        if(near && !c.over){ c.over = true; c.hot = 1; V.net.spawn(st, c, true); }
+        if(!near) c.over = false;
+      });
+    },
+    step: function(st, dt){
+      st.next -= dt;
+      if(st.next <= 0 && !reduce){ st.next = 900 + Math.random() * 700; V.net.spawn(st, st.cr[Math.floor(Math.random() * st.cr.length)]); }
+      var S = st.S;
+      st.pulses = st.pulses.filter(function(p){
+        p.d += dt * .42;
+        var q = at(p.pts, p.L, p.d), cx = Math.floor(q[0] / S), cy = Math.floor(q[1] / S);
+        st.light(cx, cy, .55); st.light(cx - (q[1] % S < 1 ? 0 : 1) * 0, cy - 1, .3);
+        if(Math.abs(q[0] - p.c.p[0]) < 4 && Math.abs(q[1] - p.c.p[1]) < 4) p.c.hot = 1;
+        if(p.d >= p.L[p.L.length-1]){
+          st.n++; st.flash = 1;
+          var fx = Math.round(st.ftd[0] / S), fy = Math.round(st.ftd[1] / S);
+          st.light(fx, fy, 1); st.light(fx - 1, fy, 1); st.light(fx, fy - 1, 1); st.light(fx - 1, fy - 1, 1);
+          return false;
+        }
+        return true;
+      });
+      st.cr.forEach(function(c){ c.hot = Math.max(0, c.hot - dt * .0012); });
+      st.flash = Math.max(0, st.flash - dt * .002);
+    },
+    draw: function(st){
+      var x = st.ctx;
+      x.lineWidth = 1.5; x.strokeStyle = 'rgba(139,142,148,.22)';
+      st.cr.forEach(function(c){ x.beginPath(); c.full.forEach(function(q, i){ i ? x.lineTo(q[0], q[1]) : x.moveTo(q[0], q[1]); }); x.stroke(); });
+      st.pulses.forEach(function(p){
+        for(var k = 0; k < 14; k++){
+          var q = at(p.pts, p.L, p.d - k * 5); if(p.d - k * 5 < 0) break;
+          x.fillStyle = 'rgba(' + A + ',' + (1 - k / 14) + ')';
+          x.fillRect(q[0] - 2, q[1] - 2, 4, 4);
+        }
+      });
+      x.font = '500 15px ' + FONT; x.textBaseline = 'alphabetic';
+      // бренд
+      x.fillStyle = '#F4F5F0'; x.fillRect(st.brand[0] - 6, st.brand[1] - 6, 12, 12);
+      x.fillStyle = '#8B8E94'; x.fillText('Brand', st.brand[0] - 6, st.brand[1] - 16);
+      // площадки
+      st.cr.forEach(function(c){
+        x.fillStyle = '#141517'; x.strokeStyle = c.hot ? 'rgba(' + A + ',' + (.4 + c.hot * .6) + ')' : '#4A4D53';
+        x.lineWidth = 2; x.beginPath(); x.arc(c.p[0], c.p[1], 6, 0, 7); x.fill(); x.stroke();
+        x.fillStyle = c.hot ? 'rgba(244,245,240,' + (.6 + c.hot * .4) + ')' : '#8B8E94';
+        x.fillText(c.name, c.p[0] + 14, c.p[1] - 10);
+      });
+      // FTD
+      var f = st.ftd, r = 7 + st.flash * 10;
+      if(st.flash){ x.strokeStyle = 'rgba(' + A + ',' + st.flash + ')'; x.lineWidth = 2; x.beginPath(); x.arc(f[0], f[1], r + 6, 0, 7); x.stroke(); }
+      x.fillStyle = '#C8FF2E'; x.beginPath(); x.arc(f[0], f[1], 7, 0, 7); x.fill();
+      x.fillStyle = '#8B8E94'; x.fillText('First-time depositors', f[0] + 20, f[1] + 28);
+      x.font = '700 40px ' + FONT; x.fillStyle = st.flash > .5 ? '#C8FF2E' : '#F4F5F0';
+      x.fillText(fmt(st.n), f[0] + 20, f[1] + 2);
+    }
+  };
+
+  // 2. курсор приводит трафик: зажжённые клетки идут в счётчик
+  V.traffic = {
+    layout: function(st){
+      var S = st.S, b = st.rel(st.sec.querySelector('.hv-count b'));
+      st.tx = Math.floor(b.l / S); st.ty = Math.floor((b.t + b.h / 2) / S);
+      st.parts = st.parts || []; st.clicks = st.clicks || 18420; st.f = st.f || 516; st.idle = st.idle || 0; st.next = 0;
+      st.elC = st.sec.querySelector('[data-k="c"]'); st.elF = st.sec.querySelector('[data-k="f"]');
+    },
+    onCell: function(st, cx, cy){ if(st.parts.length < 40) st.parts.push({x:cx, y:cy, t:0}); st.idle = 0; },
+    step: function(st, dt){
+      st.idle += dt; st.next -= dt;
+      if(st.idle > 1500 && st.next <= 0 && !reduce){ // без курсора трафик приходит сам с краёв
+        st.next = 500 + Math.random() * 600;
+        var cols = Math.ceil(st.w / st.S), rows = Math.floor(st.h / st.S);
+        var side = Math.random() < .5;
+        st.parts.push(side ? {x:Math.floor(Math.random() * cols), y:0, t:0} : {x:cols - 1, y:Math.floor(Math.random() * rows), t:0});
+      }
+      st.parts = st.parts.filter(function(p){
+        p.t += dt; if(p.t < 70) return true; p.t = 0;
+        var dx = st.tx - p.x, dy = st.ty - p.y;
+        if(!dx && !dy){
+          st.clicks += 1 + Math.floor(Math.random() * 3); st.elC.textContent = fmt(st.clicks); bump(st.elC);
+          if(Math.random() < .14){ st.f++; st.elF.textContent = fmt(st.f); bump(st.elF); st.light(st.tx, st.ty, 1); st.light(st.tx - 1, st.ty, 1); }
+          return false;
+        }
+        if(Math.abs(dx) > Math.abs(dy)) p.x += Math.sign(dx); else p.y += Math.sign(dy);
+        st.light(p.x, p.y, .45);
+        return true;
+      });
+    },
+    draw: function(st){
+      var x = st.ctx, S = st.S;
+      st.parts.forEach(function(p){
+        x.fillStyle = 'rgba(' + A + ',.25)'; x.fillRect(p.x * S - 5, p.y * S - 5, 10, 10);
+        x.fillStyle = '#C8FF2E'; x.fillRect(p.x * S - 3, p.y * S - 3, 6, 6);
+      });
+    }
+  };
+
+  // 4. депозиты вспыхивают в клетках и летят в счётчик
+  var GEO = ['Brazil','Mexico','Chile','Peru','Argentina','Canada','Germany','Turkey','India','UAE','Colombia','Poland'];
+  V.dep = {
+    layout: function(st){
+      var S = st.S, sec = st.sec;
+      st.block = [sec.querySelector('.hx'), sec.querySelector('.hero-side'), sec.querySelector('.hv-count')].map(st.rel);
+      var b = st.rel(sec.querySelector('.hv-count b')); st.target = [b.l + 8, b.t + b.h / 2];
+      st.ev = st.ev || []; st.fly = st.fly || []; st.d = st.d || 1240500; st.f = st.f || 4828; st.next = 300;
+      st.elD = sec.querySelector('[data-k="d"]'); st.elF = sec.querySelector('[data-k="f"]');
+    },
+    free: function(st, cx, cy){
+      var S = st.S, l = cx * S, t = cy * S, r = l + S * 2, b = t + S;
+      if(t < 96 || b > st.h - 24 || r > st.w - 24) return false;
+      return !st.block.some(function(q){ return l < q.r + 16 && r > q.l - 16 && t < q.b + 16 && b > q.t - 16; });
+    },
+    step: function(st, dt){
+      var S = st.S; st.next -= dt;
+      if(st.next <= 0 && !reduce){
+        st.next = 900 + Math.random() * 900;
+        for(var k = 0; k < 30; k++){
+          var cx = Math.floor(Math.random() * (st.w / S)), cy = Math.floor(Math.random() * (st.h / S));
+          if(!V.dep.free(st, cx, cy)) continue;
+          var ftd = Math.random() < .45, amt = [40,60,80,120,150,200,250,300,450,600][Math.floor(Math.random() * 10)];
+          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '+1 FTD' : '+$' + amt, geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
+          st.light(cx, cy, 1);
+          break;
+        }
+      }
+      st.ev = st.ev.filter(function(e){
+        e.t += dt;
+        if(e.t < 900) st.light(e.cx, e.cy, 1 - e.t / 2400);
+        if(!e.sent && e.t > 700){ e.sent = true; st.fly.push({x:e.cx * S, y:e.cy * S, t:0, e:e}); }
+        return e.t < 2200;
+      });
+      st.fly = st.fly.filter(function(f){
+        f.t += dt;
+        if(f.t >= 700){
+          if(f.e.ftd){ st.f++; st.elF.textContent = fmt(st.f); bump(st.elF); st.d += 120; }
+          else st.d += f.e.amt;
+          st.elD.textContent = '$' + fmt(st.d); bump(st.elD);
+          return false;
+        }
+        return true;
+      });
+    },
+    draw: function(st){
+      var x = st.ctx, S = st.S;
+      st.ev.forEach(function(e){
+        var a = e.t < 200 ? e.t / 200 : Math.max(0, 1 - (e.t - 1200) / 1000);
+        x.font = '700 18px ' + FONT; x.fillStyle = 'rgba(' + A + ',' + a + ')';
+        x.fillText(e.txt, e.cx * S + 12, e.cy * S + 34);
+        x.font = '500 14px ' + FONT; x.fillStyle = 'rgba(139,142,148,' + a + ')';
+        x.fillText(e.geo, e.cx * S + 12, e.cy * S + 56);
+      });
+      st.fly.forEach(function(f){
+        var k = f.t / 700, e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        var px = f.x + (st.target[0] - f.x) * e, py = f.y + (st.target[1] - f.y) * e - Math.sin(k * Math.PI) * 60;
+        x.fillStyle = 'rgba(' + A + ',.25)'; x.beginPath(); x.arc(px, py, 8, 0, 7); x.fill();
+        x.fillStyle = '#C8FF2E'; x.beginPath(); x.arc(px, py, 4, 0, 7); x.fill();
+      });
+    }
+  };
+
+  secs.forEach(function(sec){
+    var v = V[sec.dataset.v], cv = sec.querySelector('canvas'), ctx = cv.getContext('2d');
+    var dpr = Math.min(devicePixelRatio || 1, 2);
+    var st = {sec:sec, ctx:ctx, S:80, cells:{}, w:0, h:0};
+    st.rel = function(el){ var a = el.getBoundingClientRect(), b = sec.getBoundingClientRect(); return {l:a.left - b.left, t:a.top - b.top, r:a.right - b.left, b:a.bottom - b.top, w:a.width, h:a.height}; };
+    st.light = function(cx, cy, a){ var k = cx + ',' + cy; st.cells[k] = Math.max(st.cells[k] || 0, a); };
+    function size(){ st.w = sec.clientWidth; st.h = sec.querySelector('.marquee') ? sec.querySelector('.marquee').offsetTop : sec.clientHeight; if(!st.w) return; cv.width = st.w * dpr; cv.height = st.h * dpr; cv.style.height = st.h + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); v.layout(st); }
+    sec.addEventListener('pointermove', function(e){
+      var r = sec.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+      var cx = Math.floor(x / st.S), cy = Math.floor(y / st.S), k = cx + ',' + cy;
+      if(v.onMove) v.onMove(st, x, y);
+      if(k !== st.lc){ st.lc = k; st.light(cx, cy, 1); if(v.onCell) v.onCell(st, cx, cy); }
+    });
+    var on = false, last = 0;
+    function frame(ts){
+      if(!on) return;
+      var dt = last ? Math.min(50, ts - last) : 16; last = ts;
+      ctx.clearRect(0, 0, st.w, st.h);
+      v.step(st, dt);
+      for(var k in st.cells){
+        var a = st.cells[k], p = k.split(',');
+        ctx.fillStyle = 'rgba(' + A + ',' + (a * .07) + ')'; ctx.fillRect(p[0] * st.S, p[1] * st.S, st.S - 1, st.S - 1);
+        ctx.fillStyle = 'rgba(' + A + ',' + (a * .9) + ')'; ctx.fillRect(p[0] * st.S - 2, p[1] * st.S - 2, 4, 4);
+        st.cells[k] = a - dt * .0015; if(st.cells[k] <= 0) delete st.cells[k];
+      }
+      v.draw(st);
+      requestAnimationFrame(frame);
+    }
+    size(); addEventListener('resize', size);
+    if(document.fonts) document.fonts.ready.then(size);
+    new IntersectionObserver(function(es){ on = es[0].isIntersecting; if(on){ last = 0; requestAnimationFrame(frame); } }).observe(sec);
+  });
 })();
 </script>
 </body>
