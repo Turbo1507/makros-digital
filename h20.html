@@ -377,7 +377,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
 <main id="top">
 <section class="hero" id="hero">
-  <nav class="hvar" aria-label="Hero"><a href="index.html">1</a><a href="h2.html">2</a><a href="h3.html">3</a><a href="h4.html">4</a><a href="h5.html">5</a><a href="h6.html">6</a><a href="h7.html">7</a><a href="h8.html">8</a><a href="h9.html">9</a><a href="h10.html">10</a><a href="h11.html">11</a><a href="h12.html">12</a><a href="h13.html">13</a><a href="h14.html">14</a><a href="h15.html">15</a><a href="h16.html">16</a><a href="h17.html">17</a><a href="h18.html">18</a><a href="h19.html">19</a><a href="h20.html" aria-current="page">20</a></nav>
+  <nav class="hvar" aria-label="Hero"><a href="index.html">3</a><a href="h5.html">5</a><a href="h17.html">17</a><a href="h20.html" aria-current="page">20</a></nav>
   <div class="hero-grid"></div>
   <canvas id="sig" aria-hidden="true"></canvas>
   <canvas id="pins" aria-hidden="true"></canvas>
@@ -969,9 +969,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       fig.nx = fig.l + FIG.NK.x * kk; fig.ny = fig.t + FIG.NK.y * kk; fig.wx = fig.l + FIG.WR.x * kk; fig.wy = fig.t + FIG.WR.y * kk; fig.tx = fig.l + FIG.TH.x * kk; fig.ty = fig.t + FIG.TH.y * kk;
       fig.cx = left + fw0 * kk / 2; fig.cy = fig.t + FIG.h * kk * .4;
       var mc = document.createElement('canvas'), mw = Math.ceil(W / 8), mh = Math.ceil(H / 8), mg = mc.getContext('2d', { willReadFrequently: true });
-      mc.width = mw; mc.height = mh; mg.filter = 'blur(10px)'; mg.drawImage(MAN, fig.l / 8, fig.t / 8, FIG.w * kk / 8, FIG.h * kk / 8);
+      mc.width = mw; mc.height = mh; mg.filter = 'blur(24px)'; mg.drawImage(MAN, fig.l / 8, fig.t / 8, FIG.w * kk / 8, FIG.h * kk / 8);
       var md = mg.getImageData(0, 0, mw, mh).data;
-      hero.manFade = function(x, y){ x = clamp(x / 8 | 0, 0, mw - 1); y = clamp(y / 8 | 0, 0, mh - 1); return 1 - .9 * smooth(md[(y * mw + x) * 4 + 3] / 255 * 2.5); };
+      hero.manFade = function(x, y){ x = clamp(x / 8 | 0, 0, mw - 1); y = clamp(y / 8 | 0, 0, mh - 1); return 1 - .9 * smooth(md[(y * mw + x) * 4 + 3] / 255 * 3); };
 
       var ox = (W - (C - 1) * S) / 2;
       GX = new Float32Array(N); GY = new Float32Array(N); A0 = new Float32Array(N);
