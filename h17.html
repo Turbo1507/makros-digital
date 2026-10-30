@@ -1025,7 +1025,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     }
 
     // single acid dots drift from the screen up to the eye, slowly, one after another
-    var NP = 10, LIFE = 3.6;
+    var NP = 22, LIFE = 5.4;
     function stream(){
       var dx = mo.ex - mo.px, dy = mo.ey - mo.py, len = Math.sqrt(dx * dx + dy * dy), nx = dy / len, ny = -dx / len;
       var appear = Math.min(1, tm / 2);
@@ -1092,7 +1092,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       // parallax: the far layer almost stands still while the page moves, the near one lags by half; each slides by its own grid step
       sp += (Math.min(scrollY, H) - sp) * .12;
       glow += (clamp(Math.abs(sp - sp0) / 16, 0, 1) - glow) * .1; sp0 = sp;
-      var oF = sp * .85 % (S * 3), oN = sp * .45 % S, gk = Math.min(2, glow * 3 | 0);
+      var oF = sp * .85 % (S * 3), oN = sp * .45 % S, gk = Math.min(2, glow * 2.5 | 0);
       var tx = vx0, ty = vy0;
       VX += (tx - VX) * .1; VY += (ty - VY) * .1;
       bx += (px - bx) * .2; by += (py - by) * .2;
@@ -1101,25 +1101,25 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       if (!dense) for (j = 1; j < R; j += 3) for (i = 1; i < C; i += 3){
         n = j * C + i; var fa = A0[n] * .55; if (fa < .03) continue;
         SX[m] = VX + (GX[n] + S / 2 - VX) * kf; SY[m] = VY + (GY[n] + S / 2 - VY) * kf + oF; SZ[m] = 1;
-        BK[m] = gk ? 16 + Math.min(15, fa * 1.6 * 15.99 | 0) * 6 + gk : Math.min(15, fa * 15.99 | 0); m++;
+        var dx = SX[m] - bx, dy = SY[m] - by, fk = Math.max(gk, Math.min(3, bump * Math.exp(-(dx * dx + dy * dy) / 12000) * 4 | 0));
+        BK[m] = fk ? 16 + Math.min(15, fa * 1.6 * 15.99 | 0) * 6 + fk : Math.min(15, fa * 15.99 | 0); m++;
       }
       if (!dense) for (n = 0; n < N; n++){
         var a = A0[n]; if (a < .03) continue;
         var dx = GX[n] - bx, dy = GY[n] - by, b = bump * .22 * Math.exp(-(dx * dx + dy * dy) / 5600);
         var kk = kn * F / (F - b * HM);
         SX[m] = VX + (GX[n] - VX) * kk; SY[m] = VY + (GY[n] - VY) * kk + oN; SZ[m] = 1.3 + b * 2;
-        var am = bump * Math.exp(-(dx * dx + dy * dy) / 26000);
-        BK[m] = am > .06 ? 16 + Math.min(15, (a * 1.6 + b + am * .3) * 15.99 | 0) * 6 + Math.min(5, am * 6.5 | 0) : Math.min(15, (a * 1.6 + b) * 15.99 | 0); m++;
+        BK[m] = Math.min(15, (a * 1.6 + b) * 15.99 | 0); m++;
       }
-      // dense field: it is a cached picture, so the lime round the cursor goes on top as its own dots
+      // dense field: it is a cached picture, so the lime round the cursor goes on top of its far grid as own dots
       if (dense && bump > .05){
         var i0 = Math.max(0, Math.floor((bx - 380) / S)), i1 = Math.min(C - 1, Math.ceil((bx + 380) / S));
         var j0 = Math.max(0, Math.floor((by - 380) / S)), j1 = Math.min(R - 1, Math.ceil((by + 380) / S));
-        for (j = j0; j <= j1; j++) for (i = i0; i <= i1; i++){
-          n = j * C + i; var a = A0[n]; if (a < .03) continue;
-          var dx = GX[n] - bx, dy = GY[n] - by, am = bump * Math.exp(-(dx * dx + dy * dy) / 26000); if (am < .05) continue;
-          SX[m] = VX + (GX[n] - VX) * kn; SY[m] = VY + (GY[n] - VY) * kn + oN; SZ[m] = 1.3;
-          BK[m] = 112 + Math.min(15, a * 2.2 * am * 15.99 | 0); m++;
+        for (j = j0 + 1 - j0 % 3; j <= j1; j += 3) for (i = i0 + 1 - i0 % 3; i <= i1; i += 3){
+          n = j * C + i; var a = A0[n] * .55; if (a < .03) continue;
+          SX[m] = VX + (GX[n] + S / 2 - VX) * kf; SY[m] = VY + (GY[n] + S / 2 - VY) * kf + oF;
+          var dx = SX[m] - bx, dy = SY[m] - by, am = bump * Math.exp(-(dx * dx + dy * dy) / 12000); if (am < .05) continue;
+          SZ[m] = 1; BK[m] = 112 + Math.min(15, a * 3 * am * 15.99 | 0); m++;
         }
       }
       // the figure breathes a little; under the cursor its dots part slightly
