@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makros Digital | Influencer marketing for Gaming, Casino &amp; Crypto</title>
+<meta name="description" content="Influencer marketing and creative production for Gaming, Casino and Crypto brands. Streamers and creators on Twitch, Kick, YouTube, Telegram and Instagram.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://makrosmedia.com/">
+<meta property="og:title" content="Makros Digital">
+<meta property="og:description" content="Influencer marketing and creative production for Gaming, Casino and Crypto brands.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23141517'/%3E%3Cpath d='M7 24V8h4l5 8 5-8h4v16h-4V15l-5 7-5-7v9z' fill='%23C8FF2E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g950:#141517; --g900:#1C1D20; --g850:#232428; --g800:#2A2C30; --g600:#4A4D53; --g400:#8B8E94; --g200:#C9CBCF;
+  --paper:#E9EAE4; --white:#F4F5F0; --acid:#C8FF2E; --ink:#141517;
+  --container:1280px; --pad:24px; --section:120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--g950);color:var(--white);font-family:Archivo,system-ui,sans-serif;font-size:18px;line-height:1.5;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--pad);width:100%}
+.display{font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:700;letter-spacing:-.03em;line-height:.92}
+.h2{font-size:clamp(40px,5vw,64px);font-stretch:118%;font-variation-settings:"wdth" 118;font-weight:700;letter-spacing:-.025em;line-height:1}
+.lead{font-size:24px;line-height:1.4}
+.muted{color:var(--g400)}
+section{padding:var(--section) 0}
+
+/* buttons: fill on hover, no arrows */
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 32px;border-radius:8px;background:var(--acid);color:var(--ink);font-weight:600;font-size:17px;transition:background .2s,color .2s;border:0;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--white)}
+.btn-dark{background:var(--ink);color:var(--acid)}
+.btn-dark:hover{background:var(--g800);color:var(--acid)}
+.btn-ghost{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1px var(--g600)}
+.btn-ghost:hover{background:var(--white);color:var(--ink);box-shadow:none}
+
+/* header */
+section[id]{scroll-margin-top:72px}
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .25s}
+.hdr.solid{background:rgba(20,21,23,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:.02em;font-size:18px}
+.logo span{color:var(--g400);font-weight:500}
+.nav{display:flex;align-items:center;gap:8px}
+.nav a.l{padding:8px 16px;border-radius:8px;color:var(--g200);font-size:16px;transition:background .2s,color .2s}
+.nav a.l:hover{background:var(--g850);color:var(--white)}
+.nav .btn{height:40px;padding:0 20px;font-size:15px;margin-left:8px}
+.burger{display:none;width:40px;height:40px;border:0;background:none;cursor:pointer;position:relative}
+.burger i{position:absolute;left:8px;right:8px;height:2px;background:var(--white);transition:transform .25s}
+.burger i:first-child{top:15px}.burger i:last-child{top:23px}
+.menu-open .burger i:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-open .burger i:last-child{transform:translateY(-4px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:40;background:var(--g950);padding:120px var(--pad) 40px;display:flex;flex-direction:column;gap:8px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.menu-open .mmenu{opacity:1;visibility:visible}
+.mmenu a.l{font-size:40px;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118;padding:8px 0}
+.mmenu .btn{margin-top:auto}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:120px 0 0;overflow:hidden}
+.hero canvas{position:absolute;left:0;top:0;width:100%;pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--g850) 1px,transparent 1px),linear-gradient(90deg,var(--g850) 1px,transparent 1px);background-size:80px 80px;background-position:-1px -1px;opacity:.7;mask-image:linear-gradient(180deg,#000 40%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 40%,transparent 100%)}
+.hero .wrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:56px}
+.hero h1{font-size:clamp(56px,11.2vw,152px)}
+@media (min-width:861px){.hero h1{font-size:min(132px,calc((100vw - 48px) / 9.4))}.hero h1 .ln>span{white-space:nowrap}}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:inline-block}
+.hero-foot{display:grid;grid-template-columns:1fr minmax(0,480px);gap:40px;margin-top:56px;align-items:end}
+.hero-foot{align-items:stretch}
+@media (min-width:861px){.hero-side{grid-column:2}}
+.hero-side .sub{font-size:24px;line-height:1.35;font-weight:500}
+.hero-side p.t{color:var(--g400);margin-top:16px;font-size:17px}
+.hero-side .btn{margin-top:32px}
+.marquee{position:relative;border-top:1px solid var(--g800);overflow:hidden;padding:24px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:56px;animation:mq 32s linear infinite;padding-left:56px}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{font-size:32px;font-weight:600;font-stretch:118%;font-variation-settings:"wdth" 118;color:var(--g600);transition:color .2s}
+.marquee span:hover{color:var(--white)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* about (paper) */
+.paper{background:var(--paper);color:var(--ink)}
+.paper .muted{color:#5B5E63}
+.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:80px}
+.about-grid .lead{font-size:clamp(24px,2.4vw,32px);line-height:1.3;font-weight:500;letter-spacing:-.01em}
+.about-grid p.t{margin-top:24px;max-width:640px;color:#3B3D42}
+
+/* verticals */
+.verts{margin-top:56px}
+.vrow:last-child{border-bottom:0}
+.vrow{display:grid;grid-template-columns:1fr minmax(0,420px);align-items:center;gap:24px;padding:24px 16px;border-bottom:1px solid var(--g800);transition:background .25s}
+.vrow h3{font-size:clamp(40px,7vw,96px);font-weight:700;font-stretch:125%;font-variation-settings:"wdth" 125;letter-spacing:-.03em;line-height:1;color:var(--g400);transition:color .25s}
+.vrow p{color:var(--g400);font-size:17px;opacity:.0;transform:translateX(-8px);transition:opacity .25s,transform .25s}
+.vrow:hover{background:var(--g900)}
+.vrow:hover h3{color:var(--white)}
+.vrow:hover p{opacity:1;transform:none}
+.geo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.geo>div{background:var(--g900);border-radius:12px;padding:32px}
+.geo h4{font-size:24px;font-weight:600;margin-bottom:8px}
+.geo p{color:var(--g200)}
+.geo-x>div{--cp:32px;display:flex;flex-direction:column;padding-bottom:0;overflow:hidden}
+.geo-x .vis{position:relative;height:320px;margin:32px calc(var(--cp) * -1) 0;flex:none}
+.globe canvas{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;left:0;top:0;z-index:2;pointer-events:none;transition:opacity .4s}
+.pin-in{display:flex;flex-direction:column;align-items:center;transform-origin:50% 100%;animation:pinup .5s cubic-bezier(.2,.9,.3,1.3) both}
+.pin.out .pin-in{animation:pindown .4s ease-in forwards}
+@keyframes pinup{from{opacity:0;transform:translateY(8px) scale(.6)}}
+@keyframes pindown{to{opacity:0;transform:translateY(4px) scale(.7)}}
+.pin .tag{display:inline-flex;align-items:center;gap:8px;padding:4px 8px 4px 4px;background:var(--g800);border-radius:8px;font-size:13px;font-weight:600;color:var(--white);white-space:nowrap}
+.pin .tag i{font-style:normal;display:grid;place-items:center;width:20px;height:20px;border-radius:4px;background:var(--g950)}
+.pin .tag svg{width:12px;height:12px}
+.pin .tag em{font-style:normal;font-weight:500;color:var(--g400)}
+.pin .tag b{font-weight:600;color:var(--acid)}
+@keyframes ring{from{transform:scale(1);opacity:1}to{transform:scale(5);opacity:0}}
+.pin .stem{width:1px;height:16px;background:var(--g400)}
+.pin .dot{width:6px;height:6px;margin-top:-1px;border-radius:50%;background:var(--acid);box-shadow:0 0 0 4px rgba(200,255,46,.15);position:relative}
+.pin .dot::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 1px var(--acid);animation:ring 1.4s ease-out .15s both}
+.feed{-webkit-mask-image:linear-gradient(180deg,transparent,#000 45%);mask-image:linear-gradient(180deg,transparent,#000 45%);overflow:hidden}
+.feed ol{position:absolute;left:var(--cp);right:var(--cp);bottom:24px;display:flex;flex-direction:column;gap:8px}
+.msg{display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;background:var(--g850);border-radius:8px;font-size:15px;line-height:1.4;color:var(--g200)}
+.msg.new{animation:msgin .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes msgin{from{opacity:0;transform:translateY(16px)}}
+.msg .ic{font-style:normal;display:grid;place-items:center;width:32px;height:32px;border-radius:6px;background:var(--g950);flex:none}
+.msg .ic svg{width:16px;height:16px}
+.msg b{font-weight:600;color:var(--g400);margin-right:8px}
+
+/* services */
+.svc-head{display:flex;justify-content:space-between;align-items:end;gap:40px}
+.svc-main{margin-top:56px;background:var(--g900);border-radius:12px;padding:56px;display:grid;grid-template-columns:5fr 7fr;gap:56px}
+.svc-main h3{font-size:48px;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118;letter-spacing:-.02em;line-height:1.05}
+.svc-main .intro{margin-top:24px;color:var(--g200);font-size:19px}
+.svc-main .tag{display:inline-block;margin-top:32px;font-size:15px;color:var(--ink);background:var(--acid);padding:4px 12px;border-radius:4px;font-weight:600}
+.ticks li{position:relative;padding:16px 0 16px 32px;border-bottom:1px solid var(--g800);font-size:18px}
+.ticks li:last-child{border-bottom:0}
+.ticks li::before{content:"";position:absolute;left:0;top:26px;width:12px;height:4px;background:var(--acid);border-radius:1px}
+.svc-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.svc-pair>article{border-radius:12px;padding:40px;background:var(--g900)}
+.svc-pair h3{font-size:32px;font-weight:700;font-stretch:118%;font-variation-settings:"wdth" 118;letter-spacing:-.02em}
+.svc-pair .intro{margin:16px 0 24px;color:var(--g200);font-size:17px}
+.svc-pair .ticks li{font-size:17px;padding:12px 0 12px 28px}
+.svc-pair .ticks li::before{top:22px;width:10px}
+.creatives{margin-top:24px;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 32px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--g800)}
+.creatives p{font-size:20px;font-weight:500}
+
+/* metrics (paper) */
+.m-head{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:end}
+.note{font-size:16px;color:#5B5E63;max-width:520px;justify-self:end}
+.mbento{display:grid;grid-template-columns:7fr 5fr;grid-template-rows:1fr 1fr;gap:16px;margin-top:56px}
+.mt{background:var(--white);border-radius:12px;padding:40px;display:flex;flex-direction:column}
+.mt .k{font-size:17px;font-weight:600}
+.mt .v{font-size:clamp(56px,6.4vw,96px);font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:auto;padding-top:40px;font-variant-numeric:tabular-nums;font-stretch:125%;font-variation-settings:"wdth" 125}
+.mt p{margin-top:16px;color:#5B5E63;font-size:16px;max-width:320px}
+.mt-main{grid-row:1/3;background:var(--ink);color:var(--white)}
+.mt-main .k,.mt-main p{color:var(--g400)}
+.mt-main .v{font-size:clamp(88px,12.8vw,184px);margin-top:0;color:var(--acid)}
+.roas{margin-top:auto;padding-top:40px}
+.roas-plot{position:relative;height:200px;touch-action:pan-y;cursor:crosshair}
+.roas-plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.roas .grid{stroke:var(--g800);stroke-width:1}
+.roas .ph{fill:var(--g400);font-size:13px;font-family:inherit}
+.roas .sp{fill:none;stroke:var(--g600);stroke-width:2;stroke-dasharray:6 6}
+.roas .dp{fill:none;stroke:var(--acid);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.roas .gain{fill:url(#roas-fill)}
+.roas .loss{fill:url(#roas-hatch)}
+.roas .be circle{fill:var(--ink);stroke:var(--g200);stroke-width:2}
+.roas .be text{fill:var(--g200);font-size:13px;font-family:inherit}
+.roas .xh{stroke:var(--g600);stroke-width:1}
+.roas .hd{fill:var(--acid)}
+.roas .hs{fill:var(--ink);stroke:var(--g400);stroke-width:2}
+.roas .pulse{fill:none;stroke:var(--acid);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:roas-pulse 2.4s ease-out infinite}
+@keyframes roas-pulse{from{transform:scale(1);opacity:.9}to{transform:scale(3.2);opacity:0}}
+.roas-tip{position:absolute;top:0;left:0;transform:translate(-50%,calc(-100% - 12px));background:var(--g850);border:1px solid var(--g800);border-radius:8px;padding:8px 12px;white-space:nowrap;pointer-events:none;display:flex;gap:8px;align-items:baseline;font-size:13px;color:var(--g400);transition:opacity .3s}
+.roas-tip b{color:var(--acid);font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
+.roas-leg{display:flex;gap:24px;margin-top:16px;font-size:15px;color:var(--g400)}
+.roas-leg span::before{content:"";display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:8px;vertical-align:middle;background:var(--acid)}
+.roas-leg span+span::before{background:var(--g600)}
+html.js .roas .draw{clip-path:inset(-24px 100% -24px 0);transition:clip-path 1.8s cubic-bezier(.4,0,.2,1) .2s}
+html.js .mbento.in .roas .draw{clip-path:inset(-24px -24px -24px 0)}
+html.js .roas .late,html.js .roas-tip{opacity:0;transition:opacity .4s 1.9s}
+html.js .mbento.in .roas .late,html.js .mbento.in .roas-tip{opacity:1}
+html:not(.js) .roas-plot{display:none}
+.mt-acc{background:var(--acid)}
+.mt-acc p{color:#3A4A00}
+.kpis li.hot b{color:var(--acid)}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);margin-top:56px;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:7px;height:1px;background:var(--g800)}
+.steps .bar{position:absolute;left:0;top:6px;height:3px;background:var(--acid);width:0;transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.steps.in .bar{width:100%}
+.step{position:relative;padding:40px 24px 0 0}
+.step::before{content:"";position:absolute;top:0;left:0;width:16px;height:16px;border-radius:4px;background:var(--g950);box-shadow:inset 0 0 0 2px var(--g600)}
+.steps.in .step::before{background:var(--acid);box-shadow:none;transition:background .3s calc(var(--i)*.25s)}
+.step .n{font-size:15px;color:var(--g400);font-variant-numeric:tabular-nums}
+.step h4{font-size:22px;font-weight:700;margin:8px 0;font-stretch:112%;font-variation-settings:"wdth" 112}
+.step p{font-size:16px;color:var(--g400)}
+
+/* cases */
+.cases-head{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:end}
+.cases-head p{color:var(--g200)}
+.rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:56px;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--g600) transparent}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.case{background:var(--g900);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.case .shot{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--g850)}
+.case .body{padding:24px 32px 32px}
+.case .top{display:flex;justify-content:space-between;font-size:15px;color:var(--g400)}
+.case h4{font-size:24px;font-weight:600;margin:16px 0}
+.case dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:15px}
+.case dt{color:var(--g400)}
+.case dd{color:var(--g200)}
+.case .body{flex:1;display:flex;flex-direction:column}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:32px}
+.kpis li{background:var(--g850);border-radius:8px;padding:19px 24px 17px}
+.kpis b{display:block;font-size:32px;font-weight:500;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums;font-stretch:112%;font-variation-settings:"wdth" 112}
+.kpis span{display:block;margin-top:8px;font-size:15px;color:var(--g400)}
+@media (min-width:861px){.kpis span{white-space:nowrap}}
+.band{margin:0;height:clamp(320px,40vw,640px);background:var(--g900);overflow:hidden}
+.band img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* cta (acid peak) */
+.cta{background:var(--acid);color:var(--ink)}
+.cta-grid{display:grid;grid-template-columns:6fr 6fr;gap:80px}
+.cta h2{font-size:clamp(48px,6.4vw,96px)}
+.cta p.t{margin-top:32px;font-size:20px;max-width:480px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:start}
+.f{display:flex;flex-direction:column;gap:8px}
+.f.full{grid-column:1/-1}
+.f label{font-size:15px;font-weight:600}
+.f input,.f select,.f textarea{background:transparent;border:0;border-bottom:2px solid rgba(20,21,23,.35);padding:8px 0 12px;font-size:18px;border-radius:0;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.f select{background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 12px) 20px,calc(100% - 6px) 20px;background-size:6px 6px;background-repeat:no-repeat}
+.f textarea{resize:vertical;min-height:96px}
+.dd{position:relative}
+.dd-btn{width:100%;display:flex;justify-content:space-between;align-items:center;background:transparent;border:0;border-bottom:2px solid rgba(20,21,23,.35);padding:8px 0 12px;font-size:18px;text-align:left;cursor:pointer;transition:border-color .2s}
+.dd-btn::after{content:"";width:8px;height:8px;margin-right:4px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-3px) rotate(45deg);transition:transform .2s}
+.dd-btn[aria-expanded="true"]{border-color:var(--ink)}
+.dd-btn[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
+.dd-btn:focus-visible{outline:none;border-color:var(--ink)}
+.dd-list{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 8px);background:var(--ink);color:var(--white);border-radius:8px;padding:8px;box-shadow:0 16px 40px rgba(20,21,23,.28);outline:none}
+.dd-list li{padding:12px 16px;border-radius:4px;cursor:pointer;font-size:17px;transition:background .15s}
+.dd-list li:hover,.dd-list li.act{background:var(--g800)}
+.dd-list li[aria-selected="true"]{color:var(--acid)}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
+.f ::placeholder{color:rgba(20,21,23,.45)}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
+.form-msg{font-size:15px}
+
+/* footer */
+.ftr{padding:80px 0 40px}
+.ftr-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.ftr .logo{font-size:clamp(40px,8vw,112px);line-height:.9;letter-spacing:-.02em}
+.ftr nav{display:grid;grid-template-columns:auto auto;gap:8px 56px;align-content:start;font-size:17px}
+.ftr nav a{color:var(--g200);transition:color .2s}
+.ftr nav a:hover{color:var(--acid)}
+.ftr-bot{display:flex;justify-content:space-between;gap:24px;margin-top:80px;padding-top:24px;border-top:1px solid var(--g800);font-size:15px;color:var(--g400);flex-wrap:wrap}
+
+/* reveal: hidden only with JS */
+html.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+html.js .rv.in{opacity:1;transform:none}
+html.js .hero h1 .ln>span{transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+html.js .hero.in h1 .ln>span{transform:none}
+html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
+
+@media (max-width:1024px){
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:40px}
+  .steps::before,.steps .bar{display:none}
+  .svc-main{grid-template-columns:1fr;gap:40px;padding:40px}
+}
+@media (max-width:860px){
+  :root{--section:64px}
+  .nav{display:none}.burger{display:block}
+  .hero-foot,.about-grid,.cases-head,.cta-grid,.svc-pair,.geo,.cases{grid-template-columns:1fr}
+  .hero-foot{gap:32px;margin-top:40px}
+  .about-grid,.cases-head,.cta-grid{gap:24px}
+  .cta-grid{gap:40px}
+  .vrow{grid-template-columns:1fr;gap:8px;padding:24px 0}
+  .vrow p{opacity:1;transform:none}
+  .vrow:hover{background:none}
+  .vrow h3{color:var(--white)}
+  .m-head{grid-template-columns:1fr;gap:24px}
+  .note{justify-self:start}
+  .mbento{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .mt-main{grid-row:auto;grid-column:1/-1}
+  .svc-head{flex-direction:column;align-items:start}
+  .creatives{flex-direction:column;align-items:start}
+}
+@media (max-width:600px){
+  :root{--pad:16px}
+  body{font-size:17px}
+  .lead,.hero-side .sub{font-size:20px}
+  .hero-side p.t{display:none}
+  .hero-side .btn{margin-top:24px}
+  .marquee span{font-size:24px}
+  .svc-main,.svc-pair>article,.geo>div{padding:24px}
+  .geo-x>div{--cp:24px;padding-bottom:0}
+  .geo-x .vis{height:280px}
+  .svc-main h3{font-size:36px}
+  .steps{grid-template-columns:1fr;row-gap:32px}
+  .case .body{padding:24px}
+  .kpis li{padding:11px 16px 9px}
+  .kpis b{font-size:28px}
+  form{grid-template-columns:1fr}
+  .form-foot{flex-direction:column;align-items:stretch}
+  .mbento{grid-template-columns:1fr;gap:8px}
+  .roas{padding-top:32px}
+  .roas-plot{height:120px}
+  .mt{padding:24px}
+  .mt .v{padding-top:24px}
+  .ftr nav{grid-template-columns:1fr 1fr;gap:8px 24px}
+  .about-grid .lead{font-size:20px}
+  .cta-grid p.t{font-size:17px}
+  .svc-main .intro{font-size:17px}
+  .ticks li,.svc-pair .ticks li{font-size:16px;padding:12px 0 12px 28px}
+  .ticks li::before,.svc-pair .ticks li::before{top:22px;width:10px}
+  .steps{row-gap:24px}
+  .step{padding:0 0 0 48px}
+  .step::before{display:none}
+  .step .n{position:absolute;left:0;top:0;display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--g850);color:var(--acid);font-weight:600}
+  .step h4{font-size:20px;margin:4px 0}
+  .cases-intro{display:none}
+  .case .kpis{order:1;margin:0 0 24px;padding-top:0}
+  .case dl{order:2}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html.js .rv,html.js .hero h1 .ln>span{opacity:1;transform:none}
+  .steps .bar{width:100%}
+  html.js .roas .draw{clip-path:none}
+  .roas .pulse{animation:none;opacity:0}
+}
+#pins{opacity:0;transition:opacity 1.2s}#pins.on{opacity:1}
+@media (max-width:860px){#pins{display:none}}
+@media (min-width:861px){
+  .hero h1{font-size:min(96px,calc((100vw - 48px) / 15))}
+  .hero-foot{grid-template-columns:minmax(0,520px) 1fr}
+  .hero-side{grid-column:1}
+}
+
+/* переключатель вариантов хиро */
+.hvar{position:absolute;left:16px;top:calc(50% - 40px);transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:4px}
+.hvar a{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g400);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;text-decoration:none;transition:color .2s,border-color .2s}
+.hvar a:hover{color:var(--white);border-color:var(--g600)}
+.hvar a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
+@media (min-width:861px) and (max-height:820px){.hvar a{width:28px;height:28px;font-size:13px}}
+@media (min-width:861px) and (max-width:1399px){.hero .wrap{padding-left:72px}}
+@media (max-width:860px){.hvar{position:relative;left:auto;top:auto;transform:none;flex-direction:row;flex-wrap:wrap;gap:8px;margin:0 16px 24px}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#top" class="logo">MAKROS <span>DIGITAL</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="l" href="#about">About</a>
+      <a class="l" href="#services">Services</a>
+      <a class="l" href="#process">Process</a>
+      <a class="l" href="#cases">Cases</a>
+      <a class="btn" href="#contact">Let's talk</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mmenu" id="mmenu" aria-hidden="true" inert>
+  <a class="l" href="#about">About</a>
+  <a class="l" href="#services">Services</a>
+  <a class="l" href="#process">Process</a>
+  <a class="l" href="#cases">Cases</a>
+  <a class="btn" href="#contact">Let's talk</a>
+</div>
+
+<main id="top">
+<section class="hero" id="hero">
+  <nav class="hvar" aria-label="Hero"><a href="index.html">1</a><a href="h2.html">2</a><a href="h3.html">3</a><a href="h4.html">4</a><a href="h5.html">5</a><a href="h6.html">6</a><a href="h7.html">7</a><a href="h8.html">8</a><a href="h9.html">9</a><a href="h10.html">10</a><a href="h11.html">11</a><a href="h12.html">12</a><a href="h13.html">13</a><a href="h14.html">14</a><a href="h15.html">15</a><a href="h16.html">16</a><a href="h17.html">17</a><a href="h18.html">18</a><a href="h19.html" aria-current="page">19</a></nav>
+  <canvas id="pins" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1 class="display"><span class="ln"><span>Where influence</span></span><span class="ln"><span>performs.</span></span></h1>
+    <div class="hero-foot">
+      <div class="hero-side rv">
+        <p class="sub">Influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
+        <p class="t">We connect brands with relevant creators and deliver campaigns supported by strategic planning, performance tracking and high-impact creative production.</p>
+        <a class="btn" href="#contact">Let's discuss your project</a>
+      </div>
+    </div>
+  </div>
+  <div class="marquee" aria-label="Platforms">
+    <div class="marquee-track">
+      <span>Twitch</span><span>Kick</span><span>YouTube</span><span>Telegram</span><span>Instagram</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="about">
+  <div class="wrap about-grid">
+    <h2 class="h2 rv">About Makros Digital</h2>
+    <div class="rv">
+      <p class="lead">Makros Digital is a digital marketing agency specializing in influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
+      <p class="t">With our own network of streamers and content creators, combined with tailored sourcing for each project, we build campaigns around your target audience, GEO and business objectives. From influencer partnerships to paid traffic and advertising creatives, we help brands expand their reach and strengthen their market presence.</p>
+    </div>
+  </div>
+</section>
+
+<figure class="band" id="photo-stream"><img src="img/stream-1200.webp" srcset="img/stream-1200.webp 1200w, img/stream-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Streamer live on air with a slot stream and chat on the main monitor" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+
+<section id="verticals">
+  <div class="wrap">
+    <h2 class="h2 rv">Built for high-competition verticals</h2>
+    <div class="verts">
+      <div class="vrow rv"><h3>Casino</h3><p>Player acquisition through streams and sponsored integrations.</p></div>
+      <div class="vrow rv"><h3>Gaming</h3><p>Launches, updates and community growth with creators players already watch.</p></div>
+      <div class="vrow rv"><h3>Crypto</h3><p>Exchanges, wallets and projects where trust comes first.</p></div>
+      <div class="vrow rv"><h3>GameFi</h3><p>Players and holders reached in one campaign.</p></div>
+    </div>
+    <div class="geo geo-x">
+      <div class="rv">
+        <h4>Worldwide GEO</h4>
+        <p>We work with any GEO and pick creators who actually reach your market.</p>
+        <div class="vis globe" aria-hidden="true"><canvas></canvas></div>
+      </div>
+      <div class="rv">
+        <h4>Every relevant platform</h4>
+        <p>Twitch, Kick, YouTube, Telegram, Instagram and other channels.</p>
+        <div class="vis feed" aria-hidden="true"><ol></ol></div>
+      </div>
+    </div>
+  </div>
+  <template id="plat-icons"><svg data-p="Twitch" viewBox="0 0 24 24" fill="#9146FF" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg><svg data-p="Kick" viewBox="0 0 24 24" fill="#53FC18" aria-hidden="true"><path d="M1.333 0h8v5.333H12V2.667h2.667V0h8v8H20v2.667h-2.667v2.666H20V16h2.667v8h-8v-2.667H12v-2.666H9.333V24h-8Z"/></svg><svg data-p="YouTube" viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><svg data-p="Telegram" viewBox="0 0 24 24" fill="#26A5E4" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><svg data-p="Instagram" viewBox="0 0 24 24" fill="url(#ig-grad)" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></template>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="ig-grad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#FDF497"/><stop offset=".05" stop-color="#FDF497"/><stop offset=".45" stop-color="#FD5949"/><stop offset=".6" stop-color="#D6249F"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs></svg>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="svc-head">
+      <h2 class="h2 rv">What we do</h2>
+    </div>
+    <article class="svc-main rv">
+      <div>
+        <h3>Influencer Marketing</h3>
+        <p class="intro">We plan and manage influencer campaigns that connect brands with relevant audiences across streaming and social platforms.</p>
+        <span class="tag">Core service</span>
+      </div>
+      <ul class="ticks">
+        <li>Access to our network of streamers and creators</li>
+        <li>Tailored influencer sourcing for each project</li>
+        <li>Audience and channel selection based on GEO and campaign objectives</li>
+        <li>Campaign coordination and sponsored integrations</li>
+        <li>Performance tracking and reporting</li>
+      </ul>
+    </article>
+    <div class="svc-pair">
+      <article class="rv">
+        <h3>Creative Production</h3>
+        <p class="intro">We create advertising materials tailored to your brand, campaign objectives and distribution channels.</p>
+        <ul class="ticks">
+          <li>Static and animated banners</li>
+          <li>Advertising creatives and concepts</li>
+          <li>Promotional video assets</li>
+          <li>Creative variations for campaign testing</li>
+        </ul>
+      </article>
+      <article class="rv">
+        <h3>Traffic Acquisition</h3>
+        <p class="intro">Full-cycle traffic acquisition for iGaming, crypto and other digital projects.</p>
+        <ul class="ticks">
+          <li>Paid traffic acquisition through Meta Ads</li>
+          <li>Traffic strategies tailored to GEO and business goals</li>
+          <li>Advertising account setup and campaign management</li>
+          <li>Ad creative production and testing</li>
+          <li>Campaign optimization and performance analysis</li>
+          <li>Flexible acquisition strategies across different traffic sources</li>
+        </ul>
+      </article>
+    </div>
+    <div class="creatives rv">
+      <p>Need only creatives? We make banners and video creatives for your in-house campaigns too.</p>
+      <a class="btn btn-ghost" href="#contact">Order creatives</a>
+    </div>
+  </div>
+</section>
+
+<figure class="band" id="photo-desk"><img src="img/desk-1200.webp" srcset="img/desk-1200.webp 1200w, img/desk-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Media buying desk with campaign performance dashboard and reports" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+
+<section class="paper" id="metrics">
+  <div class="wrap">
+    <div class="m-head">
+      <h2 class="h2 rv">Numbers we work with</h2>
+      <p class="note rv">Average results across our campaigns. Final numbers depend on GEO, vertical and traffic source.</p>
+    </div>
+    <div class="mbento rv">
+      <div class="mt mt-main">
+        <div class="k">ROAS</div>
+        <div class="v"><span data-count="200">200</span>%</div>
+        <p>Return on ad spend</p>
+        <div class="roas" aria-hidden="true">
+          <div class="roas-plot">
+            <svg></svg>
+            <div class="roas-tip"><b>200%</b><span>Scale</span></div>
+          </div>
+          <div class="roas-leg"><span>Player deposits</span><span>Ad spend</span></div>
+        </div>
+      </div>
+      <div class="mt">
+        <div class="k">Cost per FTD</div>
+        <div class="v">$<span data-count="45">45</span></div>
+        <p>Average cost to bring in one first-time depositor</p>
+      </div>
+      <div class="mt mt-acc">
+        <div class="k">LTV</div>
+        <div class="v">$<span data-count="90">90</span></div>
+        <p>Lifetime value per player, about twice the cost to acquire one</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2 class="h2 rv">How we work</h2>
+    <div class="steps" id="steps">
+      <div class="bar"></div>
+      <div class="step" style="--i:0"><div class="n">1</div><h4>Brief</h4><p>You share the product, target GEO, budget and goals.</p></div>
+      <div class="step" style="--i:1"><div class="n">2</div><h4>Strategy</h4><p>We choose platforms, creator formats and the KPI model.</p></div>
+      <div class="step" style="--i:2"><div class="n">3</div><h4>Sourcing</h4><p>We pick creators from our network and source new ones for your audience.</p></div>
+      <div class="step" style="--i:3"><div class="n">4</div><h4>Creatives</h4><p>We prepare banners, scripts and video assets for the integrations.</p></div>
+      <div class="step" style="--i:4"><div class="n">5</div><h4>Launch</h4><p>We coordinate publications and sponsored streams.</p></div>
+      <div class="step" style="--i:5"><div class="n">6</div><h4>Tracking</h4><p>We track FTDs, deposits and ROAS and report on every placement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases" style="padding-top:0">
+  <div class="wrap">
+    <div class="cases-head">
+      <h2 class="h2 rv">Selected case studies</h2>
+      <div class="rv">
+        <p class="lead" style="color:var(--white)">Real campaigns. Measurable results.</p>
+        <p class="cases-intro" style="margin-top:16px">Explore selected projects showcasing our influencer partnerships, campaign execution and creative solutions. Each case study highlights the campaign objectives, target GEO, selected creators and platforms, and key performance indicators.</p>
+      </div>
+    </div>
+    <div class="cases rv">
+      <article class="case">
+        <img class="shot" src="img/case-casino-800.webp" srcset="img/case-casino-800.webp 800w, img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Phone showing a slot stream with a x250 win, a chat full of viewers using the bonus code and a thumb on the Claim bonus button" loading="lazy" decoding="async">
+        <div class="body">
+          <div class="top"><span>Casino</span><span>Brazil, Mexico, Chile, Argentina</span></div>
+          <h4>Player acquisition for an online casino through streamers</h4>
+          <dl>
+            <dt>Objective</dt><dd>Grow first-time deposits and measure every placement</dd>
+            <dt>Creators</dt><dd>61 streamers, from niche creators to influencers known across Latin America</dd>
+            <dt>Platforms</dt><dd>Kick, Twitch, YouTube</dd>
+            <dt>Duration</dt><dd>10 months</dd>
+          </dl>
+          <ul class="kpis">
+            <li><b>4,828</b><span>first-time depositors</span></li>
+            <li><b>$1.24M</b><span>total deposits</span></li>
+            <li class="hot"><b>275%</b><span>ROAS</span></li>
+            <li><b>$568</b><span>LTV</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="case">
+        <img class="shot" src="img/case-metaverse-800.webp" srcset="img/case-metaverse-800.webp 800w, img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Avatar pointing at a needle tower down a neon avenue, glowing waypoint pins over the rooftops and tokens floating above the road" loading="lazy" decoding="async">
+        <div class="body">
+          <div class="top"><span>Crypto, Web3, GameFi</span><span>UAE</span></div>
+          <h4>Launching a play-to-earn metaverse with creator Stories</h4>
+          <dl>
+            <dt>Objective</dt><dd>Bring in new users and drive token purchases</dd>
+            <dt>Creators</dt><dd>30 creators aged 18 to 30 with a mostly male audience</dd>
+            <dt>Format</dt><dd>A series of 3 Stories per creator, 90 Stories in total</dd>
+            <dt>Audience</dt><dd>Crypto investors and GameFi players aged 25 to 40</dd>
+          </dl>
+          <ul class="kpis">
+            <li><b>2,900</b><span>registered users</span></li>
+            <li class="hot"><b>$45K</b><span>token purchases</span></li>
+            <li><b>$15K</b><span>ad budget</span></li>
+            <li><b>$5.17</b><span>cost per user</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap cta-grid">
+    <div class="rv">
+      <h2 class="display">Let's build your next campaign</h2>
+      <p class="t">Looking for the right creators, stronger creatives or a tailored influencer marketing strategy? Tell us about your project, target GEO and campaign goals. We'll help you identify the right approach.</p>
+    </div>
+    <form id="form" class="rv" novalidate>
+      <div class="f"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="f"><label for="f-contact">Telegram or email</label><input id="f-contact" name="contact" placeholder="@username" required></div>
+      <div class="f"><label id="l-vert" for="f-vert">Vertical</label>
+        <div class="dd" data-dd>
+          <input type="hidden" name="vertical" value="Casino">
+          <button type="button" class="dd-btn" id="f-vert" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="l-vert f-vert"><span>Casino</span></button>
+          <ul class="dd-list" role="listbox" aria-labelledby="l-vert" tabindex="-1" hidden>
+            <li role="option" aria-selected="true">Casino</li><li role="option">Gaming</li><li role="option">Crypto</li><li role="option">GameFi</li><li role="option">Other</li>
+          </ul>
+        </div></div>
+      <div class="f"><label for="f-geo">Target GEO</label><input id="f-geo" name="geo" placeholder="e.g. Brazil, Mexico"></div>
+      <div class="f full"><label for="f-msg">About the project</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="form-foot">
+        <button class="btn btn-dark" type="submit">Discuss your project</button>
+        <span class="form-msg" id="form-msg" role="status"></span>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <a href="#top" class="logo">MAKROS<br><span>DIGITAL</span></a>
+      <nav aria-label="Footer">
+        <a href="#about">About</a><a href="#" data-todo>Telegram</a>
+        <a href="#services">Services</a><a href="#" data-todo>Email</a>
+        <a href="#process">Process</a><a href="#contact">Contact</a>
+        <a href="#cases">Cases</a>
+      </nav>
+    </div>
+    <div class="ftr-bot"><span>© 2026 Makros Digital</span><span>makrosmedia.com</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // header + mobile menu
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('solid', scrollY > 24); }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var burger = document.getElementById('burger'), mm = document.getElementById('mmenu');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    mm.setAttribute('aria-hidden', !open);
+    if (open) mm.removeAttribute('inert'); else mm.setAttribute('inert', '');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(!document.body.classList.contains('menu-open')); });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+
+  // hero intro
+  requestAnimationFrame(function(){ document.getElementById('hero').classList.add('in'); });
+
+  // reveal, steps, counters
+  function count(el){
+    var to = +el.dataset.count, t0 = null;
+    if (reduce) return;
+    function tick(t){
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / 1200, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    el.textContent = '0'; requestAnimationFrame(tick);
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('[data-count]').forEach(count);
+      io.unobserve(e.target);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv, #steps').forEach(function(el){ io.observe(el); });
+
+
+  // platform icons live in a template under the GEO cards
+  var icons = {};
+  document.getElementById('plat-icons').content.querySelectorAll('svg').forEach(function(s){ icons[s.dataset.p] = s.outerHTML; });
+
+  // runs fn(dt) every frame only while el is on screen and the tab is visible
+  function loopWhileVisible(el, fn){
+    var on = false, raf = null, last = 0;
+    function frame(ts){ fn(Math.min(ts - (last || ts), 50)); last = ts; raf = requestAnimationFrame(frame); }
+    function sync(){
+      var run = on && !document.hidden;
+      if (run && !raf){ last = 0; raf = requestAnimationFrame(frame); }
+      if (!run && raf){ cancelAnimationFrame(raf); raf = null; }
+    }
+    new IntersectionObserver(function(es){ on = es[0].isIntersecting; sync(); }).observe(el);
+    document.addEventListener('visibilitychange', sync);
+  }
+
+  // globe: land dots on a sphere, creators pop up as pins
+  (function(){
+    var box = document.querySelector('.globe');
+    if (!box) return;
+    var cv = box.querySelector('canvas'), cx = cv.getContext('2d');
+    var LAND = 'AAAAAAAAABACQkBQCAkJIQsgJAUEhJAVEHIABkLIABgYAAdgJMAMHJEjM3MEZszMhZhxEvN24lnca4tvea3t7v2dp7z29r/+ytvf/yt/f+3t/e+Vtbv2Vv7+ytv5eytr/+2t/P2Vt/P3Vtbu21v5Oysn52+snJyVlXJ3VmbOzUm5OysrZ+ak3JyR03JzQn7OzemZOSMvZ+aE7JyRkzNzYn7OzOm5OSm35+bk/Jya23NzUm7Ozem5OTU35+bk3Jya03Nzam7Ozcm5OTU35+b0nJyak3Nyak7Ozek5OTW35+bUnJya23Nzak7Ozak5OTUn42bUnJyeUXFyak7Gzam5OTUj4+TUnJyZUXNyYkbGyeg5PTWj5mTEnJqR0XNyYkbFyIg5NTWn4mTEnJqTE3NyYk7FyIk5NSMn5uTUnIqREzNqQk7EiIk5NSMm5+SEnIoREzNqSk7EiAk5NSMnZuSEnIwRUzNqQkbPyCkZMSOmZsSEnJ4RUzN6QkTNiAkZPSOmZtSEjJoRUzJqQkzNqAkZNSGmZNSEnJoTUzJqQkzJ6CkZNSemZNSUnJJSU3JqQkzJqSk5NSem5BSUmJJSUjJKSkzJKSk5Naek5BSUmpJTUnJKSknJKSgxNaek5BSUmpJSUjJKSknJKSgxJaek5BSUkpJSUiJKSknBKSk1BaekwBSUkoJSUioKSknBKSklBaek4JSUkoJSUipKSkmBqSklBaSk0JSUkgJSUmoqSEmBISklBaSmUJCUkgJTUmoqSE2BISElBaSkUBCQkgpDQkoKSE2hISglBYSkUFCQmgJCQmoKSEmhISA1BYSkVBCQmsJCQGoKCEkhISA1BYSgFBAQmkJCQGoICEUhICA0hYWglBAQikJCQGoKCEUhISAUhYSglBAQikJCQAoKCEEpISAEhYSAFFAQikJCQAgICEEpICAEhYSAFFQQgkJCQEgoCAEpoSAElISAlFAQAkpCQUgoCgUpqSAElIWCkFAQCkpCQQgoCgUhqSAElISCEFAQAkpCQQgoCgUpqSAElISCEFAQAkpCQQAoCAUlqCAAlKSiAlAQAgpCQQAoCEUFqCAAFKSCAlAQiApAQQAoCEUFoCAAFKCCAFAQiApQQQAoCEUFoCAQFaCCAFAQigpAQSAqAAUFoCAQFaCCAFQAigpAQSAqAAUFoAgUFaCiQlQACgpAQSAqQkUBoAAUFaCCQlQACopAASEqQkUFoIgUFKGCQlQAiopAASEqQgXFoIAUFIECQlAACopBASEoQAXEoIAcFYECQlBADopBATkoAAXEoIAUFKECQlAACopRASkoAAXEoIAUFIECQlAAighRASkqAAXEoAAUFIECQlAACghBASkoAAXEoAAUFYACUlAACghBASgoAAWEoAAUFIIiUFAADghBASgoAAWEoAAUEIIiUFAACghBASgoAEWgoAAUEIKiUFAEikhBASgoAEWhoAAUEYICUFAEikBBASgiAEWhoAgUlYIiUEQEikJBASgiAEWgqAgUlYAiUGQEikJBESgiAEWgiAgUhYAiUEQAikARESgqAEWgiAgUhSIiUEQEikARESgKQUWgiAgUgSIiUBSEikARESgKQUWgiAgVgSIiUBSEikARECgCRUSgCAgVgSIiUBSEikARECoCRUSgKAgVgSIgUASOiEARECoCRUCgCAgRgSIgUASKiEARECoCRUCgCBgRgSIgVASKgEARECICRUCgCBgBgSIgVASKgEARMCICRUCgCBABgSIgRASKgEARMAICRUCACBABgQIgBASKgEABIAICBUCICBQBgQBABAQKgAABIAICBUAICBQAAQBAAAQIgAAAIAACBIAAABAAAQBAAAQIgAAAIAACBIAAABAAAQBAIAQIAAEAIBACAIAAABAAAABAIAAAAAEAIAAAAIAAAAAAAgBAAAQAAIEAAAACAIAAAAAAAgAAAAQAAAEAAAAEAIAAAAAAAgEAAAAAAAEAAAAEAgAAAAAAAgAAAAAEAAAAAAAEAAAAAAAAAgAAAAgAAAAAAAAEAAAAEAAAAgAAAAgAAAAAAAAEAAAAEAAAAAAAAAgAAAAAAAAAAIAAEAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAlIAQEFACQkpASQkpESUlpOSUlJTSU1I6Sktr6SktvaWl9fScnt7TU3p+z+/5+T2/7+f3/f7f1/Pzen/fz+/5/f+//////w==';
+    var N = 14000, GA = Math.PI * (3 - Math.sqrt(5)), bits = atob(LAND), dots = [], i;
+    for (i = 0; i < N; i++){
+      if (!(bits.charCodeAt(i >> 3) >> (i & 7) & 1)) continue;
+      var y = 1 - 2 * (i + .5) / N, r = Math.sqrt(1 - y * y), th = GA * i;
+      dots.push([r * Math.sin(th), y, r * Math.cos(th)]);
+    }
+    function vec(lat, lon){ lat *= Math.PI / 180; lon *= Math.PI / 180; return [Math.cos(lat) * Math.sin(lon), Math.sin(lat), Math.cos(lat) * Math.cos(lon)]; }
+    var spots = [
+      ['Brazil', -23.5, -46.6, 'Twitch'], ['Mexico', 19.4, -99.1, 'Kick'], ['Argentina', -34.6, -58.4, 'Kick'],
+      ['Chile', -33.4, -70.6, 'YouTube'], ['Peru', -12, -77, 'Instagram'], ['Colombia', 4.7, -74, 'Twitch'],
+      ['Canada', 43.7, -79.4, 'Twitch'], ['Spain', 40.4, -3.7, 'Instagram'], ['Germany', 52.5, 13.4, 'Twitch'],
+      ['Poland', 52.2, 21, 'Kick'], ['Turkey', 41, 29, 'YouTube'], ['UAE', 25.2, 55.3, 'Telegram'],
+      ['Kazakhstan', 43.2, 76.9, 'Telegram'], ['India', 19.1, 72.9, 'YouTube'], ['Nigeria', 6.5, 3.4, 'Instagram'],
+      ['South Africa', -26.2, 28, 'YouTube'], ['Thailand', 13.8, 100.5, 'YouTube'], ['Philippines', 14.6, 121, 'Kick'],
+      ['Indonesia', -6.2, 106.8, 'Instagram'], ['Japan', 35.7, 139.7, 'YouTube'], ['Korea', 37.6, 127, 'Twitch'],
+      ['Australia', -33.9, 151.2, 'Twitch'], ['Vietnam', 21, 105.8, 'Telegram'], ['Portugal', 38.7, -9.1, 'Instagram'],
+      ['USA', 40.7, -74, 'YouTube'], ['USA', 34, -118.2, 'Instagram'], ['USA', 25.8, -80.2, 'Kick'],
+      ['USA', 41.9, -87.6, 'Telegram'], ['USA', 32.8, -96.8, 'Twitch'], ['Canada', 49.3, -123.1, 'YouTube'],
+      ['Mexico', 20.7, -103.3, 'Instagram']
+    ].map(function(s){ return {name: s[0], v: vec(s[1], s[2]), plat: s[3], el: null}; });
+    var PLATS = ['Twitch', 'Kick', 'YouTube', 'Telegram', 'Instagram'];
+    var AMOUNTS = [20, 35, 50, 75, 100, 150, 250, 500];
+    function pick(a){ return a[Math.floor(Math.random() * a.length)]; }
+    // each time a country pops up it shows a different channel
+    function nextPlat(s){ var p; do p = pick(PLATS); while (p === s.plat); s.plat = p; }
+
+    var TILT = .35, ct = Math.cos(TILT), st = Math.sin(TILT), rot = 20 * Math.PI / 180;
+    var W, H, R, X0, Y0, dpr;
+    function size(){
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      W = box.clientWidth; H = box.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      R = Math.min(W * .46, 300); X0 = W / 2; Y0 = R + 32;
+    }
+    function proj(p){
+      var ca = Math.cos(rot), sa = Math.sin(rot);
+      var x = p[0] * ca + p[2] * sa, z = -p[0] * sa + p[2] * ca;
+      return [X0 + x * R, Y0 - (p[1] * ct - z * st) * R, p[1] * st + z * ct];
+    }
+    function draw(){
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cx.clearRect(0, 0, W, H);
+      cx.beginPath(); cx.arc(X0, Y0, R, 0, Math.PI * 2);
+      cx.fillStyle = 'rgba(255,255,255,.02)'; cx.fill();
+      cx.strokeStyle = '#2A2C30'; cx.lineWidth = 1; cx.stroke();
+      for (var j = 0; j < dots.length; j++){
+        var q = proj(dots[j]);
+        if (q[1] > H + 2) continue;
+        if (q[2] < 0){ cx.fillStyle = 'rgba(139,142,148,.07)'; cx.fillRect(q[0] - .6, q[1] - .6, 1.2, 1.2); continue; }
+        cx.fillStyle = 'rgba(201,203,207,' + (.25 + .75 * q[2]).toFixed(2) + ')';
+        var d = 1 + 1.1 * q[2];
+        cx.fillRect(q[0] - d / 2, q[1] - d / 2, d, d);
+      }
+      spots.forEach(function(s){
+        if (!s.el) return;
+        var q = proj(s.v);
+        s.el.style.transform = 'translate(' + q[0].toFixed(1) + 'px,' + q[1].toFixed(1) + 'px) translate(-50%,-100%) translateY(3px)';
+        var hw = s.hw || 0;
+        s.el.style.opacity = q[2] < .12 || q[1] > H - 8 || q[0] - hw < 8 || q[0] + hw > W - 8 ? 0 : 1;
+      });
+    }
+    // pin = channel, result, country
+    function tagHtml(s){
+      var ic = icons[s.plat] || '';
+      var res = Math.random() < .5 ? '+1 FTD' : '+$' + pick(AMOUNTS);
+      return '<span class="tag"><i>' + ic + '</i><b>' + res + '</b><em>' + s.name + '</em></span>';
+    }
+    function pinEl(s){
+      var el = document.createElement('div'); el.className = 'pin';
+      el.innerHTML = '<div class="pin-in">' + tagHtml(s) + '<span class="stem"></span><span class="dot"></span></div>';
+      return el;
+    }
+    // keep pins from stacking on each other
+    // tags hang above their point: about 150px wide, 64px tall with the stem
+    function near(q){
+      return spots.some(function(o){
+        if (!o.el) return false;
+        var p = proj(o.v);
+        return Math.abs(p[0] - q[0]) < (o.hw || 80) + 88 && Math.abs(q[1] - p[1]) < 88;
+      });
+    }
+    function spawn(){
+      var shown = spots.filter(function(s){ return s.el; }).length;
+      if (shown >= 4) return;
+      var free = spots.filter(function(s){ if (s.el) return false; var q = proj(s.v); return q[2] > .45 && q[1] > 64 && q[1] < H - 24 && Math.abs(q[0] - X0) < R * .75 && q[0] > 96 && q[0] < W - 140 && !near(q); });
+      if (!free.length) return;
+      var s = pick(free);
+      nextPlat(s);
+      s.el = pinEl(s); box.appendChild(s.el);
+      s.hw = s.el.offsetWidth / 2; draw();
+      if (reduce) return;
+      setTimeout(function(){
+        s.el.classList.add('out');
+        setTimeout(function(){ s.el.remove(); s.el = null; }, 400);
+      }, 2600 + Math.random() * 1200);
+    }
+    size();
+    new ResizeObserver(function(){ size(); draw(); }).observe(box);
+    if (reduce){ draw(); for (i = 0; i < 3; i++) spawn(); return; }
+    var acc = 0;
+    loopWhileVisible(box, function(dt){
+      rot += dt * 2 * Math.PI / 60000;
+      acc += dt; if (acc > 700){ acc = 0; spawn(); }
+      draw();
+    });
+  })();
+
+  // platform feed: one campaign, comments landing from every channel
+  (function(){
+    var box = document.querySelector('.feed');
+    if (!box) return;
+    var ol = box.querySelector('ol');
+    var msgs = [
+      ['Twitch', 'lucas_br', 'code worked, bonus is already on my account'],
+      ['Kick', 'mxspins', 'which casino is this?'],
+      ['YouTube', 'Deniz K.', 'watched the full review, signing up'],
+      ['Telegram', 'crypto_ae', 'link from the post, deposited'],
+      ['Instagram', 'ana.lima', 'saw it in your stories, trying tonight'],
+      ['Twitch', 'kuba_pl', 'gg, first deposit done'],
+      ['Kick', 'santi.ar', 'promo still active?'],
+      ['YouTube', 'Rahul M.', 'is the code valid in India?'],
+      ['Telegram', 'trader_kz', 'new listing from the channel, in'],
+      ['Instagram', 'nina.es', 'link in bio worked'],
+      ['Twitch', 'jp_neko', 'joined from the stream'],
+      ['Kick', 'manila_bet', 'free spins landed, thanks'],
+      ['YouTube', 'Lukas', 'how do I claim the welcome bonus?'],
+      ['Telegram', 'vn_holder', 'connected the wallet, smooth']
+    ];
+    var n = 0;
+    function item(m, anim){
+      var li = document.createElement('li'); li.className = 'msg' + (anim ? ' new' : '');
+      li.innerHTML = '<span class="ic">' + (icons[m[0]] || '') + '</span><span><b>' + m[1] + '</b>' + m[2] + '</span>';
+      return li;
+    }
+    function push(anim){
+      var olds = [].slice.call(ol.children), tops = olds.map(function(el){ return el.getBoundingClientRect().top; });
+      ol.appendChild(item(msgs[n++ % msgs.length], anim));
+      if (anim) olds.forEach(function(el, k){
+        var d = tops[k] - el.getBoundingClientRect().top;
+        el.style.transition = 'none'; el.style.transform = 'translateY(' + d + 'px)';
+        void el.offsetWidth;
+        el.style.transition = 'transform .45s cubic-bezier(.2,.8,.2,1)'; el.style.transform = '';
+      });
+      while (ol.children.length > 6) ol.firstElementChild.remove();
+    }
+    for (var k = 0; k < 4; k++) push(false);
+    if (reduce) return;
+    var acc = 0;
+    loopWhileVisible(box, function(dt){ acc += dt; if (acc > 1800){ acc = 0; push(true); } });
+  })();
+
+  // custom dropdowns
+  document.querySelectorAll('[data-dd]').forEach(function(dd){
+    var btn = dd.querySelector('.dd-btn'), list = dd.querySelector('.dd-list'), input = dd.querySelector('input'), opts = [].slice.call(list.children), act = 0;
+    function mark(i){ opts.forEach(function(o, j){ o.classList.toggle('act', j === i); }); act = i; }
+    function open(){ list.hidden = false; btn.setAttribute('aria-expanded', 'true'); mark(Math.max(0, opts.findIndex(function(o){ return o.getAttribute('aria-selected') === 'true'; }))); list.focus(); }
+    function close(focus){ list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focus) btn.focus(); }
+    function pick(i){ opts.forEach(function(o, j){ o.setAttribute('aria-selected', j === i); }); input.value = opts[i].textContent; btn.firstChild.textContent = opts[i].textContent; close(true); }
+    btn.addEventListener('click', function(){ list.hidden ? open() : close(); });
+    btn.addEventListener('keydown', function(e){ if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){ e.preventDefault(); open(); } });
+    opts.forEach(function(o, i){ o.addEventListener('click', function(){ pick(i); }); o.addEventListener('mousemove', function(){ mark(i); }); });
+    list.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowDown'){ e.preventDefault(); mark(Math.min(act + 1, opts.length - 1)); }
+      else if (e.key === 'ArrowUp'){ e.preventDefault(); mark(Math.max(act - 1, 0)); }
+      else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pick(act); }
+      else if (e.key === 'Escape' || e.key === 'Tab'){ close(e.key === 'Escape'); }
+    });
+    document.addEventListener('click', function(e){ if (!dd.contains(e.target) && !list.hidden) close(); });
+  });
+
+  // form: preview only, not connected
+  document.getElementById('form').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var f = ev.target, msg = document.getElementById('form-msg');
+    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Please fill in your name and contact.'; return; }
+    msg.textContent = 'Preview: the form is not connected yet.';
+  });
+
+  // hero background: a field of pins; on the right a person made of fine dots watches a phone
+  (function(){
+    var hero = document.getElementById('hero'), cv = document.getElementById('pins');
+    if (!cv) return;
+    var cx = cv.getContext('2d'), mq = hero.querySelector('.marquee');
+    var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+    function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
+    function smooth(v){ v = clamp(v, 0, 1); return v * v * (3 - 2 * v); }
+    function hash(n){ return (Math.sin(n * 12.9898) * 43758.5453 % 1 + 1) % 1; }
+    function rr(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+
+    // a man in profile facing left, head bowed over a phone held at the chest, headphones round the neck:
+    // a silhouette mask (white, alpha = coverage), cut at mid-thigh; it is inlined so the canvas stays readable from file://
+    // P = centre of the screen (where its light starts), N = the screen's normal, E = eye
+    // NK = neck (the head turns round it), WR = wrist (the hand with the phone turns round it)
+    var FIG = { w: 353, h: 700, cut: 580, top: 0, x0: 0, x1: 353, P: { x: 30, y: 363 }, N: { x: .574, y: -.819 }, E: { x: 127, y: 144 }, NK: { x: 214, y: 186 }, WR: { x: 114, y: 447 } };
+    var MAN = new Image();
+    MAN.src = 'data:image/png;base64,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';
+    function figure(g){ if (MAN.complete && MAN.naturalWidth) g.drawImage(MAN, 0, 0, FIG.w, FIG.h); }
+
+    var W, H, S, C, R, N = 0, ok = false, F, HM;
+    var GX, GY, A0, VX = 0, VY = 0, vx0 = 0, vy0 = 0;
+    var FX, FY, FB, FL, FH, FD, FN = 0, fig = {};
+    // a dense field is drawn once into two layers and only scaled on scroll (no lift under the cursor)
+    var DPR = 1, dense = false, LF = document.createElement('canvas'), LN = document.createElement('canvas');
+    var NB = 112, SX, SY, SZ, BK, ORD, CNT = new Int32Array(NB + 1), cap = 0;
+    // the field: 16 greys; the figure: 16 greys, each in 6 steps towards the screen's lime (lit skin takes the colour)
+    var FILL = [], k;
+    for (k = 0; k < 16; k++) FILL.push('rgba(139,142,148,' + (.03 + .5 * k / 15).toFixed(3) + ')');
+    for (k = 0; k < 96; k++){
+      var t = k % 6 / 5, a = .06 + .58 * (k / 6 | 0) / 15;
+      FILL.push('rgba(' + Math.round(201 - t) + ',' + Math.round(203 + 52 * t) + ',' + Math.round(207 - 161 * t) + ',' + (a + (1 - a) * t * .5).toFixed(3) + ')');
+    }
+
+    function rel(e){ var r = e.getBoundingClientRect(), h = hero.getBoundingClientRect(); return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
+
+    function layout(){
+      if (!matchMedia('(min-width:861px)').matches){ ok = false; cv.style.display = 'none'; return; }
+      W = hero.clientWidth; H = mq.offsetTop; ok = H > 300;
+      cv.style.display = ok ? '' : 'none'; if (!ok) return;
+      var dpr = DPR = Math.min(devicePixelRatio || 1, 2);
+      cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      S = clamp(Math.round(W / 150), 9, 12); C = Math.ceil(W / S) + 1; R = Math.ceil(H / S) + 1; N = C * R;
+      F = W * 1.1; HM = Math.min(110, W * .062);
+
+      // the person stands on the marquee line, right of the headline
+      var ln = 0;
+      hero.querySelectorAll('.hero h1 .ln>span').forEach(function(e){ ln = Math.max(ln, rel(e).r); });
+      var gut = Math.max(32, (W - 1280) / 2), zl = Math.max(ln + 40, W * .56), zr = W - gut;
+      var fw0 = FIG.x1 - FIG.x0, kk = Math.min((H - 96) / (FIG.cut - FIG.top), (W + 56 - zl) / fw0);
+      var left = Math.max(zl, zr - fw0 * kk);
+      fig = { k: kk, l: left - FIG.x0 * kk, t: H - FIG.cut * kk };
+      fig.px = fig.l + FIG.P.x * kk; fig.py = fig.t + FIG.P.y * kk; fig.ex = fig.l + FIG.E.x * kk; fig.ey = fig.t + FIG.E.y * kk;
+      fig.nx = fig.l + FIG.NK.x * kk; fig.ny = fig.t + FIG.NK.y * kk; fig.wx = fig.l + FIG.WR.x * kk; fig.wy = fig.t + FIG.WR.y * kk;
+      fig.cx = left + fw0 * kk / 2; fig.cy = fig.t + FIG.h * kk * .4;
+
+      var ox = (W - (C - 1) * S) / 2;
+      GX = new Float32Array(N); GY = new Float32Array(N); A0 = new Float32Array(N);
+      var rects = [];
+      hero.querySelectorAll('.hero h1 .ln>span, .hero-side').forEach(function(e){ rects.push(rel(e)); });
+
+      // the figure is sampled on a fine grid; the field under it goes quiet so the silhouette reads
+      var FS = 9, fw = Math.ceil(FIG.w * kk / FS), fh = Math.ceil(FIG.h * kk / FS);
+      var hc = document.createElement('canvas'), g = hc.getContext('2d');
+      hc.width = fw; hc.height = fh;
+      g.setTransform(kk / FS, 0, 0, kk / FS, 0, 0); figure(g);
+      var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh);
+      for (var y = 0; y < fh * fw; y++) M[y] = d[y * 4 + 3] / 255;
+      FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FH = new Float32Array(fw * fh); FD = new Float32Array(fw * fh); FN = 0;
+      // a blurred copy of the mask gives each dot a surface normal
+      var B = new Float32Array(fw * fh), T = new Float32Array(fw * fh), u, s;
+      for (y = 0; y < fh; y++) for (var x = 0; x < fw; x++){ for (s = 0, u = -2; u <= 2; u++) s += M[y * fw + clamp(x + u, 0, fw - 1)]; T[y * fw + x] = s / 5; }
+      for (y = 0; y < fh; y++) for (x = 0; x < fw; x++){ for (s = 0, u = -2; u <= 2; u++) s += T[clamp(y + u, 0, fh - 1) * fw + x]; B[y * fw + x] = s / 5; }
+      // walk from a cell towards the screen: leave the own body first, then any body cell in the way is shadow;
+      // the cells walked inside are how deep the dot sits behind its lit edge
+      var dep = 0;
+      function see(x, y, lx, ly, n){
+        var inside = true; dep = 0;
+        for (var d = 1.5; d < n - 1.5; d++){
+          var xx = Math.round(x + lx * d), yy = Math.round(y + ly * d);
+          if (xx < 0 || yy < 0 || xx >= fw || yy >= fh) break;
+          var m = M[yy * fw + xx] > .3;
+          if (inside){ if (m) dep++; else inside = false; } else if (m) return 0;
+        }
+        return 1;
+      }
+      // the screen is a small area light: it shines in a cone along its normal, falls off with the square of the
+      // distance, lights the surfaces turned towards it (lambert on the normal, the flat skin facing the viewer
+      // takes half), fades with depth behind the lit edge and is cut by shadow; no glow in the air.
+      // whatever lies over the screen itself (the thumb) is lit from underneath
+      var lr = 230 * kk, r0 = 150 * kk, nsx = FIG.N.x, nsy = FIG.N.y, sw = 14 * kk / FS;
+      for (y = 0; y < fh; y++) for (x = 0; x < fw; x++){
+        var v = M[y * fw + x]; if (v < .12) continue;
+        var X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2; if (Y > H - 2) continue;
+        var dx = X - fig.px, dy = Y - fig.py, r2 = dx * dx + dy * dy, rr0 = Math.sqrt(r2) + .01, sdx = dx / rr0, sdy = dy / rr0;
+        var lit = .46 + .3 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
+        lit *= 1 - .35 * smooth((Y - (H - 120 * kk)) / (120 * kk));
+        var edge = M[y * fw + x - 1] < .12 || M[y * fw + x + 1] < .12 || (y > 0 && M[(y - 1) * fw + x] < .12);
+        var cs = sdx * nsx + sdy * nsy, cone = cs > 0 ? Math.min(1, cs * cs * 1.1) : 0, light = 0;
+        if (cone > 0){
+          var gx = (x + 1 < fw ? B[y * fw + x + 1] : 0) - (x > 0 ? B[y * fw + x - 1] : 0), gy = (y + 1 < fh ? B[(y + 1) * fw + x] : 0) - (y > 0 ? B[(y - 1) * fw + x] : 0);
+          var gm = Math.sqrt(gx * gx + gy * gy), e = clamp(gm * 6, 0, 1), nd = gm > 1e-4 ? Math.max(0, (gx * sdx + gy * sdy) / gm) : 0;
+          var n = rr0 / FS, px0 = (fig.px - fig.l) / FS, py0 = (fig.py - fig.t) / FS;
+          var vis = see(x, y, -sdx, -sdy, n), deep = Math.exp(-dep / 12);
+          vis += see(x, y, (px0 + nsy * sw - x) / n, (py0 - nsx * sw - y) / n, n) + see(x, y, (px0 - nsy * sw - x) / n, (py0 + nsx * sw - y) / n, n);
+          light = 1.6 * cone / (1 + r2 / (r0 * r0)) * (e * nd + (1 - e) * .5) * deep * vis / 3;
+        }
+        // blend into the field: the edge thins out and dims, no outline
+        var core = B[y * fw + x]; if (hash(x * 7.13 + y * 3.71) > .35 + .65 * core * core) continue;
+        var fx = (X - fig.l) / kk, fy = (Y - fig.t) / kk, hd = Math.sqrt((fx - 60) * (fx - 60) + (fy - 392) * (fy - 392));
+        FH[FN] = smooth(((fx - 150) * -.447 + (fy - 210) * -.894) / 34); FD[FN] = 1 - smooth((hd - 62) / 24);
+        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp(v * lit * (.3 + .7 * core), 0, .75); FL[FN] = Math.min(1, light); FN++;
+      }
+
+      for (var j = 0; j < R; j++) for (var i = 0; i < C; i++){
+        var n = j * C + i, gx = ox + i * S, gy = j * S;
+        GX[n] = gx; GY[n] = gy;
+        var ddx = gx - fig.cx, ddy = gy - fig.cy, RR = fw0 * kk * 1.3;
+        var a = .16 + .4 * Math.exp(-(ddx * ddx + ddy * ddy) / (RR * RR));
+        a *= smooth((gy - 80) / 120) * smooth((H - gy) / 64) * smooth(gx / 48) * smooth((W - gx) / 48);
+        for (var q = 0; q < rects.length; q++){
+          var b = rects[q], ex = gx < b.l ? b.l - gx : gx > b.r ? gx - b.r : 0, ey = gy < b.t ? b.t - gy : gy > b.b ? gy - b.b : 0;
+          a *= .3 + .7 * smooth((Math.sqrt(ex * ex + ey * ey) - 8) / 40);
+        }
+        var mx = Math.floor((gx - fig.l) / FS), my = Math.floor((gy - fig.t) / FS);
+        if (mx >= 0 && my >= 0 && mx < fw && my < fh) a *= 1 - .4 * Math.min(1, M[my * fw + mx] * 2);
+        A0[n] = a;
+      }
+
+      var need = N + FN + 64;
+      if (need > cap){ cap = need; SX = new Float32Array(cap); SY = new Float32Array(cap); SZ = new Float32Array(cap); BK = new Uint8Array(cap); ORD = new Int32Array(cap); }
+      dense = S < 7;
+      if (dense) [[LF, 3, .55, 1], [LN, 1, 1, 1.3]].forEach(function(L){
+        var c = L[0], g = c.getContext('2d'), st = L[1], o = st > 1 ? S / 2 : 0, z = L[3];
+        c.width = cv.width; c.height = cv.height; g.setTransform(dpr, 0, 0, dpr, 0, 0);
+        for (var j = st > 1 ? 1 : 0; j < R; j += st) for (var i = st > 1 ? 1 : 0; i < C; i += st){
+          var n = j * C + i, a = A0[n] * L[2]; if (a < .03) continue;
+          g.fillStyle = FILL[Math.min(15, (st > 1 ? a : a * 1.6) * 15.99 | 0)]; g.fillRect(GX[n] + o - z / 2, GY[n] + o - z / 2, z, z);
+        }
+      });
+      vx0 = W * .5; vy0 = H * .35;
+      VX = vx0; VY = vy0;
+    }
+
+    // single acid dots drift from the screen up to the eye, slowly, one after another
+    var NP = 10, LIFE = 3.6;
+    function stream(){
+      var dx = mo.ex - mo.px, dy = mo.ey - mo.py, len = Math.sqrt(dx * dx + dy * dy), nx = dy / len, ny = -dx / len;
+      var appear = Math.min(1, tm / 2);
+      cx.fillStyle = '#C8FF2E';
+      for (var i = 0; i < NP; i++){
+        var ph = tm + i * LIFE / NP, cyc = Math.floor(ph / LIFE), t = reduce ? (i + .5) / NP : ph / LIFE - cyc;
+        var r1 = hash(i * 7.13 + cyc * 3.71), r2 = hash(i * 1.97 + cyc * 9.12), r3 = hash(i * 4.4 + cyc * 2.3);
+        var sx = mo.px + (r1 - .5) * 22 * fig.k, sy = mo.py + (r2 - .5) * 40 * fig.k;
+        var ex = mo.ex + (r2 - .5) * 10 * fig.k, ey = mo.ey + (r3 - .5) * 10 * fig.k;
+        // the path bows out in front of the face
+        var bw = (20 + 40 * r3) * fig.k, mx = (sx + ex) / 2 + nx * bw, my = (sy + ey) / 2 + ny * bw, u = 1 - t;
+        var x = u * u * sx + 2 * u * t * mx + t * t * ex, y = u * u * sy + 2 * u * t * my + t * t * ey;
+        cx.globalAlpha = Math.sin(Math.PI * t) * .75 * appear;
+        cx.fillRect(x - 1.25, y - 1.25, 2.5, 2.5);
+      }
+      cx.globalAlpha = 1;
+    }
+
+    // body language: breathing, small nods while reading, a thumb flick every few seconds (the screen light blinks),
+    // and now and then a glance up from the phone
+    var mo = { a: 0, h: 0, br: 0, fl: 0, px: 0, py: 0, ex: 0, ey: 0 };
+    function pulse(t, a, b, c){ return smooth((t - a) / .5) * (1 - smooth((t - b) / c)); }
+    function motion(){
+      var t = reduce ? 0 : tm, k = fig.k;
+      mo.br = Math.sin(t * Math.PI * 2 / 4.2) * 1.6 * k;
+      var gl = t % 13, up = pulse(gl, 8, 10.4, .9);
+      mo.a = (Math.sin(t * 1.3) * .6 + Math.sin(t * 2.9) * .3 + up * 6) * Math.PI / 180;
+      var fk = (t + .7) % 2.8, flick = fk < 1 ? Math.sin(Math.min(1, fk / .18) * Math.PI / 2) * Math.exp(-fk * 5) : 0;
+      mo.h = (-1.8 * flick + Math.sin(t * .9) * .4) * Math.PI / 180;
+      mo.fl = 1 + .35 * flick - .4 * up;
+      var c = Math.cos(mo.a), s = Math.sin(mo.a), dx = fig.ex - fig.nx, dy = fig.ey - fig.ny;
+      mo.ex = fig.nx + c * dx - s * dy; mo.ey = fig.ny + s * dx + c * dy - mo.br;
+      c = Math.cos(mo.h); s = Math.sin(mo.h); dx = fig.px - fig.wx; dy = fig.py - fig.wy;
+      mo.px = fig.wx + c * dx - s * dy; mo.py = fig.wy + s * dx + c * dy - mo.br * .5;
+    }
+    var tm = 0, px = -1e4, py = -1e4, bx = -1e4, by = -1e4, bump = 0, sp = 0;
+    function paint(){
+      if (!ok) return;
+      // parallax: the vanishing point follows the scroll, near and far layers slide against each other
+      sp += (Math.min(scrollY, H) - sp) * .12;
+      var tx = vx0, ty = vy0 - sp * 1.4;
+      VX += (tx - VX) * .1; VY += (ty - VY) * .1;
+      bx += (px - bx) * .2; by += (py - by) * .2;
+      var m = 0, n, i, j;
+      var kf = F / (F + HM * 6), kn = F / (F - HM * .9);
+      if (!dense) for (j = 1; j < R; j += 3) for (i = 1; i < C; i += 3){
+        n = j * C + i; var fa = A0[n] * .55; if (fa < .03) continue;
+        SX[m] = VX + (GX[n] + S / 2 - VX) * kf; SY[m] = VY + (GY[n] + S / 2 - VY) * kf; SZ[m] = 1; BK[m] = Math.min(15, fa * 15.99 | 0); m++;
+      }
+      if (!dense) for (n = 0; n < N; n++){
+        var a = A0[n]; if (a < .03) continue;
+        var dx = GX[n] - bx, dy = GY[n] - by, b = bump * .22 * Math.exp(-(dx * dx + dy * dy) / 5600);
+        var kk = kn * F / (F - b * HM);
+        SX[m] = VX + (GX[n] - VX) * kk; SY[m] = VY + (GY[n] - VY) * kk; SZ[m] = 1.3 + b * 2;
+        BK[m] = Math.min(15, (a * 1.6 + b) * 15.99 | 0); m++;
+      }
+      // the figure breathes a little; under the cursor its dots part slightly
+      var hv = bump * fig.k; motion();
+      var ca = Math.cos(mo.a), sa = Math.sin(mo.a), ch = Math.cos(mo.h), shh = Math.sin(mo.h), bot = fig.t + FIG.cut * fig.k;
+      for (n = 0; n < FN; n++){
+        var sh = .88 + .12 * Math.sin(tm * 1.4 + FX[n] * .04 + FY[n] * .03), v = FB[n] * sh;
+        var x = FX[n], y = FY[n], w = FH[n], dx, dy;
+        if (w > 0){ dx = x - fig.nx; dy = y - fig.ny; x += (fig.nx + ca * dx - sa * dy - x) * w; y += (fig.ny + sa * dx + ca * dy - y) * w; }
+        w = FD[n];
+        if (w > 0){ dx = x - fig.wx; dy = y - fig.wy; x += (fig.wx + ch * dx - shh * dy - x) * w; y += (fig.wy + shh * dx + ch * dy - y) * w; }
+        // the chest and everything above it rise with the breath
+        y -= mo.br * clamp((bot - FY[n]) / (bot - fig.t), 0, 1);
+        if (hv > .01){
+          var ddx = x - bx, ddy = y - by, r2 = ddx * ddx + ddy * ddy;
+          if (r2 < 40000){ var r = Math.sqrt(r2) + .01, f = 7 * hv * Math.exp(-r2 / 9000); x += ddx / r * f; y += ddy / r * f; }
+        }
+        // lit skin gets brighter, bigger and takes the screen's colour
+        var lt = Math.min(1, FL[n] * mo.fl);
+        SX[m] = x; SY[m] = y; SZ[m] = 1.3 + (v + lt * .5) * 1.1;
+        BK[m] = 16 + Math.min(15, (v * 1.25 + lt * .8) * 15.99 | 0) * 6 + Math.min(5, lt * 6 | 0); m++;
+      }
+      cx.clearRect(0, 0, W, H);
+      if (dense) [[LF, kf], [LN, kn]].forEach(function(L){
+        cx.setTransform(DPR * L[1], 0, 0, DPR * L[1], DPR * VX * (1 - L[1]), DPR * VY * (1 - L[1])); cx.drawImage(L[0], 0, 0, W, H);
+        cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      });
+      CNT.fill(0);
+      for (i = 0; i < m; i++) CNT[BK[i] + 1]++;
+      for (var q = 1; q <= NB; q++) CNT[q] += CNT[q - 1];
+      for (i = 0; i < m; i++) ORD[CNT[BK[i]]++] = i;
+      for (q = 0; q < NB; q++){
+        var s0 = q ? CNT[q - 1] : 0, s1 = CNT[q]; if (s0 === s1) continue;
+        cx.fillStyle = FILL[q];
+        for (i = s0; i < s1; i++){ var o = ORD[i], z = SZ[o]; cx.fillRect(SX[o] - z / 2, SY[o] - z / 2, z, z); }
+      }
+      stream();
+      cv.classList.add('on');
+    }
+
+    layout();
+    if (!MAN.complete) MAN.onload = function(){ layout(); paint(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ layout(); paint(); });
+    var rz; addEventListener('resize', function(){ cancelAnimationFrame(rz); rz = requestAnimationFrame(function(){ layout(); paint(); }); });
+    if (reduce){ paint(); return; }
+
+    if (fine){
+      hero.addEventListener('pointermove', function(e){
+        var r = cv.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top;
+        if (bx < -1e3){ bx = px; by = py; }
+      });
+      hero.addEventListener('pointerleave', function(){ px = py = -1e4; });
+    }
+    var last = 0, running = false, on = true, vis = true;
+    function frame(now){
+      if (!on){ running = false; return; }
+      var dt = Math.min(.05, (now - last) / 1000) || .016; last = now; tm += dt;
+      var near = py > 0 && py < H ? 1 : 0;
+      bump += (near - bump) * .08;
+      paint();
+      requestAnimationFrame(frame);
+    }
+    function sync(){ on = ok && vis && document.visibilityState !== 'hidden'; if (on && !running){ running = true; last = performance.now(); requestAnimationFrame(frame); } }
+    new IntersectionObserver(function(es){ vis = es[0].isIntersecting; sync(); }).observe(hero);
+    document.addEventListener('visibilitychange', sync);
+    addEventListener('resize', sync);
+    sync();
+  })();
+})();
+
+/* ROAS: накопленные депозиты против расходов на $1 бюджета */
+(function(){
+  var box = document.querySelector('.roas-plot'); if(!box) return;
+  var svg = box.querySelector('svg'), tip = box.querySelector('.roas-tip');
+  var NS = 'http://www.w3.org/2000/svg';
+  var dep = [0,.03,.08,.16,.28,.45,.66,.9,1.22,1.6,2];
+  var n = dep.length - 1, ymax = 2.2;
+  var phases = ['Launch','Testing','Optimization','Scale'];
+  var W, H, top = 8, bot = 28, cur = n;
+  function X(i){ return i / n * W; }
+  function Y(v){ return top + (1 - v / ymax) * (H - top - bot); }
+  function spend(i){ return i / n; }
+  function curve(pts){
+    var d = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for(var i = 0; i < pts.length - 1; i++){
+      var p0 = pts[i-1] || pts[i], p1 = pts[i], p2 = pts[i+1], p3 = pts[i+2] || p2;
+      d += 'C' + (p1[0] + (p2[0]-p0[0])/6) + ' ' + (p1[1] + (p2[1]-p0[1])/6) + ' ' +
+           (p2[0] - (p3[0]-p1[0])/6) + ' ' + (p2[1] - (p3[1]-p1[1])/6) + ' ' + p2[0] + ' ' + p2[1];
+    }
+    return d;
+  }
+  function el(tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for(var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e); return e;
+  }
+  var xh, hd, hs;
+  function draw(){
+    W = box.clientWidth; H = box.clientHeight; if(!W) return;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = '<defs><linearGradient id="roas-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8FF2E" stop-opacity=".32"/><stop offset="1" stop-color="#C8FF2E" stop-opacity=".04"/></linearGradient>' +
+      '<pattern id="roas-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#4A4D53" stroke-width="1.5"/></pattern></defs>';
+    [0,1,2].forEach(function(v){
+      el('line', {'class':'grid', x1:0, x2:W, y1:Y(v)+.5, y2:Y(v)+.5});
+    });
+    phases.forEach(function(t, i){
+      el('text', {'class':'ph', x:i / (phases.length - 1) * W, y:H - 4,
+        'text-anchor': i == 0 ? 'start' : i == phases.length - 1 ? 'end' : 'middle'}).textContent = t;
+    });
+    var dp = dep.map(function(v, i){ return [X(i), Y(v)]; });
+    var dpath = curve(dp);
+    var sLine = 'M0 ' + Y(0) + 'L' + W + ' ' + Y(1);
+    var g = el('g', {'class':'draw'});
+    var cid = 'roas-up', cid2 = 'roas-dn';
+    var defs = svg.querySelector('defs');
+    var c1 = el('clipPath', {id:cid}, defs); el('path', {d:sLine + 'V-40H0Z'}, c1);
+    var c2 = el('clipPath', {id:cid2}, defs); el('path', {d:sLine + 'V' + (H + 40) + 'H0Z'}, c2);
+    var band = dpath + 'L' + W + ' ' + Y(1) + 'L0 ' + Y(0) + 'Z';
+    el('path', {'class':'gain', d:band, 'clip-path':'url(#' + cid + ')'}, g);
+    el('path', {'class':'loss', d:band, 'clip-path':'url(#' + cid2 + ')'}, g);
+    el('path', {'class':'sp', d:sLine}, g);
+    el('path', {'class':'dp', d:dpath}, g);
+    // точка окупаемости: где депозиты догоняют расходы
+    var k = 1; while(k < n && dep[k] < spend(k)) k++;
+    var a0 = dep[k-1] - spend(k-1), a1 = dep[k] - spend(k), f = a0 / (a0 - a1);
+    var bx = X(k - 1 + f), by = Y(spend(k - 1 + f));
+    var be = el('g', {'class':'be late'});
+    el('circle', {cx:bx, cy:by, r:5}, be);
+    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Break-even';
+    var hov = el('g', {'class':'late'});
+    xh = el('line', {'class':'xh', y1:top, y2:H - bot}, hov);
+    hs = el('circle', {'class':'hs', r:5}, hov);
+    hd = el('circle', {'class':'hd', r:6}, hov);
+    pulse = el('circle', {'class':'pulse', r:6}, hov);
+    show(cur);
+  }
+  var pulse;
+  function show(i){
+    cur = i;
+    var x = X(i), y = Y(dep[i]);
+    xh.setAttribute('x1', x); xh.setAttribute('x2', x);
+    hd.setAttribute('cx', x); hd.setAttribute('cy', y);
+    pulse.setAttribute('cx', x); pulse.setAttribute('cy', y);
+    pulse.style.display = i == n ? '' : 'none';
+    hs.setAttribute('cx', x); hs.setAttribute('cy', Y(spend(i)));
+    hs.style.display = i ? '' : 'none';
+    var r = i ? Math.round(dep[i] / spend(i) * 100) : 0;
+    var ph = phases[Math.min(phases.length - 1, Math.round(i / n * (phases.length - 1)))];
+    tip.innerHTML = '<b>' + r + '%</b><span>' + ph + '</span>';
+    var tw = tip.offsetWidth / 2;
+    tip.style.left = Math.max(tw, Math.min(W - tw, x)) + 'px';
+    tip.style.top = Math.min(y, Y(spend(i))) + 'px';
+  }
+  function pick(e){
+    var r = box.getBoundingClientRect();
+    var i = Math.round((e.clientX - r.left) / r.width * n);
+    i = Math.max(1, Math.min(n, i)); if(i != cur) show(i);
+  }
+  box.addEventListener('pointermove', pick);
+  box.addEventListener('pointerdown', pick);
+  box.addEventListener('pointerleave', function(){ show(n); });
+  new ResizeObserver(draw).observe(box);
+})();
+</script>
+</body>
+</html>
