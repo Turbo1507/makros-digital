@@ -971,7 +971,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         var v = M[y * fw + x]; if (v < .12) continue;
         var X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2; if (Y > H - 2) continue;
         var dx = X - fig.px, dy = Y - fig.py, r2 = dx * dx + dy * dy, rr0 = Math.sqrt(r2) + .01, sdx = dx / rr0, sdy = dy / rr0;
-        var lit = .66 + .34 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
+        var lit = .46 + .3 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
         lit *= 1 - .35 * smooth((Y - (H - 120 * kk)) / (120 * kk));
         var edge = M[y * fw + x - 1] < .12 || M[y * fw + x + 1] < .12 || (y > 0 && M[(y - 1) * fw + x] < .12);
         var cs = sdx * nsx + sdy * nsy, cone = cs > 0 ? Math.min(1, cs * cs * 1.1) : 0, light = 0;
@@ -983,7 +983,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           vis += see(x, y, (px0 + nsy * sw - x) / n, (py0 - nsx * sw - y) / n, n) + see(x, y, (px0 - nsy * sw - x) / n, (py0 + nsx * sw - y) / n, n);
           light = 1.6 * cone / (1 + r2 / (r0 * r0)) * (e * nd + (1 - e) * .5) * deep * vis / 3;
         }
-        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp(v * lit + (edge ? .16 : 0), 0, .9); FL[FN] = Math.min(1, light); FN++;
+        // blend into the field: the edge thins out and dims, no outline
+        var core = B[y * fw + x]; if (hash(x * 7.13 + y * 3.71) > .35 + .65 * core * core) continue;
+        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp(v * lit * (.3 + .7 * core), 0, .75); FL[FN] = Math.min(1, light); FN++;
       }
 
       for (var j = 0; j < R; j++) for (var i = 0; i < C; i++){
@@ -997,7 +999,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           a *= .3 + .7 * smooth((Math.sqrt(ex * ex + ey * ey) - 8) / 40);
         }
         var mx = Math.floor((gx - fig.l) / FS), my = Math.floor((gy - fig.t) / FS);
-        if (mx >= 0 && my >= 0 && mx < fw && my < fh) a *= 1 - .85 * Math.min(1, M[my * fw + mx] * 2);
+        if (mx >= 0 && my >= 0 && mx < fw && my < fh) a *= 1 - .4 * Math.min(1, M[my * fw + mx] * 2);
         A0[n] = a;
       }
 
