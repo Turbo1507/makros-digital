@@ -946,6 +946,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       g.setTransform(kk / FS, 0, 0, kk / FS, 0, 0); figure(g);
       var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh);
       for (var y = 0; y < fh * fw; y++) M[y] = d[y * 4 + 3] / 255;
+      fig.M = M; fig.fw = fw; fig.fh = fh; fig.fs = FS;
       FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FH = new Float32Array(fw * fh); FD = new Float32Array(fw * fh); FT = new Float32Array(fw * fh); FN = 0;
       // a blurred copy of the mask gives each dot a surface normal
       var B = new Float32Array(fw * fh), T = new Float32Array(fw * fh), u, s;
@@ -970,8 +971,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       // whatever lies over the screen itself (the thumb) is lit from underneath
       var lr = 230 * kk, r0 = 150 * kk, nsx = FIG.N.x, nsy = FIG.N.y, sw = 14 * kk / FS;
       for (y = 0; y < fh; y++) for (x = 0; x < fw; x++){
-        var v = M[y * fw + x]; if (v < .12) continue;
-        var X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2; if (Y > H - 2) continue;
+        var v = M[y * fw + x], X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2;
+        var zx = (X - fig.l) / kk, zy = (Y - fig.t) / kk, zone = zx > 36 && zx < 108 && zy > 348 && zy < 394;
+        if ((v < .12 && !zone) || Y > H - 2) continue;
         var dx = X - fig.px, dy = Y - fig.py, r2 = dx * dx + dy * dy, rr0 = Math.sqrt(r2) + .01, sdx = dx / rr0, sdy = dy / rr0;
         var lit = .46 + .3 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
         lit *= 1 - .35 * smooth((Y - (H - 120 * kk)) / (120 * kk));
@@ -986,11 +988,11 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           light = 1.6 * cone / (1 + r2 / (r0 * r0)) * (e * nd + (1 - e) * .5) * deep * vis / 3;
         }
         // blend into the field: the edge thins out and dims, no outline
-        var core = B[y * fw + x]; if (hash(x * 7.13 + y * 3.71) > .35 + .65 * core * core) continue;
+        var core = B[y * fw + x]; if (!zone && hash(x * 7.13 + y * 3.71) > .35 + .65 * core * core) continue;
         var fx = (X - fig.l) / kk, fy = (Y - fig.t) / kk, hd = Math.sqrt((fx - 60) * (fx - 60) + (fy - 392) * (fy - 392));
         FH[FN] = smooth(((fx - 150) * -.447 + (fy - 210) * -.894) / 34); FD[FN] = 1 - smooth((hd - 62) / 24);
-        FT[FN] = fx > 50 ? smooth((104 - fx) / 6) * smooth((386 - fy) / 2) * smooth((fy - 366) / 4) : 0;
-        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp(v * lit * (.3 + .7 * core), 0, .75); FL[FN] = Math.min(1, light); FN++;
+        FT[FN] = zone ? 1 : 0;
+        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp((zone ? 1 : v) * lit * (.3 + .7 * (zone ? Math.max(core, .8) : core)), 0, .75); FL[FN] = Math.min(1, light); FN++;
       }
 
       for (var j = 0; j < R; j++) for (var i = 0; i < C; i++){
@@ -1043,6 +1045,12 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var mo = { a: 0, h: 0, te: 0, tl: 0, br: 0, fl: 0, px: 0, py: 0, ex: 0, ey: 0 };
     function pulse(t, a, b, c){ return smooth((t - a) / .5) * (1 - smooth((t - b) / c)); }
     // one swipe: the tip pushes up the screen fast, then comes back lifted off the glass; s = along, l = lift
+    function thumbW(fx, fy){ return fx > 50 ? smooth((104 - fx) / 6) * smooth((386 - fy) / 2) * smooth((fy - 366) / 4) : 0; }
+    function maskAt(fx, fy){
+      var gx = fx * fig.k / fig.fs - .5, gy = fy * fig.k / fig.fs - .5, x0 = Math.floor(gx), y0 = Math.floor(gy), u = gx - x0, v = gy - y0;
+      function m(x, y){ return x < 0 || y < 0 || x >= fig.fw || y >= fig.fh ? 0 : fig.M[y * fig.fw + x]; }
+      return (m(x0, y0) * (1 - u) + m(x0 + 1, y0) * u) * (1 - v) + (m(x0, y0 + 1) * (1 - u) + m(x0 + 1, y0 + 1) * u) * v;
+    }
     function swipe(f){
       if (f < 0 || f > .8) return { s: 0, l: 0 };
       if (f < .24) return { s: smooth(f / .24), l: 0 };
@@ -1097,9 +1105,14 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         var sh = .88 + .12 * Math.sin(tm * 1.4 + FX[n] * .04 + FY[n] * .03), v = FB[n] * sh;
         var x = FX[n], y = FY[n], w = FT[n], dx, dy;
         if (w > 0){
-          dx = x - fig.tx; dy = y - fig.ty; var al = (-.75 * dx - .67 * dy) * mo.te;
-          dx += -.75 * al; dy += -.67 * al;
-          x += (fig.tx + cl * dx - sl * dy - x) * w; y += (fig.ty + sl * dx + cl * dy - y) * w;
+          // the thumb dots stay on the grid: each shows the hand under it (the palm fills the lower half) plus the
+          // moved thumb read back from the mask through the inverse stretch and lift, so nothing tears
+          var fx = (x - fig.l) / fig.k, fy = (y - fig.t) / fig.k;
+          dx = fx - FIG.TH.x; dy = fy - FIG.TH.y; var rx = cl * dx + sl * dy, ry = -sl * dx + cl * dy, al = (-.75 * rx - .67 * ry) * mo.te / (1 + mo.te);
+          rx += .75 * al; ry += .67 * al;
+          var sx = FIG.TH.x + rx, sy = FIG.TH.y + ry;
+          var cov = Math.min(1, maskAt(fx, fy) * (1 - thumbW(fx, fy) * (1 - smooth((fy - 370) / 8))) + maskAt(sx, sy) * thumbW(sx, sy));
+          v *= clamp((cov - .12) / .5, 0, 1); if (v < .01 || hash(FX[n] * 1.78 + FY[n] * .93) > .35 + .65 * cov * cov) continue;
         }
         w = FH[n];
         if (w > 0){ dx = x - fig.nx; dy = y - fig.ny; x += (fig.nx + ca * dx - sa * dy - x) * w; y += (fig.ny + sa * dx + ca * dy - y) * w; }
