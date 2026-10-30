@@ -971,7 +971,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var mc = document.createElement('canvas'), mw = Math.ceil(W / 8), mh = Math.ceil(H / 8), mg = mc.getContext('2d', { willReadFrequently: true });
       mc.width = mw; mc.height = mh; mg.filter = 'blur(10px)'; mg.drawImage(MAN, fig.l / 8, fig.t / 8, FIG.w * kk / 8, FIG.h * kk / 8);
       var md = mg.getImageData(0, 0, mw, mh).data;
-      hero.manFade = function(x, y){ x = clamp(x / 8 | 0, 0, mw - 1); y = clamp(y / 8 | 0, 0, mh - 1); return 1 - smooth(md[(y * mw + x) * 4 + 3] / 255 * 2.5); };
+      hero.manFade = function(x, y){ x = clamp(x / 8 | 0, 0, mw - 1); y = clamp(y / 8 | 0, 0, mh - 1); return 1 - .9 * smooth(md[(y * mw + x) * 4 + 3] / 255 * 2.5); };
 
       var ox = (W - (C - 1) * S) / 2;
       GX = new Float32Array(N); GY = new Float32Array(N); A0 = new Float32Array(N);
