@@ -903,7 +903,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var FX, FY, FB, FL, FD, FT, FN = 0, fig = {};
     // a dense field is drawn once into two layers and only scaled on scroll (no lift under the cursor)
     var DPR = 1, dense = false, LF = document.createElement('canvas'), LN = document.createElement('canvas'), LG = document.createElement('canvas');
-    var NB = 112, SX, SY, SZ, BK, ORD, CNT = new Int32Array(NB + 1), cap = 0;
+    var NB = 128, SX, SY, SZ, BK, ORD, CNT = new Int32Array(NB + 1), cap = 0;
     // the field: 16 greys; the figure: 16 greys, each in 6 steps towards the screen's lime (lit skin takes the colour)
     var FILL = [], k;
     for (k = 0; k < 16; k++) FILL.push('rgba(139,142,148,' + (.03 + .5 * k / 15).toFixed(3) + ')');
@@ -911,6 +911,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var t = k % 6 / 5, a = .06 + .58 * (k / 6 | 0) / 15;
       FILL.push('rgba(' + Math.round(201 - t) + ',' + Math.round(203 + 52 * t) + ',' + Math.round(207 - 161 * t) + ',' + (a + (1 - a) * t * .5).toFixed(3) + ')');
     }
+    // 112..127: pure lime from almost nothing, for the light round the cursor laid over the dense field
+    for (k = 0; k < 16; k++) FILL.push('rgba(200,255,46,' + (.02 + .4 * k / 15).toFixed(3) + ')');
 
     function rel(e){ var r = e.getBoundingClientRect(), h = hero.getBoundingClientRect(); return { l: r.left - h.left, t: r.top - h.top, r: r.right - h.left, b: r.bottom - h.top }; }
 
@@ -950,7 +952,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       fig.M = M; fig.CI = CI; fig.fw = fw; fig.fh = fh; fig.fs = FS;
       FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FD = new Float32Array(fw * fh); FT = new Float32Array(fw * fh); FN = 0;
       // a blurred copy of the mask gives each dot a surface normal
-      var B = new Float32Array(fw * fh), T = new Float32Array(fw * fh), u, s;
+      var B = new Float32Array(fw * fh), T = new Float32Array(fw * fh), u, s; fig.B = B;
       for (y = 0; y < fh; y++) for (var x = 0; x < fw; x++){ for (s = 0, u = -2; u <= 2; u++) s += M[y * fw + clamp(x + u, 0, fw - 1)]; T[y * fw + x] = s / 5; }
       for (y = 0; y < fh; y++) for (x = 0; x < fw; x++){ for (s = 0, u = -2; u <= 2; u++) s += T[clamp(y + u, 0, fh - 1) * fw + x]; B[y * fw + x] = s / 5; }
       // walk from a cell towards the screen: leave the own body first, then any body cell in the way is shadow;
@@ -1053,11 +1055,12 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var x = Math.round(fx * fig.k / fig.fs - .5), y = Math.round(fy * fig.k / fig.fs - .5);
       return x < 0 || y < 0 || x >= fig.fw || y >= fig.fh ? -1 : fig.CI[y * fig.fw + x];
     }
+    function hashAt(fx, fy){ return hash(Math.round(fx * fig.k / fig.fs - .5) * 7.13 + Math.round(fy * fig.k / fig.fs - .5) * 3.71); }
     function thumbW(fx, fy){ return fx > 50 ? smooth((104 - fx) / 6) * smooth((386 - fy) / 2) * smooth((fy - 366) / 4) : 0; }
-    function maskAt(fx, fy){
+    function maskAt(fx, fy, A){
       var gx = fx * fig.k / fig.fs - .5, gy = fy * fig.k / fig.fs - .5, x0 = Math.floor(gx), y0 = Math.floor(gy), u = gx - x0, v = gy - y0;
       if (x0 < 0 || y0 < 0 || x0 + 1 >= fig.fw || y0 + 1 >= fig.fh) return 0;
-      var M = fig.M, i = y0 * fig.fw + x0, w = fig.fw;
+      var M = A || fig.M, i = y0 * fig.fw + x0, w = fig.fw;
       return (M[i] * (1 - u) + M[i + 1] * u) * (1 - v) + (M[i + w] * (1 - u) + M[i + w + 1] * u) * v;
     }
     function swipe(f){
@@ -1086,18 +1089,18 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var tm = 0, px = -1e4, py = -1e4, bx = -1e4, by = -1e4, bump = 0, sp = 0, sp0 = 0, glow = 0;
     function paint(){
       if (!ok) return;
-      // parallax: the vanishing point follows the scroll, near and far layers slide against each other
+      // parallax: the far layer lags well behind the page, the near one a little; each slides by its own grid step
       sp += (Math.min(scrollY, H) - sp) * .12;
       glow += (clamp(Math.abs(sp - sp0) / 8, 0, 1) - glow) * .1; sp0 = sp;
-      var oF = sp * .5, oN = sp * .18, gk = Math.min(5, glow * 7 | 0);
-      var tx = vx0, ty = vy0 - sp * 1.4;
+      var oF = sp * .5 % (S * 3), oN = sp * .18 % S, gk = Math.min(3, glow * 5 | 0);
+      var tx = vx0, ty = vy0;
       VX += (tx - VX) * .1; VY += (ty - VY) * .1;
       bx += (px - bx) * .2; by += (py - by) * .2;
       var m = 0, n, i, j;
       var kf = F / (F + HM * 6), kn = F / (F - HM * .9);
       if (!dense) for (j = 1; j < R; j += 3) for (i = 1; i < C; i += 3){
         n = j * C + i; var fa = A0[n] * .55; if (fa < .03) continue;
-        SX[m] = VX + (GX[n] + S / 2 - VX) * kf; SY[m] = VY + (GY[n] + S / 2 - VY) * kf + oF; SZ[m] = 1 + glow * .6;
+        SX[m] = VX + (GX[n] + S / 2 - VX) * kf; SY[m] = VY + (GY[n] + S / 2 - VY) * kf + oF; SZ[m] = 1;
         BK[m] = gk ? 16 + Math.min(15, fa * 1.6 * 15.99 | 0) * 6 + gk : Math.min(15, fa * 15.99 | 0); m++;
       }
       if (!dense) for (n = 0; n < N; n++){
@@ -1105,7 +1108,19 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         var dx = GX[n] - bx, dy = GY[n] - by, b = bump * .22 * Math.exp(-(dx * dx + dy * dy) / 5600);
         var kk = kn * F / (F - b * HM);
         SX[m] = VX + (GX[n] - VX) * kk; SY[m] = VY + (GY[n] - VY) * kk + oN; SZ[m] = 1.3 + b * 2;
-        BK[m] = Math.min(15, (a * 1.6 + b) * 15.99 | 0); m++;
+        var am = bump * Math.exp(-(dx * dx + dy * dy) / 26000);
+        BK[m] = am > .06 ? 16 + Math.min(15, (a * 1.6 + b + am * .3) * 15.99 | 0) * 6 + Math.min(5, am * 6.5 | 0) : Math.min(15, (a * 1.6 + b) * 15.99 | 0); m++;
+      }
+      // dense field: it is a cached picture, so the lime round the cursor goes on top as its own dots
+      if (dense && bump > .05){
+        var i0 = Math.max(0, Math.floor((bx - 380) / S)), i1 = Math.min(C - 1, Math.ceil((bx + 380) / S));
+        var j0 = Math.max(0, Math.floor((by - 380) / S)), j1 = Math.min(R - 1, Math.ceil((by + 380) / S));
+        for (j = j0; j <= j1; j++) for (i = i0; i <= i1; i++){
+          n = j * C + i; var a = A0[n]; if (a < .03) continue;
+          var dx = GX[n] - bx, dy = GY[n] - by, am = bump * Math.exp(-(dx * dx + dy * dy) / 26000); if (am < .05) continue;
+          SX[m] = VX + (GX[n] - VX) * kn; SY[m] = VY + (GY[n] - VY) * kn + oN; SZ[m] = 1.3;
+          BK[m] = 112 + Math.min(15, a * 2.2 * am * 15.99 | 0); m++;
+        }
       }
       // the figure breathes a little; under the cursor its dots part slightly
       var hv = bump * fig.k; motion();
@@ -1114,12 +1129,14 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         var sh = .88 + .12 * Math.sin(tm * 1.4 + FX[n] * .04 + FY[n] * .03), v = FB[n] * sh, lt = FL[n];
         var x = FX[n], y = FY[n], w = FT[n], dx, dy, src;
         if (w == 2){
-          // the head dots stay on the grid too: the body under them plus the head turned round the neck
+          // the head dots stay on the grid too: the body under them plus the head turned round the neck;
+          // the body reaches a little under the head, so the neck fills whatever the head leaves
           var fx = (x - fig.l) / fig.k, fy = (y - fig.t) / fig.k;
           dx = fx - FIG.NK.x; dy = fy - FIG.NK.y;
           var sx = FIG.NK.x + ca * dx + sa * dy, sy = FIG.NK.y - sa * dx + ca * dy, hs = headW(sx, sy);
-          var cov = Math.min(1, maskAt(fx, fy) * (1 - headW(fx, fy)) + maskAt(sx, sy) * hs);
-          if (cov < .13 || hash(FX[n] * 1.78 + FY[n] * .93) > .35 + .65 * cov * cov) continue;
+          var bw = 1 - headW(fx, fy, -18), cov = Math.min(1, maskAt(fx, fy) * bw + maskAt(sx, sy) * hs);
+          var cb = Math.min(1, maskAt(fx, fy, fig.B) * bw + maskAt(sx, sy, fig.B) * hs);
+          if (cov < .13 || (hs > .5 ? hashAt(sx, sy) : hashAt(fx, fy)) > .35 + .65 * cb * cb) continue;
           if (hs > .5 && (src = cellOf(sx, sy)) >= 0){ v = FB[src] * sh; lt = FL[src]; }
           v *= clamp((cov - .12) / .5, 0, 1);
         } else if (w > 0){
@@ -1129,9 +1146,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           dx = fx - FIG.TH.x; dy = fy - FIG.TH.y; var rx = cl * dx + sl * dy, ry = -sl * dx + cl * dy, al = (-.75 * rx - .67 * ry) * mo.te / (1 + mo.te);
           rx += .75 * al; ry += .67 * al;
           var sx = FIG.TH.x + rx, sy = FIG.TH.y + ry;
-          var cov = Math.min(1, maskAt(fx, fy) * (1 - thumbW(fx, fy) * (1 - smooth((fy - 370) / 8))) + maskAt(sx, sy) * thumbW(sx, sy));
+          var bw = 1 - thumbW(fx, fy) * (1 - smooth((fy - 370) / 8)), tw = thumbW(sx, sy);
+          var cov = Math.min(1, maskAt(fx, fy) * bw + maskAt(sx, sy) * tw), cb = Math.min(1, maskAt(fx, fy, fig.B) * bw + maskAt(sx, sy, fig.B) * tw);
           if (thumbW(sx, sy) > .5 && (src = cellOf(sx, sy)) >= 0){ v = FB[src] * sh; lt = FL[src]; }
-          v *= clamp((cov - .12) / .5, 0, 1); if (v < .01 || hash(FX[n] * 1.78 + FY[n] * .93) > .35 + .65 * cov * cov) continue;
+          v *= clamp((cov - .12) / .5, 0, 1); if (v < .01 || (tw > .5 ? hashAt(sx, sy) : hashAt(fx, fy)) > .35 + .65 * cb * cb) continue;
         }
         w = FD[n];
         if (w > 0){ dx = x - fig.wx; dy = y - fig.wy; x += (fig.wx + ch * dx - shh * dy - x) * w; y += (fig.wy + shh * dx + ch * dy - y) * w; }
@@ -1147,7 +1165,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         BK[m] = 16 + Math.min(15, (v * 1.25 + lt * .8) * 15.99 | 0) * 6 + Math.min(5, lt * 6 | 0); m++;
       }
       cx.clearRect(0, 0, W, H);
-      if (dense) [[LF, kf, oF, 1], [LG, kf, oF, glow], [LN, kn, oN, 1]].forEach(function(L){
+      if (dense) [[LF, kf, oF, 1], [LG, kf, oF, glow * .6], [LN, kn, oN, 1]].forEach(function(L){
         if (L[3] < .02) return;
         cx.globalAlpha = L[3]; cx.setTransform(DPR * L[1], 0, 0, DPR * L[1], DPR * VX * (1 - L[1]), DPR * (VY * (1 - L[1]) + L[2])); cx.drawImage(L[0], 0, 0, W, H);
         cx.globalAlpha = 1;
