@@ -900,7 +900,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
     var W, H, S, C, R, N = 0, ok = false, F, HM;
     var GX, GY, A0, VX = 0, VY = 0, vx0 = 0, vy0 = 0;
-    var FX, FY, FB, FL, FH, FD, FT, FN = 0, fig = {};
+    var FX, FY, FB, FL, FD, FT, FN = 0, fig = {};
     // a dense field is drawn once into two layers and only scaled on scroll (no lift under the cursor)
     var DPR = 1, dense = false, LF = document.createElement('canvas'), LN = document.createElement('canvas'), LG = document.createElement('canvas');
     var NB = 112, SX, SY, SZ, BK, ORD, CNT = new Int32Array(NB + 1), cap = 0;
@@ -946,8 +946,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       g.setTransform(kk / FS, 0, 0, kk / FS, 0, 0); figure(g);
       var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh);
       for (var y = 0; y < fh * fw; y++) M[y] = d[y * 4 + 3] / 255;
-      fig.M = M; fig.fw = fw; fig.fh = fh; fig.fs = FS;
-      FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FH = new Float32Array(fw * fh); FD = new Float32Array(fw * fh); FT = new Float32Array(fw * fh); FN = 0;
+      var CI = new Int32Array(fw * fh).fill(-1);
+      fig.M = M; fig.CI = CI; fig.fw = fw; fig.fh = fh; fig.fs = FS;
+      FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FD = new Float32Array(fw * fh); FT = new Float32Array(fw * fh); FN = 0;
       // a blurred copy of the mask gives each dot a surface normal
       var B = new Float32Array(fw * fh), T = new Float32Array(fw * fh), u, s;
       for (y = 0; y < fh; y++) for (var x = 0; x < fw; x++){ for (s = 0, u = -2; u <= 2; u++) s += M[y * fw + clamp(x + u, 0, fw - 1)]; T[y * fw + x] = s / 5; }
@@ -969,10 +970,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       // distance, lights the surfaces turned towards it (lambert on the normal, the flat skin facing the viewer
       // takes half), fades with depth behind the lit edge and is cut by shadow; no glow in the air.
       // whatever lies over the screen itself (the thumb) is lit from underneath
-      var lr = 230 * kk, r0 = 150 * kk, nsx = FIG.N.x, nsy = FIG.N.y, sw = 14 * kk / FS;
+      var lr = 230 * kk, r0 = 150 * kk, rn = 38 * kk, nsx = FIG.N.x, nsy = FIG.N.y, sw = 14 * kk / FS;
       for (y = 0; y < fh; y++) for (x = 0; x < fw; x++){
         var v = M[y * fw + x], X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2;
-        var zx = (X - fig.l) / kk, zy = (Y - fig.t) / kk, zone = zx > 36 && zx < 108 && zy > 348 && zy < 394;
+        var zx = (X - fig.l) / kk, zy = (Y - fig.t) / kk, zone = zx > 36 && zx < 108 && zy > 348 && zy < 394 ? 1 : headW(zx, zy, 60) > 0 ? 2 : 0;
         if ((v < .12 && !zone) || Y > H - 2) continue;
         var dx = X - fig.px, dy = Y - fig.py, r2 = dx * dx + dy * dy, rr0 = Math.sqrt(r2) + .01, sdx = dx / rr0, sdy = dy / rr0;
         var lit = .46 + .3 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
@@ -987,12 +988,13 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           vis += see(x, y, (px0 + nsy * sw - x) / n, (py0 - nsx * sw - y) / n, n) + see(x, y, (px0 - nsy * sw - x) / n, (py0 + nsx * sw - y) / n, n);
           light = 1.6 * cone / (1 + r2 / (r0 * r0)) * (e * nd + (1 - e) * .5) * deep * vis / 3;
         }
+        // right at the screen the phone and the fingers round it are washed in its colour, strongest on the screen side
+        var near = Math.exp(-r2 / (rn * rn)) * (.35 + .65 * Math.max(0, cs)); light += 1.8 * near;
         // blend into the field: the edge thins out and dims, no outline
-        var core = B[y * fw + x]; if (!zone && hash(x * 7.13 + y * 3.71) > .35 + .65 * core * core) continue;
+        var core = B[y * fw + x]; if (!zone && hash(x * 7.13 + y * 3.71) > .35 + .65 * core * core + near) continue;
         var fx = (X - fig.l) / kk, fy = (Y - fig.t) / kk, hd = Math.sqrt((fx - 60) * (fx - 60) + (fy - 392) * (fy - 392));
-        FH[FN] = smooth(((fx - 150) * -.447 + (fy - 210) * -.894) / 34); FD[FN] = 1 - smooth((hd - 62) / 24);
-        FT[FN] = zone ? 1 : 0;
-        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp((zone ? 1 : v) * lit * (.3 + .7 * (zone ? Math.max(core, .8) : core)), 0, .75); FL[FN] = Math.min(1, light); FN++;
+        FD[FN] = 1 - smooth((hd - 62) / 24); FT[FN] = zone; if (zone) CI[y * fw + x] = FN;
+        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp((zone ? 1 : v) * lit * (.3 + .7 * (zone ? Math.max(core, .8) : core)) + .45 * near, 0, .9); FL[FN] = Math.min(1, light); FN++;
       }
 
       for (var j = 0; j < R; j++) for (var i = 0; i < C; i++){
@@ -1045,11 +1047,18 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var mo = { a: 0, h: 0, te: 0, tl: 0, br: 0, fl: 0, px: 0, py: 0, ex: 0, ey: 0 };
     function pulse(t, a, b, c){ return smooth((t - a) / .5) * (1 - smooth((t - b) / c)); }
     // one swipe: the tip pushes up the screen fast, then comes back lifted off the glass; s = along, l = lift
+    // how much of a mask point belongs to the head; pad widens it to every cell the turned head can reach
+    function headW(fx, fy, pad){ return smooth(((fx - 150) * -.447 + (fy - 210) * -.894 + (pad || 0)) / 34); }
+    function cellOf(fx, fy){
+      var x = Math.round(fx * fig.k / fig.fs - .5), y = Math.round(fy * fig.k / fig.fs - .5);
+      return x < 0 || y < 0 || x >= fig.fw || y >= fig.fh ? -1 : fig.CI[y * fig.fw + x];
+    }
     function thumbW(fx, fy){ return fx > 50 ? smooth((104 - fx) / 6) * smooth((386 - fy) / 2) * smooth((fy - 366) / 4) : 0; }
     function maskAt(fx, fy){
       var gx = fx * fig.k / fig.fs - .5, gy = fy * fig.k / fig.fs - .5, x0 = Math.floor(gx), y0 = Math.floor(gy), u = gx - x0, v = gy - y0;
-      function m(x, y){ return x < 0 || y < 0 || x >= fig.fw || y >= fig.fh ? 0 : fig.M[y * fig.fw + x]; }
-      return (m(x0, y0) * (1 - u) + m(x0 + 1, y0) * u) * (1 - v) + (m(x0, y0 + 1) * (1 - u) + m(x0 + 1, y0 + 1) * u) * v;
+      if (x0 < 0 || y0 < 0 || x0 + 1 >= fig.fw || y0 + 1 >= fig.fh) return 0;
+      var M = fig.M, i = y0 * fig.fw + x0, w = fig.fw;
+      return (M[i] * (1 - u) + M[i + 1] * u) * (1 - v) + (M[i + w] * (1 - u) + M[i + w + 1] * u) * v;
     }
     function swipe(f){
       if (f < 0 || f > .8) return { s: 0, l: 0 };
@@ -1102,9 +1111,18 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var hv = bump * fig.k; motion();
       var cl = Math.cos(mo.tl), sl = Math.sin(mo.tl), ca = Math.cos(mo.a), sa = Math.sin(mo.a), ch = Math.cos(mo.h), shh = Math.sin(mo.h), bot = fig.t + FIG.cut * fig.k;
       for (n = 0; n < FN; n++){
-        var sh = .88 + .12 * Math.sin(tm * 1.4 + FX[n] * .04 + FY[n] * .03), v = FB[n] * sh;
-        var x = FX[n], y = FY[n], w = FT[n], dx, dy;
-        if (w > 0){
+        var sh = .88 + .12 * Math.sin(tm * 1.4 + FX[n] * .04 + FY[n] * .03), v = FB[n] * sh, lt = FL[n];
+        var x = FX[n], y = FY[n], w = FT[n], dx, dy, src;
+        if (w == 2){
+          // the head dots stay on the grid too: the body under them plus the head turned round the neck
+          var fx = (x - fig.l) / fig.k, fy = (y - fig.t) / fig.k;
+          dx = fx - FIG.NK.x; dy = fy - FIG.NK.y;
+          var sx = FIG.NK.x + ca * dx + sa * dy, sy = FIG.NK.y - sa * dx + ca * dy, hs = headW(sx, sy);
+          var cov = Math.min(1, maskAt(fx, fy) * (1 - headW(fx, fy)) + maskAt(sx, sy) * hs);
+          if (cov < .13 || hash(FX[n] * 1.78 + FY[n] * .93) > .35 + .65 * cov * cov) continue;
+          if (hs > .5 && (src = cellOf(sx, sy)) >= 0){ v = FB[src] * sh; lt = FL[src]; }
+          v *= clamp((cov - .12) / .5, 0, 1);
+        } else if (w > 0){
           // the thumb dots stay on the grid: each shows the hand under it (the palm fills the lower half) plus the
           // moved thumb read back from the mask through the inverse stretch and lift, so nothing tears
           var fx = (x - fig.l) / fig.k, fy = (y - fig.t) / fig.k;
@@ -1112,10 +1130,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           rx += .75 * al; ry += .67 * al;
           var sx = FIG.TH.x + rx, sy = FIG.TH.y + ry;
           var cov = Math.min(1, maskAt(fx, fy) * (1 - thumbW(fx, fy) * (1 - smooth((fy - 370) / 8))) + maskAt(sx, sy) * thumbW(sx, sy));
+          if (thumbW(sx, sy) > .5 && (src = cellOf(sx, sy)) >= 0){ v = FB[src] * sh; lt = FL[src]; }
           v *= clamp((cov - .12) / .5, 0, 1); if (v < .01 || hash(FX[n] * 1.78 + FY[n] * .93) > .35 + .65 * cov * cov) continue;
         }
-        w = FH[n];
-        if (w > 0){ dx = x - fig.nx; dy = y - fig.ny; x += (fig.nx + ca * dx - sa * dy - x) * w; y += (fig.ny + sa * dx + ca * dy - y) * w; }
         w = FD[n];
         if (w > 0){ dx = x - fig.wx; dy = y - fig.wy; x += (fig.wx + ch * dx - shh * dy - x) * w; y += (fig.wy + shh * dx + ch * dy - y) * w; }
         // the chest and everything above it rise with the breath
@@ -1125,7 +1142,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           if (r2 < 40000){ var r = Math.sqrt(r2) + .01, f = 7 * hv * Math.exp(-r2 / 9000); x += ddx / r * f; y += ddy / r * f; }
         }
         // lit skin gets brighter, bigger and takes the screen's colour
-        var lt = Math.min(1, FL[n] * mo.fl);
+        lt = Math.min(1, lt * mo.fl);
         SX[m] = x; SY[m] = y; SZ[m] = 1.3 + (v + lt * .5) * 1.1;
         BK[m] = 16 + Math.min(15, (v * 1.25 + lt * .8) * 15.99 | 0) * 6 + Math.min(5, lt * 6 | 0); m++;
       }
