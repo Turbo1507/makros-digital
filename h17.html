@@ -889,43 +889,56 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     function hash(n){ return (Math.sin(n * 12.9898) * 43758.5453 % 1 + 1) % 1; }
     function rr(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 
-    // bust in profile facing left, head bent to the phone; the drawing stands on y = 700
-    // (head points were scaled by .88 towards the neck at 300,300)
-    // alpha = coverage, the shading is added when sampling; P = phone screen, E = eye
-    var FIG = { w: 460, h: 700, x0: 112, x1: 444, P: { x: 150, y: 408 }, E: { x: 223, y: 187 } };
+    // standing in profile facing left, head bowed over a phone held in both hands at the chest;
+    // the drawing stands on y = 700, alpha = coverage, the shading is added when sampling; P = phone screen, E = eye
+    var FIG = { w: 460, h: 700, x0: 112, x1: 412, P: { x: 140, y: 262 }, E: { x: 204, y: 132 } };
+    // a limb: tapered segment with round ends added to the current path, all wound the same way
+    // so one fill covers the joints without doubling the alpha
+    function arm(g, a, b, wa, wb){
+      var dx = b[0] - a[0], dy = b[1] - a[1], l = Math.sqrt(dx * dx + dy * dy), nx = -dy / l, ny = dx / l;
+      g.moveTo(a[0] - nx * wa / 2, a[1] - ny * wa / 2); g.lineTo(b[0] - nx * wb / 2, b[1] - ny * wb / 2);
+      g.lineTo(b[0] + nx * wb / 2, b[1] + ny * wb / 2); g.lineTo(a[0] + nx * wa / 2, a[1] + ny * wa / 2); g.closePath();
+      g.moveTo(a[0] + wa / 2, a[1]); g.arc(a[0], a[1], wa / 2, 0, Math.PI * 2);
+      g.moveTo(b[0] + wb / 2, b[1]); g.arc(b[0], b[1], wb / 2, 0, Math.PI * 2);
+    }
     function figure(g){
       g.fillStyle = 'rgba(255,255,255,.8)';
-      g.beginPath(); g.moveTo(284.2, 62.4);
-      g.bezierCurveTo(333.4, 60.6, 368.6, 99.4, 370.4, 153.9); g.bezierCurveTo(372.2, 196.2, 359.8, 231.4, 340.5, 252.5);
-      g.lineTo(335.2, 266.6); g.lineTo(352, 330);
-      g.bezierCurveTo(372, 350, 400, 360, 414, 384); g.bezierCurveTo(432, 414, 440, 470, 444, 700);
-      g.lineTo(196, 700);
-      g.bezierCurveTo(196, 600, 200, 520, 206, 470); g.bezierCurveTo(210, 430, 222, 396, 246, 372);
-      g.bezierCurveTo(256, 362, 262, 344, 262, 318); g.lineTo(262, 300);
-      g.bezierCurveTo(254.2, 298.2, 234.9, 293, 224.3, 284.2); g.bezierCurveTo(215.5, 278.9, 210.2, 271.8, 210.2, 263);
-      g.lineTo(205, 256); g.lineTo(210.2, 250.7); g.lineTo(203.2, 243.7); g.lineTo(206.7, 236.6); g.lineTo(190.9, 227.8);
-      g.bezierCurveTo(192.6, 217.3, 199.7, 206.7, 205, 194.4); g.lineTo(206.7, 185.6);
-      g.bezierCurveTo(203.2, 176.8, 208.5, 166.2, 212, 159.2); g.bezierCurveTo(210.2, 132.8, 222.6, 97.6, 247.2, 76.5);
-      g.bezierCurveTo(257.8, 67.7, 270.1, 62.4, 284.2, 62.4); g.closePath(); g.fill();
+      // crown with uneven hair, back of the head, nape
+      g.beginPath(); g.moveTo(168, 104);
+      g.quadraticCurveTo(170, 84, 186, 70); g.quadraticCurveTo(188, 58, 202, 56); g.quadraticCurveTo(212, 42, 230, 44);
+      g.quadraticCurveTo(246, 34, 262, 44); g.quadraticCurveTo(280, 42, 288, 56); g.quadraticCurveTo(304, 62, 304, 80);
+      g.quadraticCurveTo(314, 96, 306, 112); g.bezierCurveTo(308, 130, 302, 146, 294, 158);
+      // neck into hunched shoulders and the back
+      g.bezierCurveTo(306, 172, 330, 180, 356, 194); g.bezierCurveTo(390, 210, 408, 244, 410, 290);
+      g.bezierCurveTo(412, 340, 402, 390, 384, 440); g.bezierCurveTo(372, 472, 362, 492, 366, 520);
+      g.bezierCurveTo(370, 580, 358, 640, 348, 700);
+      // legs, belly and chest
+      g.lineTo(194, 700); g.bezierCurveTo(190, 630, 192, 560, 200, 500);
+      g.bezierCurveTo(206, 450, 216, 400, 222, 350); g.bezierCurveTo(228, 300, 240, 250, 258, 214);
+      // throat, chin, mouth, nose, brow, fringe
+      g.bezierCurveTo(248, 206, 236, 200, 226, 196); g.bezierCurveTo(216, 192, 210, 186, 206, 178);
+      g.lineTo(203, 172); g.lineTo(206, 167); g.lineTo(200, 162); g.lineTo(198, 156);
+      g.bezierCurveTo(192, 154, 186, 152, 186, 146); g.bezierCurveTo(188, 138, 192, 130, 190, 122);
+      g.bezierCurveTo(186, 118, 178, 116, 172, 118); g.quadraticCurveTo(160, 116, 168, 104); g.closePath(); g.fill();
       // ear
-      g.save(); g.globalCompositeOperation = 'destination-out'; g.strokeStyle = 'rgba(0,0,0,.45)'; g.lineWidth = 6;
-      g.beginPath(); g.ellipse(319, 191, 12, 21, .15, 0, Math.PI * 2); g.stroke();
-      // a thin gap around the arm so it reads in front of the chest
-      g.lineCap = 'round'; g.strokeStyle = '#000';
-      g.lineWidth = 70; g.beginPath(); g.moveTo(366, 404); g.lineTo(334, 590); g.stroke();
-      g.lineWidth = 56; g.beginPath(); g.moveTo(334, 590); g.lineTo(186, 462); g.stroke();
+      g.save(); g.globalCompositeOperation = 'destination-out'; g.strokeStyle = 'rgba(0,0,0,.45)'; g.lineWidth = 4;
+      g.beginPath(); g.ellipse(262, 132, 9, 15, .6, 0, Math.PI * 2); g.stroke();
+      // a thin gap around the near arm so it reads in front of the body
+      g.fillStyle = '#000';
+      g.beginPath(); arm(g, [350, 226], [322, 352], 68, 54); arm(g, [322, 352], [204, 286], 52, 40); g.fill();
       g.restore();
-      g.strokeStyle = 'rgba(255,255,255,.86)'; g.lineCap = 'round';
-      g.lineWidth = 64; g.beginPath(); g.moveTo(366, 404); g.lineTo(334, 590); g.stroke();
-      g.lineWidth = 50; g.beginPath(); g.moveTo(334, 590); g.lineTo(186, 462); g.stroke();
-      // phone, then the fingers around it; the screen is magenta only to mark it
-      g.save(); g.translate(150, 408); g.rotate(-.48);
-      g.fillStyle = 'rgba(255,255,255,.55)'; rr(g, -27, -52, 54, 104, 12); g.fill();
-      g.fillStyle = '#f0f'; rr(g, -22, -46, 44, 92, 8); g.fill(); g.restore();
+      g.fillStyle = 'rgba(255,255,255,.86)';
+      // far forearm peeks out under the near one
+      g.beginPath(); arm(g, [256, 350], [176, 292], 34, 26); g.fill();
+      g.beginPath(); arm(g, [350, 226], [322, 352], 60, 46); arm(g, [322, 352], [204, 286], 44, 32); g.fill();
+      // phone tilted up towards the face, then the hands around it; the screen is magenta only to mark it
+      g.save(); g.translate(140, 262); g.rotate(-.62);
+      g.fillStyle = 'rgba(255,255,255,.55)'; rr(g, -36, -9, 72, 18, 5); g.fill();
+      g.fillStyle = '#f0f'; rr(g, -32, -8, 64, 9, 3); g.fill(); g.restore();
       g.fillStyle = 'rgba(255,255,255,.88)';
-      g.beginPath(); g.ellipse(178, 452, 30, 22, -.6, 0, Math.PI * 2); g.fill();
-      [[128, 420], [124, 438], [126, 456]].forEach(function(p){ g.beginPath(); g.ellipse(p[0], p[1], 9, 7, -.4, 0, Math.PI * 2); g.fill(); });
-      g.beginPath(); g.ellipse(170, 402, 8, 15, -.9, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(184, 286, 24, 17, -.5, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(160, 292, 16, 11, -.4, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(160, 270, 6, 12, -1.1, 0, Math.PI * 2); g.fill();
     }
 
     var W, H, S, C, R, N = 0, ok = false, F, HM;
