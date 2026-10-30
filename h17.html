@@ -890,8 +890,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     function rr(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 
     // standing in profile facing left, head bowed over a phone held in both hands at the chest;
-    // the drawing stands on y = 700, alpha = coverage, the shading is added when sampling; P = phone screen, E = eye
-    var FIG = { w: 460, h: 700, x0: 112, x1: 412, P: { x: 140, y: 262 }, E: { x: 204, y: 132 } };
+    // the drawing stands on y = 700 and is shown down to the thighs (cut); alpha = coverage, the shading is added when sampling;
+    // P = where the screen light starts, E = eye
+    var FIG = { w: 460, h: 700, cut: 560, top: 34, x0: 116, x1: 412, P: { x: 158, y: 258 }, E: { x: 204, y: 132 } };
     // a limb: tapered segment with round ends added to the current path, all wound the same way
     // so one fill covers the joints without doubling the alpha
     function arm(g, a, b, wa, wb){
@@ -931,14 +932,13 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       // far forearm peeks out under the near one
       g.beginPath(); arm(g, [256, 350], [176, 292], 34, 26); g.fill();
       g.beginPath(); arm(g, [350, 226], [322, 352], 60, 46); arm(g, [322, 352], [204, 286], 44, 32); g.fill();
-      // phone tilted up towards the face, then the hands around it; the screen is magenta only to mark it
-      g.save(); g.translate(140, 262); g.rotate(-.62);
-      g.fillStyle = 'rgba(255,255,255,.55)'; rr(g, -36, -9, 72, 18, 5); g.fill();
-      g.fillStyle = '#f0f'; rr(g, -32, -8, 64, 9, 3); g.fill(); g.restore();
-      g.fillStyle = 'rgba(255,255,255,.88)';
-      g.beginPath(); g.ellipse(184, 286, 24, 17, -.5, 0, Math.PI * 2); g.fill();
-      g.beginPath(); g.ellipse(160, 292, 16, 11, -.4, 0, Math.PI * 2); g.fill();
-      g.beginPath(); g.ellipse(160, 270, 6, 12, -1.1, 0, Math.PI * 2); g.fill();
+      // hands clasped in front of the chest, the phone continues out of the fingers;
+      // it is only a dark slab, its screen faces the eyes and shows as light
+      g.beginPath(); g.ellipse(192, 292, 26, 15, -.45, 0, Math.PI * 2);
+      g.moveTo(206, 304); g.ellipse(186, 304, 20, 11, -.3, 0, Math.PI * 2);
+      g.moveTo(193, 276); g.ellipse(182, 276, 11, 5, -.5, 0, Math.PI * 2); g.fill();
+      g.save(); g.translate(152, 264); g.rotate(-2.59);
+      g.beginPath(); rr(g, -38, -5, 76, 10, 3); g.fill(); g.restore();
     }
 
     var W, H, S, C, R, N = 0, ok = false, F, HM;
@@ -968,9 +968,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var ln = 0;
       hero.querySelectorAll('.hero h1 .ln>span').forEach(function(e){ ln = Math.max(ln, rel(e).r); });
       var gut = Math.max(32, (W - 1280) / 2), zl = Math.max(ln + 40, W * .56), zr = W - gut;
-      var fw0 = FIG.x1 - FIG.x0, kk = Math.min((H - 64) / FIG.h, (W - 16 - zl) / fw0);
-      var left = Math.max(zl, (zl + zr) / 2 - fw0 * kk / 2);
-      fig = { k: kk, l: left - FIG.x0 * kk, t: H - FIG.h * kk };
+      var fw0 = FIG.x1 - FIG.x0, kk = Math.min((H - 56) / (FIG.cut - FIG.top), (W - 24 - zl) / fw0);
+      var left = Math.max(zl, zr - fw0 * kk);
+      fig = { k: kk, l: left - FIG.x0 * kk, t: H - FIG.cut * kk };
       fig.px = fig.l + FIG.P.x * kk; fig.py = fig.t + FIG.P.y * kk; fig.ex = fig.l + FIG.E.x * kk; fig.ey = fig.t + FIG.E.y * kk;
       fig.cx = left + fw0 * kk / 2; fig.cy = fig.t + FIG.h * kk * .4;
 
@@ -984,20 +984,28 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var hc = document.createElement('canvas'), g = hc.getContext('2d');
       hc.width = fw; hc.height = fh;
       g.setTransform(kk / FS, 0, 0, kk / FS, 0, 0); figure(g);
-      var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh), SCR = new Uint8Array(fw * fh);
-      for (var y = 0; y < fh * fw; y++){ M[y] = d[y * 4 + 3] / 255; SCR[y] = d[y * 4 + 3] > 200 && d[y * 4 + 1] < 90 ? 1 : 0; }
+      var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh);
+      for (var y = 0; y < fh * fw; y++) M[y] = d[y * 4 + 3] / 255;
       FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FN = 0;
-      var lr = 230 * kk, pr = 90 * kk, front = fig.ex + 24 * kk;
+      var lr = 230 * kk, gr = 150 * kk, hr = 26 * kk;
       for (y = 0; y < fh; y++) for (var x = 0; x < fw; x++){
-        var v = M[y * fw + x]; if (v < .12) continue;
+        var v = M[y * fw + x];
         var X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2; if (Y > H - 2) continue;
         var dx = X - fig.px, dy = Y - fig.py, r2 = dx * dx + dy * dy;
-        // soft light from the screen on the front, the back stays in shadow; bottom sinks a little
+        // the screen light: a faint halo around the phone, and a rim on whatever faces the screen (face, fingers)
+        var gl = Math.exp(-r2 / (gr * gr));
+        if (v < .12){
+          var h = Math.exp(-r2 / (hr * hr));
+          if (h > .25 && hash(x * 13.1 + y * 7.7) < .6){ FX[FN] = X; FY[FN] = Y; FB[FN] = 0; FL[FN] = .08 + .3 * h; FN++; }
+          continue;
+        }
+        var rr0 = Math.sqrt(r2) + .01, qx = x - Math.round(dx / rr0 * 3), qy = y - Math.round(dy / rr0 * 3);
+        var faces = qx < 0 || qy < 0 || qx >= fw || qy >= fh || M[qy * fw + qx] < .12;
         var lit = .56 + .42 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
         lit *= 1 - .35 * smooth((Y - (H - 120 * kk)) / (120 * kk));
         var edge = M[y * fw + x - 1] < .12 || M[y * fw + x + 1] < .12 || (y > 0 && M[(y - 1) * fw + x] < .12);
         FX[FN] = X; FY[FN] = Y; FB[FN] = clamp(v * lit + (edge ? .16 : 0), 0, .9);
-        FL[FN] = SCR[y * fw + x] ? .75 : X < front && Y < fig.ey + 70 * kk ? .45 * Math.exp(-r2 / (pr * pr * 4)) : 0; FN++;
+        FL[FN] = faces && gl > .12 ? .1 + .6 * gl : 0; FN++;
       }
 
       for (var j = 0; j < R; j++) for (var i = 0; i < C; i++){
@@ -1072,7 +1080,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           if (r2 < 40000){ var r = Math.sqrt(r2) + .01, f = 7 * hv * Math.exp(-r2 / 9000); x += ddx / r * f; y += ddy / r * f; }
         }
         SX[m] = x; SY[m] = y; SZ[m] = 1.3 + v * 1.1;
-        BK[m] = FL[n] > .3 ? 48 + Math.min(15, FL[n] * 15.99 | 0) : 16 + Math.min(15, v * 1.25 * 15.99 | 0); m++;
+        BK[m] = FL[n] > 0 ? 48 + Math.min(15, FL[n] * 15.99 | 0) : 16 + Math.min(15, v * 1.25 * 15.99 | 0); m++;
       }
       cx.clearRect(0, 0, W, H);
       CNT.fill(0);
