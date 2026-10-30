@@ -886,46 +886,46 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
     function clamp(v, a, b){ return v < a ? a : v > b ? b : v; }
     function smooth(v){ v = clamp(v, 0, 1); return v * v * (3 - 2 * v); }
+    function hash(n){ return (Math.sin(n * 12.9898) * 43758.5453 % 1 + 1) % 1; }
     function rr(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 
-    // profile facing left, head bent towards the phone; alpha in the drawing = brightness of the dots
-    // P = phone screen, E = eye, in figure coordinates
-    var FIG = { w: 420, h: 640, P: { x: 118, y: 318 }, E: { x: 200, y: 166 } };
+    // bust in profile facing left, head bent to the phone; the drawing stands on y = 700
+    // (head points were scaled by .88 towards the neck at 300,300)
+    // alpha = coverage, the shading is added when sampling; P = phone screen, E = eye
+    var FIG = { w: 460, h: 700, x0: 112, x1: 444, P: { x: 150, y: 408 }, E: { x: 223, y: 187 } };
     function figure(g){
-      var bd = g.createLinearGradient(0, 270, 0, 640);
-      bd.addColorStop(0, 'rgba(255,255,255,.62)'); bd.addColorStop(.6, 'rgba(255,255,255,.4)'); bd.addColorStop(1, 'rgba(255,255,255,0)');
-      g.fillStyle = bd;
-      g.beginPath(); g.moveTo(140, 640); g.lineTo(150, 390); g.quadraticCurveTo(146, 306, 200, 288);
-      g.quadraticCurveTo(268, 266, 334, 288); g.quadraticCurveTo(384, 310, 388, 400); g.lineTo(404, 640); g.closePath(); g.fill();
-      // neck
-      g.fillStyle = 'rgba(255,255,255,.5)';
-      g.beginPath(); g.moveTo(232, 240); g.lineTo(300, 236); g.lineTo(308, 300); g.lineTo(226, 300); g.closePath(); g.fill();
-      // arm: upper arm along the chest, forearm up to the phone
-      g.strokeStyle = 'rgba(255,255,255,.7)'; g.lineCap = 'round';
-      g.lineWidth = 52; g.beginPath(); g.moveTo(214, 318); g.lineTo(196, 462); g.stroke();
-      g.lineWidth = 42; g.beginPath(); g.moveTo(196, 462); g.lineTo(136, 372); g.stroke();
-      // head with forehead, nose, lips and chin; face a bit darker than the hair
-      g.fillStyle = 'rgba(255,255,255,.62)';
-      g.beginPath(); g.moveTo(255, 60);
-      g.bezierCurveTo(312, 58, 348, 106, 340, 168); g.bezierCurveTo(336, 206, 318, 232, 302, 248);
-      g.lineTo(232, 254); g.bezierCurveTo(212, 252, 194, 244, 186, 232);
-      g.lineTo(182, 218); g.lineTo(170, 212); g.lineTo(178, 204); g.lineTo(168, 196);
-      g.lineTo(146, 184); g.lineTo(166, 160); g.lineTo(176, 150); g.bezierCurveTo(170, 130, 170, 112, 184, 96);
-      g.bezierCurveTo(198, 72, 226, 60, 255, 60); g.closePath(); g.fill();
-      g.save(); g.clip();
-      g.fillStyle = 'rgba(255,255,255,.95)';
-      g.beginPath(); g.ellipse(292, 112, 82, 70, .5, 0, Math.PI * 2); g.fill();
-      g.globalCompositeOperation = 'destination-out'; g.lineWidth = 7; g.strokeStyle = 'rgba(0,0,0,.6)';
-      g.beginPath(); g.ellipse(280, 178, 15, 22, .2, 0, Math.PI * 2); g.stroke();
+      g.fillStyle = 'rgba(255,255,255,.8)';
+      g.beginPath(); g.moveTo(284.2, 62.4);
+      g.bezierCurveTo(333.4, 60.6, 368.6, 99.4, 370.4, 153.9); g.bezierCurveTo(372.2, 196.2, 359.8, 231.4, 340.5, 252.5);
+      g.lineTo(335.2, 266.6); g.lineTo(352, 330);
+      g.bezierCurveTo(372, 350, 400, 360, 414, 384); g.bezierCurveTo(432, 414, 440, 470, 444, 700);
+      g.lineTo(196, 700);
+      g.bezierCurveTo(196, 600, 200, 520, 206, 470); g.bezierCurveTo(210, 430, 222, 396, 246, 372);
+      g.bezierCurveTo(256, 362, 262, 344, 262, 318); g.lineTo(262, 300);
+      g.bezierCurveTo(254.2, 298.2, 234.9, 293, 224.3, 284.2); g.bezierCurveTo(215.5, 278.9, 210.2, 271.8, 210.2, 263);
+      g.lineTo(205, 256); g.lineTo(210.2, 250.7); g.lineTo(203.2, 243.7); g.lineTo(206.7, 236.6); g.lineTo(190.9, 227.8);
+      g.bezierCurveTo(192.6, 217.3, 199.7, 206.7, 205, 194.4); g.lineTo(206.7, 185.6);
+      g.bezierCurveTo(203.2, 176.8, 208.5, 166.2, 212, 159.2); g.bezierCurveTo(210.2, 132.8, 222.6, 97.6, 247.2, 76.5);
+      g.bezierCurveTo(257.8, 67.7, 270.1, 62.4, 284.2, 62.4); g.closePath(); g.fill();
+      // ear
+      g.save(); g.globalCompositeOperation = 'destination-out'; g.strokeStyle = 'rgba(0,0,0,.45)'; g.lineWidth = 6;
+      g.beginPath(); g.ellipse(319, 191, 12, 21, .15, 0, Math.PI * 2); g.stroke();
+      // a thin gap around the arm so it reads in front of the chest
+      g.lineCap = 'round'; g.strokeStyle = '#000';
+      g.lineWidth = 70; g.beginPath(); g.moveTo(366, 404); g.lineTo(334, 590); g.stroke();
+      g.lineWidth = 56; g.beginPath(); g.moveTo(334, 590); g.lineTo(186, 462); g.stroke();
       g.restore();
-      // hand, then the phone: grey body, the screen is the only bright part
-      // the screen is drawn magenta only to mark it, the colour itself is never shown
-      g.save(); g.translate(118, 318); g.rotate(-.42);
-      g.fillStyle = 'rgba(255,255,255,.45)'; rr(g, -24, -44, 48, 88, 11); g.fill();
-      g.fillStyle = '#f0f'; rr(g, -19, -38, 38, 76, 7); g.fill(); g.restore();
-      g.fillStyle = 'rgba(255,255,255,.72)';
-      g.beginPath(); g.ellipse(136, 362, 28, 20, -.5, 0, Math.PI * 2); g.fill();
-      g.beginPath(); g.ellipse(104, 352, 9, 16, -.4, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = 'rgba(255,255,255,.86)'; g.lineCap = 'round';
+      g.lineWidth = 64; g.beginPath(); g.moveTo(366, 404); g.lineTo(334, 590); g.stroke();
+      g.lineWidth = 50; g.beginPath(); g.moveTo(334, 590); g.lineTo(186, 462); g.stroke();
+      // phone, then the fingers around it; the screen is magenta only to mark it
+      g.save(); g.translate(150, 408); g.rotate(-.48);
+      g.fillStyle = 'rgba(255,255,255,.55)'; rr(g, -27, -52, 54, 104, 12); g.fill();
+      g.fillStyle = '#f0f'; rr(g, -22, -46, 44, 92, 8); g.fill(); g.restore();
+      g.fillStyle = 'rgba(255,255,255,.88)';
+      g.beginPath(); g.ellipse(178, 452, 30, 22, -.6, 0, Math.PI * 2); g.fill();
+      [[128, 420], [124, 438], [126, 456]].forEach(function(p){ g.beginPath(); g.ellipse(p[0], p[1], 9, 7, -.4, 0, Math.PI * 2); g.fill(); });
+      g.beginPath(); g.ellipse(170, 402, 8, 15, -.9, 0, Math.PI * 2); g.fill();
     }
 
     var W, H, S, C, R, N = 0, ok = false, F, HM;
@@ -934,7 +934,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var SX, SY, SZ, BK, ORD, CNT = new Int32Array(65), cap = 0;
     var FILL = [], k;
     for (k = 0; k < 16; k++) FILL.push('rgba(139,142,148,' + (.03 + .5 * k / 15).toFixed(3) + ')');
-    for (k = 0; k < 16; k++) FILL.push('rgba(201,203,207,' + (.08 + .6 * k / 15).toFixed(3) + ')');
+    for (k = 0; k < 16; k++) FILL.push('rgba(201,203,207,' + (.06 + .58 * k / 15).toFixed(3) + ')');
     for (k = 0; k < 16; k++) FILL.push('rgba(233,234,228,' + (.12 + .88 * k / 15).toFixed(3) + ')');
     for (k = 0; k < 16; k++) FILL.push('rgba(200,255,46,' + (.15 + .85 * k / 15).toFixed(3) + ')');
 
@@ -951,16 +951,15 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       S = clamp(Math.round(W / 150), 9, 12); C = Math.ceil(W / S) + 1; R = Math.ceil(H / S) + 1; N = C * R;
       F = W * 1.1; HM = Math.min(110, W * .062);
 
-      // the person stands right of the headline, cut by the marquee
+      // the person stands on the marquee line, right of the headline
       var ln = 0;
       hero.querySelectorAll('.hero h1 .ln>span').forEach(function(e){ ln = Math.max(ln, rel(e).r); });
-      var gut = Math.max(32, (W - 1280) / 2);
-      var zl = Math.max(ln + 40, W * .56), zr = W - gut, zt = 88;
-      // the drawing only uses x 80..410 of its box
-      var kk = Math.min((zr - zl) / 330, (H - zt) / FIG.h);
-      fig = { k: kk, l: (zl + zr) / 2 - 245 * kk, t: H - FIG.h * kk };
+      var gut = Math.max(32, (W - 1280) / 2), zl = Math.max(ln + 40, W * .56), zr = W - gut;
+      var fw0 = FIG.x1 - FIG.x0, kk = Math.min((H - 64) / FIG.h, (W - 16 - zl) / fw0);
+      var left = Math.max(zl, (zl + zr) / 2 - fw0 * kk / 2);
+      fig = { k: kk, l: left - FIG.x0 * kk, t: H - FIG.h * kk };
       fig.px = fig.l + FIG.P.x * kk; fig.py = fig.t + FIG.P.y * kk; fig.ex = fig.l + FIG.E.x * kk; fig.ey = fig.t + FIG.E.y * kk;
-      fig.cx = fig.l + FIG.w * kk / 2; fig.cy = fig.t + FIG.h * kk * .4;
+      fig.cx = left + fw0 * kk / 2; fig.cy = fig.t + FIG.h * kk * .4;
 
       var ox = (W - (C - 1) * S) / 2;
       GX = new Float32Array(N); GY = new Float32Array(N); A0 = new Float32Array(N);
@@ -972,25 +971,26 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       var hc = document.createElement('canvas'), g = hc.getContext('2d');
       hc.width = fw; hc.height = fh;
       g.setTransform(kk / FS, 0, 0, kk / FS, 0, 0); figure(g);
-      var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh);
-      FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FN = 0;
-      var SCR = new Uint8Array(fw * fh);
+      var d = g.getImageData(0, 0, fw, fh).data, M = new Float32Array(fw * fh), SCR = new Uint8Array(fw * fh);
       for (var y = 0; y < fh * fw; y++){ M[y] = d[y * 4 + 3] / 255; SCR[y] = d[y * 4 + 3] > 200 && d[y * 4 + 1] < 90 ? 1 : 0; }
-      var pr = 95 * kk, front = fig.ex + 24 * kk;
-      for (var y = 0; y < fh; y++) for (var x = 0; x < fw; x++){
+      FX = new Float32Array(fw * fh); FY = new Float32Array(fw * fh); FB = new Float32Array(fw * fh); FL = new Float32Array(fw * fh); FN = 0;
+      var lr = 230 * kk, pr = 90 * kk, front = fig.ex + 24 * kk;
+      for (y = 0; y < fh; y++) for (var x = 0; x < fw; x++){
         var v = M[y * fw + x]; if (v < .12) continue;
-        var X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2, dx = X - fig.px, dy = Y - fig.py;
-        // dots on the outline are brighter, so the silhouette separates from the field
-        var edge = x === 0 || y === 0 || x === fw - 1 || M[y * fw + x - 1] < .12 || M[y * fw + x + 1] < .12 || M[(y - 1) * fw + x] < .12 || (y < fh - 1 && M[(y + 1) * fw + x] < .12);
-        FX[FN] = X; FY[FN] = Y; FB[FN] = edge && v > .3 ? Math.max(v, .95) : v;
-        // the screen lights the front of the face
-        FL[FN] = SCR[y * fw + x] ? 1 : X < front && Y < fig.ey + 60 * kk ? .5 * Math.exp(-(dx * dx + dy * dy) / (pr * pr)) : 0; FN++;
+        var X = fig.l + x * FS + FS / 2, Y = fig.t + y * FS + FS / 2; if (Y > H - 2) continue;
+        var dx = X - fig.px, dy = Y - fig.py, r2 = dx * dx + dy * dy;
+        // soft light from the screen on the front, the back stays in shadow; bottom sinks a little
+        var lit = .56 + .42 * Math.exp(-r2 / (lr * lr)) - .14 * clamp((X - fig.cx) / (fw0 * kk * .5), 0, 1);
+        lit *= 1 - .35 * smooth((Y - (H - 120 * kk)) / (120 * kk));
+        var edge = M[y * fw + x - 1] < .12 || M[y * fw + x + 1] < .12 || (y > 0 && M[(y - 1) * fw + x] < .12);
+        FX[FN] = X; FY[FN] = Y; FB[FN] = clamp(v * lit + (edge ? .16 : 0), 0, .9);
+        FL[FN] = SCR[y * fw + x] ? .75 : X < front && Y < fig.ey + 70 * kk ? .45 * Math.exp(-r2 / (pr * pr * 4)) : 0; FN++;
       }
 
       for (var j = 0; j < R; j++) for (var i = 0; i < C; i++){
         var n = j * C + i, gx = ox + i * S, gy = j * S;
         GX[n] = gx; GY[n] = gy;
-        var ddx = gx - fig.cx, ddy = gy - fig.cy, RR = FIG.w * kk * 1.2;
+        var ddx = gx - fig.cx, ddy = gy - fig.cy, RR = fw0 * kk * 1.3;
         var a = .16 + .4 * Math.exp(-(ddx * ddx + ddy * ddy) / (RR * RR));
         a *= smooth((gy - 80) / 120) * smooth((H - gy) / 64) * smooth(gx / 48) * smooth((W - gx) / 48);
         for (var q = 0; q < rects.length; q++){
@@ -1004,41 +1004,40 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
       var need = N + FN + 64;
       if (need > cap){ cap = need; SX = new Float32Array(cap); SY = new Float32Array(cap); SZ = new Float32Array(cap); BK = new Uint8Array(cap); ORD = new Int32Array(cap); }
-      vx0 = fig.l - FIG.w * kk * .3; vy0 = fig.t - FIG.h * kk * .3;
+      vx0 = W * .5; vy0 = H * .35;
       VX = vx0; VY = vy0;
     }
 
-    // arcs of acid dots travel from the phone screen up to the eye: content being watched
-    var WAVE = 1.7, EVERY = .34;
-    function waves(){
-      var dx = fig.ex - fig.px, dy = fig.ey - fig.py, len = Math.sqrt(dx * dx + dy * dy);
-      var ux = dx / len, uy = dy / len, nx = -uy, ny = ux, appear = Math.min(1, tm / 1.2), cnt = Math.round(WAVE / EVERY);
+    // single acid dots drift from the screen up to the eye, slowly, one after another
+    var NP = 10, LIFE = 3.6;
+    function stream(){
+      var dx = fig.ex - fig.px, dy = fig.ey - fig.py, len = Math.sqrt(dx * dx + dy * dy), nx = dy / len, ny = -dx / len;
+      var appear = Math.min(1, tm / 2);
       cx.fillStyle = '#C8FF2E';
-      for (var w = 0; w < cnt; w++){
-        var t = reduce ? (w + .5) / cnt : (((tm / EVERY - w) % cnt) + cnt) % cnt / cnt;
-        var cxp = fig.px + ux * 30 * fig.k + dx * t * .86, cyp = fig.py + uy * 30 * fig.k + dy * t * .86;
-        // the arc opens up mid-way and narrows into the eye
-        var half = (12 + 44 * Math.sin(Math.PI * t)) * fig.k, bow = half * .5, dots = 11;
-        var al = Math.sin(Math.PI * t) * appear;
-        for (var i = 0; i < dots; i++){
-          var u = i / (dots - 1) * 2 - 1, x = cxp + nx * half * u - ux * bow * u * u, y = cyp + ny * half * u - uy * bow * u * u;
-          var z = 3.2 - Math.abs(u) * 1.2;
-          cx.globalAlpha = al * (1 - Math.abs(u) * .5);
-          cx.fillRect(x - z / 2, y - z / 2, z, z);
-        }
+      for (var i = 0; i < NP; i++){
+        var ph = tm + i * LIFE / NP, cyc = Math.floor(ph / LIFE), t = reduce ? (i + .5) / NP : ph / LIFE - cyc;
+        var r1 = hash(i * 7.13 + cyc * 3.71), r2 = hash(i * 1.97 + cyc * 9.12), r3 = hash(i * 4.4 + cyc * 2.3);
+        var sx = fig.px + (r1 - .5) * 22 * fig.k, sy = fig.py + (r2 - .5) * 40 * fig.k;
+        var ex = fig.ex + (r2 - .5) * 10 * fig.k, ey = fig.ey + (r3 - .5) * 10 * fig.k;
+        // the path bows out in front of the face
+        var bw = (20 + 40 * r3) * fig.k, mx = (sx + ex) / 2 + nx * bw, my = (sy + ey) / 2 + ny * bw, u = 1 - t;
+        var x = u * u * sx + 2 * u * t * mx + t * t * ex, y = u * u * sy + 2 * u * t * my + t * t * ey;
+        cx.globalAlpha = Math.sin(Math.PI * t) * .75 * appear;
+        cx.fillRect(x - 1.25, y - 1.25, 2.5, 2.5);
       }
       cx.globalAlpha = 1;
     }
 
-    var tm = 0, px = -1e4, py = -1e4, bx = -1e4, by = -1e4, bump = 0;
+    var tm = 0, px = -1e4, py = -1e4, bx = -1e4, by = -1e4, bump = 0, sp = 0;
     function paint(){
       if (!ok) return;
-      // parallax: the vanishing point drifts with the scroll
-      var tx = vx0, ty = vy0 + Math.min(scrollY, H) * .5;
-      VX += (tx - VX) * .06; VY += (ty - VY) * .06;
+      // parallax: the vanishing point follows the scroll, near and far layers slide against each other
+      sp += (Math.min(scrollY, H) - sp) * .12;
+      var tx = vx0, ty = vy0 - sp * 1.4;
+      VX += (tx - VX) * .1; VY += (ty - VY) * .1;
       bx += (px - bx) * .2; by += (py - by) * .2;
       var m = 0, n, i, j;
-      var kf = F / (F + HM * 2.5);
+      var kf = F / (F + HM * 6), kn = F / (F - HM * .9);
       for (j = 1; j < R; j += 3) for (i = 1; i < C; i += 3){
         n = j * C + i; var fa = A0[n] * .55; if (fa < .03) continue;
         SX[m] = VX + (GX[n] + S / 2 - VX) * kf; SY[m] = VY + (GY[n] + S / 2 - VY) * kf; SZ[m] = 1; BK[m] = Math.min(15, fa * 15.99 | 0); m++;
@@ -1046,15 +1045,21 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       for (n = 0; n < N; n++){
         var a = A0[n]; if (a < .03) continue;
         var dx = GX[n] - bx, dy = GY[n] - by, b = bump * .22 * Math.exp(-(dx * dx + dy * dy) / 5600);
-        var h = b * HM, kk = F / (F - h);
+        var kk = kn * F / (F - b * HM);
         SX[m] = VX + (GX[n] - VX) * kk; SY[m] = VY + (GY[n] - VY) * kk; SZ[m] = 1.3 + b * 2;
         BK[m] = Math.min(15, (a * 1.6 + b) * 15.99 | 0); m++;
       }
-      // the figure breathes a little: a slow shimmer runs across the dots
+      // the figure breathes a little; under the cursor its dots part slightly
+      var hv = bump * fig.k;
       for (n = 0; n < FN; n++){
-        var sh = .82 + .18 * Math.sin(tm * 1.6 + FX[n] * .045 + FY[n] * .03), v = FB[n] * sh;
-        SX[m] = FX[n]; SY[m] = FY[n]; SZ[m] = 1.5 + v * 1.4;
-        BK[m] = (FL[n] > .35 ? 48 + Math.min(15, FL[n] * v * 15.99 | 0) : 32 + Math.min(15, v * 15.99 | 0)); m++;
+        var sh = .88 + .12 * Math.sin(tm * 1.4 + FX[n] * .04 + FY[n] * .03), v = FB[n] * sh;
+        var x = FX[n], y = FY[n];
+        if (hv > .01){
+          var ddx = x - bx, ddy = y - by, r2 = ddx * ddx + ddy * ddy;
+          if (r2 < 40000){ var r = Math.sqrt(r2) + .01, f = 7 * hv * Math.exp(-r2 / 9000); x += ddx / r * f; y += ddy / r * f; }
+        }
+        SX[m] = x; SY[m] = y; SZ[m] = 1.3 + v * 1.1;
+        BK[m] = FL[n] > .3 ? 48 + Math.min(15, FL[n] * 15.99 | 0) : 16 + Math.min(15, v * 1.25 * 15.99 | 0); m++;
       }
       cx.clearRect(0, 0, W, H);
       CNT.fill(0);
@@ -1066,7 +1071,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         cx.fillStyle = FILL[q];
         for (i = s0; i < s1; i++){ var o = ORD[i], z = SZ[o]; cx.fillRect(SX[o] - z / 2, SY[o] - z / 2, z, z); }
       }
-      waves();
+      stream();
       cv.classList.add('on');
     }
 
