@@ -377,6 +377,16 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   .mlang{margin-top:16px}
   .mlang a{min-width:44px;height:44px}
 }
+/* форма и цифры не шире экрана */
+.cta-grid>*,.f{min-width:0}
+.f input{width:100%}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.btn:disabled{opacity:.6;cursor:default}
+@media (max-width:400px){.mt-main .v{font-size:min(88px,calc((100vw - 80px) / 3.3))}}
+/* высота блока хиро */
+@media (min-width:861px) and (max-width:949px){.hero-side{min-height:361px}}
+@media (min-width:950px) and (max-width:1023px){.hero-side{min-height:303px}}
+@media (min-width:1024px) and (max-width:1099px){.hero-side{min-height:278px}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 <script>try{var m=document.cookie.match(/(?:^|; )mk_lang=(es|fr|tr|ru)(?:;|$)/);if(m)location.replace(m[1]+'/'+location.hash)}catch(e){}</script>
@@ -629,6 +639,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       <p class="t">Looking for the right creators, stronger creatives or a tailored influencer marketing strategy? Tell us about your project, target GEO and campaign goals. We'll help you identify the right approach.</p>
     </div>
     <form id="form" class="rv" novalidate>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="f"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
       <div class="f"><label for="f-contact">Telegram or email</label><input id="f-contact" name="contact" placeholder="@username" required></div>
       <div class="f"><label id="l-vert" for="f-vert">Vertical</label>
@@ -907,12 +918,23 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     document.addEventListener('click', function(e){ if (!dd.contains(e.target) && !list.hidden) close(); });
   });
 
-  // form: preview only, not connected
+  // form: the request goes to our server, the server forwards it to Telegram
+  var sending = false;
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
-    var f = ev.target, msg = document.getElementById('form-msg');
+    var f = ev.target, msg = document.getElementById('form-msg'), btn = f.querySelector('button[type=submit]');
     if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Please fill in your name and contact.'; return; }
-    msg.textContent = 'Preview: the form is not connected yet.';
+    if (sending) return;
+    sending = true; btn.disabled = true; msg.textContent = '';
+    var data = new URLSearchParams(new FormData(f));
+    data.set('lang', document.documentElement.lang);
+    fetch('https://makrosmedia.com/api/lead', { method: 'POST', body: data }).then(function(r){
+      if (!r.ok) throw new Error(r.status);
+      msg.textContent = 'Request sent. We will get back to you soon.';
+      f.querySelectorAll('input:not([type=hidden]),textarea').forEach(function(el){ el.value = ''; });
+    }).catch(function(){
+      msg.textContent = 'Could not send the request. Please try again in a minute.';
+    }).then(function(){ sending = false; btn.disabled = false; });
   });
 
   // hero signal grid: cells near the cursor light up and fade

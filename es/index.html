@@ -377,9 +377,23 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   .mlang{margin-top:16px}
   .mlang a{min-width:44px;height:44px}
 }
-@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 8.3))}}
-@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6.3))}}
+/* форма и цифры не шире экрана */
+.cta-grid>*,.f{min-width:0}
+.f input{width:100%}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.btn:disabled{opacity:.6;cursor:default}
+@media (max-width:400px){.mt-main .v{font-size:min(88px,calc((100vw - 80px) / 3.3))}}
+/* высота блока хиро */
+@media (min-width:861px) and (max-width:949px){.hero-side{min-height:361px}}
+@media (min-width:950px) and (max-width:1023px){.hero-side{min-height:303px}}
+@media (min-width:1024px) and (max-width:1099px){.hero-side{min-height:278px}}
+@media (min-width:861px){.hv .hx{--f:min(132px,calc((100vw - 48px) / 9.4));font-size:min(var(--f),calc((min(100vw,1280px) - 48px) / 8.3));line-height:calc(var(--f) * .92);min-height:calc(var(--f) * 1.84)}}
+@media (max-width:860px){.hv .hx{--f:clamp(56px,11.2vw,152px);font-size:min(var(--f),calc((100vw - 32px) / 8.25));line-height:calc(var(--f) * .92);min-height:calc(var(--f) * 2.76)}}
 @media (min-width:861px) and (max-width:1199px){.kpis span{white-space:normal}}
+.cta h2{font-size:min(clamp(48px,6.4vw,96px),calc((100vw - 32px) / 5.75))}
+@media (min-width:861px){.cta h2{font-size:min(clamp(48px,6.4vw,96px),calc((min(100vw - 48px,1280px) - 80px) / 2 / 5.75))}}
+.hero-side .sub{display:flow-root}
+.hero-side .sub::before{content:"Influencer marketing and creative production for Gaming, Casino and Crypto brands.";float:left;width:100%;margin-right:-100%;visibility:hidden}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -418,7 +432,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <div class="hero-foot">
       <div class="hv-slot hv-count"><div><b data-k="d">US$1.240.500</b><span>Depósitos de jugadores<i class="fn">*</i></span></div><div><b data-k="f" class="acc">4.828</b><span>Nuevos depositantes<i class="fn">*</i></span></div></div>
       <div class="hero-side">
-        <p class="sub">Marketing de influencers y producción creativa para marcas de gaming, casino y cripto.</p>
+        <p class="sub">Marketing de influencers y producción creativa para gaming, casino y cripto.</p>
         <p class="t">Encontramos a los creadores que tu marca necesita y nos encargamos de la campaña de principio a fin: estrategia, medición de resultados y creativos que llaman la atención.</p>
         <a class="btn" href="#contact">Hablemos de tu proyecto</a>
       </div>
@@ -631,6 +645,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       <p class="t">¿Buscas a los creadores indicados, creativos más potentes o una estrategia de influencers a tu medida? Cuéntanos de tu proyecto, tu GEO y tus objetivos, y te ayudamos a definir el mejor camino.</p>
     </div>
     <form id="form" class="rv" novalidate>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="f"><label for="f-name">Nombre</label><input id="f-name" name="name" autocomplete="name" required></div>
       <div class="f"><label for="f-contact">Telegram o email</label><input id="f-contact" name="contact" placeholder="@username" required></div>
       <div class="f"><label id="l-vert" for="f-vert">Vertical</label>
@@ -909,12 +924,23 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     document.addEventListener('click', function(e){ if (!dd.contains(e.target) && !list.hidden) close(); });
   });
 
-  // form: preview only, not connected
+  // form: the request goes to our server, the server forwards it to Telegram
+  var sending = false;
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
-    var f = ev.target, msg = document.getElementById('form-msg');
+    var f = ev.target, msg = document.getElementById('form-msg'), btn = f.querySelector('button[type=submit]');
     if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Déjanos tu nombre y un dato de contacto.'; return; }
-    msg.textContent = 'Vista previa: el formulario todavía no está conectado.';
+    if (sending) return;
+    sending = true; btn.disabled = true; msg.textContent = '';
+    var data = new URLSearchParams(new FormData(f));
+    data.set('lang', document.documentElement.lang);
+    fetch('https://makrosmedia.com/api/lead', { method: 'POST', body: data }).then(function(r){
+      if (!r.ok) throw new Error(r.status);
+      msg.textContent = 'Solicitud enviada. Te responderemos pronto.';
+      f.querySelectorAll('input:not([type=hidden]),textarea').forEach(function(el){ el.value = ''; });
+    }).catch(function(){
+      msg.textContent = 'No se pudo enviar. Inténtalo de nuevo en un minuto.';
+    }).then(function(){ sending = false; btn.disabled = false; });
   });
 
   // hero signal grid: cells near the cursor light up and fade

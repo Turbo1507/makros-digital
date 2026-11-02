@@ -377,10 +377,25 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   .mlang{margin-top:16px}
   .mlang a{min-width:44px;height:44px}
 }
-@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 10))}}
-@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6.5))}}
+/* форма и цифры не шире экрана */
+.cta-grid>*,.f{min-width:0}
+.f input{width:100%}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.btn:disabled{opacity:.6;cursor:default}
+@media (max-width:400px){.mt-main .v{font-size:min(88px,calc((100vw - 80px) / 3.3))}}
+/* высота блока хиро */
+@media (min-width:861px) and (max-width:949px){.hero-side{min-height:361px}}
+@media (min-width:950px) and (max-width:1023px){.hero-side{min-height:303px}}
+@media (min-width:1024px) and (max-width:1099px){.hero-side{min-height:278px}}
+@media (min-width:861px){.hv .hx{--f:min(132px,calc((100vw - 48px) / 9.4));font-size:min(var(--f),calc((min(100vw,1280px) - 48px) / 10));line-height:calc(var(--f) * .92);min-height:calc(var(--f) * 1.84)}}
+@media (max-width:860px){.hv .hx{--f:clamp(56px,11.2vw,152px);font-size:min(var(--f),calc((100vw - 32px) / 6.5));line-height:calc(var(--f) * .92);min-height:calc(var(--f) * 2.76)}}
 @media (min-width:861px) and (max-width:1199px){.kpis span{white-space:normal}}
-@media (max-width:380px){.mt-main .v{font-size:76px}}
+.cta h2{font-size:min(clamp(48px,6.4vw,96px),calc((100vw - 32px) / 6.25))}
+@media (min-width:861px){.cta h2{font-size:min(clamp(48px,6.4vw,96px),calc((min(100vw - 48px,1280px) - 80px) / 2 / 6.25))}}
+.hero-side .sub{display:flow-root}
+.hero-side .sub::before{content:"Influencer marketing and creative production for Gaming, Casino and Crypto brands.";float:left;width:100%;margin-right:-100%;visibility:hidden}
+@media (max-width:400px){.mt-main .v{font-size:min(88px,calc((100vw - 80px) / 3.6))}}
+@media (max-width:340px){.h2{font-size:calc((100vw - 32px) / 7.9)}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -419,7 +434,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <div class="hero-foot">
       <div class="hv-slot hv-count"><div><b data-k="d">1 240 500 $</b><span>Dépôts des joueurs<i class="fn">*</i></span></div><div><b data-k="f" class="acc">4 828</b><span>Nouveaux déposants<i class="fn">*</i></span></div></div>
       <div class="hero-side">
-        <p class="sub">Marketing d’influence et production créative pour les marques du gaming, du casino et de la crypto.</p>
+        <p class="sub">Marketing d’influence et production créative pour gaming, casino et crypto.</p>
         <p class="t">Nous trouvons les bons créateurs pour votre marque et menons vos campagnes de A à Z : stratégie, suivi des performances et créations percutantes.</p>
         <a class="btn" href="#contact">Parlons de votre projet</a>
       </div>
@@ -632,6 +647,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       <p class="t">Vous cherchez les bons créateurs, des créations plus percutantes ou une stratégie d’influence sur mesure ? <i class="nw">Parlez-nous</i> de votre projet, de votre GEO et de vos objectifs : nous vous aiderons à trouver la bonne approche.</p>
     </div>
     <form id="form" class="rv" novalidate>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="f"><label for="f-name">Nom</label><input id="f-name" name="name" autocomplete="name" required></div>
       <div class="f"><label for="f-contact">Telegram ou <i class="nw">e-mail</i></label><input id="f-contact" name="contact" placeholder="@username" required></div>
       <div class="f"><label id="l-vert" for="f-vert">Verticale</label>
@@ -910,12 +926,23 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     document.addEventListener('click', function(e){ if (!dd.contains(e.target) && !list.hidden) close(); });
   });
 
-  // form: preview only, not connected
+  // form: the request goes to our server, the server forwards it to Telegram
+  var sending = false;
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
-    var f = ev.target, msg = document.getElementById('form-msg');
+    var f = ev.target, msg = document.getElementById('form-msg'), btn = f.querySelector('button[type=submit]');
     if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Indiquez votre nom et vos coordonnées.'; return; }
-    msg.textContent = 'Aperçu : le formulaire n’est pas encore actif.';
+    if (sending) return;
+    sending = true; btn.disabled = true; msg.textContent = '';
+    var data = new URLSearchParams(new FormData(f));
+    data.set('lang', document.documentElement.lang);
+    fetch('https://makrosmedia.com/api/lead', { method: 'POST', body: data }).then(function(r){
+      if (!r.ok) throw new Error(r.status);
+      msg.textContent = 'Demande envoyée. Nous vous répondrons très vite.';
+      f.querySelectorAll('input:not([type=hidden]),textarea').forEach(function(el){ el.value = ''; });
+    }).catch(function(){
+      msg.textContent = 'L’envoi a échoué. Réessayez dans une minute.';
+    }).then(function(){ sending = false; btn.disabled = false; });
   });
 
   // hero signal grid: cells near the cursor light up and fade
