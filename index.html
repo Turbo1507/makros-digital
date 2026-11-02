@@ -251,7 +251,7 @@ form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:star
 .dd-list li:hover,.dd-list li.act{background:var(--g800)}
 .dd-list li[aria-selected="true"]{color:var(--acid)}
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
-.f ::placeholder{color:rgba(20,21,23,.45)}
+.f ::placeholder{color:rgba(20,21,23,.6)}
 .form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
 .form-msg{font-size:15px}
 
@@ -369,6 +369,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 .mlang a{display:grid;place-items:center;min-width:48px;height:48px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g200);font-size:16px;font-weight:600}
 .mlang a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
 .mmenu .btn{flex:none}
+.fn{font-style:normal}
+.ftr-notes{margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--g400)}
 @media (max-height:620px){
   .mmenu{padding:88px var(--pad) 24px;gap:0}
   .mmenu a.l{font-size:32px;padding:4px 0}
@@ -412,7 +414,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   <div class="wrap">
     <h1 class="display hx"><span class="ln">Where influence</span><span class="ln">performs.</span></h1>
     <div class="hero-foot">
-      <div class="hv-slot hv-count"><div><b data-k="d">$1,240,500</b><span>Player deposits</span></div><div><b data-k="f" class="acc">4,828</b><span>First-time depositors</span></div></div>
+      <div class="hv-slot hv-count"><div><b data-k="d">$1,240,500</b><span>Player deposits<i class="fn">*</i></span></div><div><b data-k="f" class="acc">4,828</b><span>First-time depositors<i class="fn">*</i></span></div></div>
       <div class="hero-side">
         <p class="sub">Influencer marketing and creative production for Gaming, Casino and Crypto brands.</p>
         <p class="t">We connect brands with relevant creators and deliver campaigns supported by strategic planning, performance tracking and high-impact creative production.</p>
@@ -453,12 +455,12 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     </div>
     <div class="geo geo-x">
       <div class="rv">
-        <h4>Worldwide GEO</h4>
+        <h4>Worldwide GEO<i class="fn">*</i></h4>
         <p>We work with any GEO and pick creators who actually reach your market.</p>
         <div class="vis globe" aria-hidden="true"><canvas></canvas></div>
       </div>
       <div class="rv">
-        <h4>Every relevant platform</h4>
+        <h4>Every relevant platform<i class="fn">*</i></h4>
         <p>Twitch, Kick, YouTube, Telegram, Instagram and other channels.</p>
         <div class="vis feed" aria-hidden="true"><ol></ol></div>
       </div>
@@ -660,6 +662,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       </nav>
     </div>
     <div class="ftr-bot"><span>© 2026 Makros Digital</span><span>makrosmedia.com</span></div>
+    <div class="ftr-notes">
+      <p><i class="fn">*</i> <span>Comments, deposits and map activity on this page are illustrative.</span></p>
+      <p>18+. <span>Our services are for businesses only. We do not offer gambling or investment services to the public. Campaigns depend on the rules of each market.</span></p>
+    </div>
   </div>
 </footer>
 

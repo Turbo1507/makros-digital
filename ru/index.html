@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Makros Digital | Инфлюенс-маркетинг для гейминга, казино и крипты</title>
-<meta name="description" content="Инфлюенс-маркетинг и креативный продакшен для брендов из гейминга, казино и крипты. Стримеры и авторы на Twitch, Kick, YouTube, Telegram и Instagram.">
+<meta name="description" content="Инфлюенс-маркетинг и креативный продакшен для гейминга, казино и крипты. Стримеры и блогеры на Twitch, Kick, YouTube, в Telegram и Instagram.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://makrosmedia.com/ru/">
 <link rel="alternate" hreflang="en" href="https://makrosmedia.com/">
@@ -14,7 +14,7 @@
 <link rel="alternate" hreflang="ru" href="https://makrosmedia.com/ru/">
 <link rel="alternate" hreflang="x-default" href="https://makrosmedia.com/">
 <meta property="og:title" content="Makros Digital">
-<meta property="og:description" content="Инфлюенс-маркетинг и креативный продакшен для брендов из гейминга, казино и крипты.">
+<meta property="og:description" content="Инфлюенс-маркетинг и креативный продакшен для гейминга, казино и крипты.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23141517'/%3E%3Cpath d='M7 24V8h4l5 8 5-8h4v16h-4V15l-5 7-5-7v9z' fill='%23C8FF2E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -251,7 +251,7 @@ form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:star
 .dd-list li:hover,.dd-list li.act{background:var(--g800)}
 .dd-list li[aria-selected="true"]{color:var(--acid)}
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
-.f ::placeholder{color:rgba(20,21,23,.45)}
+.f ::placeholder{color:rgba(20,21,23,.6)}
 .form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
 .form-msg{font-size:15px}
 
@@ -369,18 +369,21 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 .mlang a{display:grid;place-items:center;min-width:48px;height:48px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g200);font-size:16px;font-weight:600}
 .mlang a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
 .mmenu .btn{flex:none}
+.fn{font-style:normal}
+.ftr-notes{margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--g400)}
 @media (max-height:620px){
   .mmenu{padding:88px var(--pad) 24px;gap:0}
   .mmenu a.l{font-size:32px;padding:4px 0}
   .mlang{margin-top:16px}
   .mlang a{min-width:44px;height:44px}
 }
-@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 7.4))}}
-@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 4.9))}}
+@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 8.9))}}
+@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6))}}
 @media (min-width:861px) and (max-width:1199px){.kpis span{white-space:normal}}
 body{font-family:'Roboto Flex',system-ui,sans-serif}
 .logo{font-family:Archivo,system-ui,sans-serif}
-@media (max-width:860px){.svc-main h3{font-size:min(36px,calc((100vw - 96px) / 7.9))}}
+@media (max-width:860px){.svc-main h3{font-size:min(36px,calc((100vw - 96px) / 11))}}
+@media (min-width:1025px){.svc-main h3{font-size:calc((min(100vw,1280px) - 216px) * .4167 / 11)}}
 @media (min-width:861px) and (max-width:1199px){.kpis b{font-size:28px}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -390,10 +393,10 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 <header class="hdr" id="hdr">
   <div class="wrap">
     <a href="#top" class="logo">MAKROS <span>DIGITAL</span></a>
-    <nav class="nav" aria-label="Основное">
+    <nav class="nav" aria-label="Основное меню">
       <a class="l" href="#about">О нас</a>
       <a class="l" href="#services">Услуги</a>
-      <a class="l" href="#process">Процесс</a>
+      <a class="l" href="#process">Как работаем</a>
       <a class="l" href="#cases">Кейсы</a>
       <div class="lang" id="lang"><button type="button" class="lang-btn" aria-expanded="false" aria-label="Язык">RU</button><ul class="lang-list" hidden><li><a data-lang="en" hreflang="en" lang="en" href="../">English</a></li><li><a data-lang="es" hreflang="es" lang="es" href="../es/">Español</a></li><li><a data-lang="fr" hreflang="fr" lang="fr" href="../fr/">Français</a></li><li><a data-lang="tr" hreflang="tr" lang="tr" href="../tr/">Türkçe</a></li><li><a data-lang="ru" hreflang="ru" lang="ru" href="./" aria-current="true">Русский</a></li></ul></div>
       <a class="btn" href="#contact">Связаться</a>
@@ -404,7 +407,7 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 <div class="mmenu" id="mmenu" aria-hidden="true" inert>
   <a class="l" href="#about">О нас</a>
   <a class="l" href="#services">Услуги</a>
-  <a class="l" href="#process">Процесс</a>
+  <a class="l" href="#process">Как работаем</a>
   <a class="l" href="#cases">Кейсы</a>
   <div class="mlang"><a data-lang="en" hreflang="en" lang="en" aria-label="English" href="../">EN</a><a data-lang="es" hreflang="es" lang="es" aria-label="Español" href="../es/">ES</a><a data-lang="fr" hreflang="fr" lang="fr" aria-label="Français" href="../fr/">FR</a><a data-lang="tr" hreflang="tr" lang="tr" aria-label="Türkçe" href="../tr/">TR</a><a data-lang="ru" hreflang="ru" lang="ru" aria-label="Русский" href="./" aria-current="true">RU</a></div>
   <a class="btn" href="#contact">Связаться</a>
@@ -416,32 +419,32 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
   <canvas></canvas>
   <canvas id="sig" hidden></canvas>
   <div class="wrap">
-    <h1 class="display hx"><span class="ln">Где влияние</span><span class="ln">работает.</span></h1>
+    <h1 class="display hx"><span class="ln">Влияние, которое</span><span class="ln">окупается.</span></h1>
     <div class="hero-foot">
-      <div class="hv-slot hv-count"><div><b data-k="d">$1 240 500</b><span>Депозиты игроков</span></div><div><b data-k="f" class="acc">4 828</b><span>Первые депозиты</span></div></div>
+      <div class="hv-slot hv-count"><div><b data-k="d">$1 240 500</b><span>Депозиты игроков<i class="fn">*</i></span></div><div><b data-k="f" class="acc">4 828</b><span>Первые депозиты<i class="fn">*</i></span></div></div>
       <div class="hero-side">
-        <p class="sub"><i class="nw">Инфлюенс-маркетинг</i> и креативный продакшен для брендов из гейминга, казино и крипты.</p>
-        <p class="t">Подбираем брендам подходящих авторов и ведём кампании: стратегия, отслеживание результатов и креативы, которые цепляют.</p>
-        <a class="btn" href="#contact">Обсудить ваш проект</a>
+        <p class="sub"><i class="nw">Инфлюенс-маркетинг</i> и креативный продакшен для гейминга, казино и крипты.</p>
+        <p class="t">Находим блогеров и стримеров под ваш бренд и ведём кампанию от стратегии до отчёта. Считаем результат и делаем креативы, которые замечают.</p>
+        <a class="btn" href="#contact">Обсудить проект</a>
       </div>
     </div>
   </div>
   <div class="marquee" aria-label="Площадки">
     <div class="marquee-track">
-      <span>Twitch</span><span>Kick</span><span>YouTube</span><span>Telegram</span><span>Instagram</span>
-      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
-      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
-      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram</span>
+      <span>Twitch</span><span>Kick</span><span>YouTube</span><span>Telegram</span><span>Instagram**</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram**</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram**</span>
+      <span aria-hidden="true">Twitch</span><span aria-hidden="true">Kick</span><span aria-hidden="true">YouTube</span><span aria-hidden="true">Telegram</span><span aria-hidden="true">Instagram**</span>
     </div>
   </div>
 </section>
 
 <section class="paper" id="about">
   <div class="wrap about-grid">
-    <h2 class="h2 rv">О Makros Digital</h2>
+    <h2 class="h2 rv">Кто такие Makros Digital</h2>
     <div class="rv">
-      <p class="lead">Makros Digital делает <i class="nw">инфлюенс-маркетинг</i> и креативный продакшен для брендов из гейминга, казино и крипты.</p>
-      <p class="t">У нас своя сеть стримеров и авторов, а под каждый проект мы ищем новых. Кампанию строим вокруг вашей аудитории, ГЕО и <i class="nw">бизнес-целей</i>. Интеграции с инфлюенсерами, платный трафик, рекламные креативы: всё это помогает бренду расширить охват и укрепиться на рынке.</p>
+      <p class="lead">Makros Digital: агентство <i class="nw">инфлюенс-маркетинга</i> и креативного продакшена для брендов из гейминга, казино и крипты.</p>
+      <p class="t">У нас своя сеть стримеров и блогеров, а под каждый проект добираем новых. Кампанию собираем под вашу аудиторию, ГЕО и <i class="nw">бизнес-задачи</i>. Интеграции с инфлюенсерами, платный трафик, рекламные креативы: всё это работает на охваты и ваши позиции на рынке.</p>
     </div>
   </div>
 </section>
@@ -450,22 +453,22 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 
 <section id="verticals">
   <div class="wrap">
-    <h2 class="h2 rv">Для вертикалей с жёсткой конкуренцией</h2>
+    <h2 class="h2 rv">Вертикали с высокой конкуренцией</h2>
     <div class="verts">
-      <div class="vrow rv"><h3>Казино</h3><p>Привлекаем игроков через стримы и спонсорские интеграции.</p></div>
-      <div class="vrow rv"><h3>Гейминг</h3><p>Запуски, обновления и рост комьюнити с авторами, которых игроки уже смотрят.</p></div>
-      <div class="vrow rv"><h3>Крипто</h3><p>Биржи, кошельки и проекты, где на первом месте доверие.</p></div>
-      <div class="vrow rv"><h3>GameFi</h3><p>Игроки и холдеры в одной кампании.</p></div>
+      <div class="vrow rv"><h3>Казино</h3><p>Приводим игроков через стримы и рекламные интеграции.</p></div>
+      <div class="vrow rv"><h3>Гейминг</h3><p>Запуски, обновления и рост комьюнити с теми, кого игроки и так смотрят.</p></div>
+      <div class="vrow rv"><h3>Крипта</h3><p>Биржи, кошельки и проекты, где на первом месте доверие.</p></div>
+      <div class="vrow rv"><h3>GameFi</h3><p>Одна кампания для игроков и холдеров.</p></div>
     </div>
     <div class="geo geo-x">
       <div class="rv">
-        <h4>ГЕО по всему миру</h4>
-        <p>Работаем с любым ГЕО и подбираем авторов, которых действительно смотрят на вашем рынке.</p>
+        <h4>Любое ГЕО в мире<i class="fn">*</i></h4>
+        <p>Работаем с любым ГЕО и подбираем блогеров и стримеров, которых действительно смотрят на вашем рынке.</p>
         <div class="vis globe" aria-hidden="true"><canvas></canvas></div>
       </div>
       <div class="rv">
-        <h4>Все нужные площадки</h4>
-        <p>Twitch, Kick, YouTube, Telegram, Instagram и другие каналы.</p>
+        <h4>Все нужные площадки<i class="fn">*</i></h4>
+        <p>Twitch, Kick, YouTube, Telegram, Instagram<i class="fn">**</i> и другие площадки.</p>
         <div class="vis feed" aria-hidden="true"><ol></ol></div>
       </div>
     </div>
@@ -477,48 +480,48 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 <section id="services" style="padding-top:0">
   <div class="wrap">
     <div class="svc-head">
-      <h2 class="h2 rv">Что мы делаем</h2>
+      <h2 class="h2 rv">Что делаем</h2>
     </div>
     <article class="svc-main rv">
       <div>
-        <h3>Маркетинг с инфлюенсерами</h3>
-        <p class="intro">Планируем и ведём кампании с инфлюенсерами: выводим бренд к нужной аудитории на стриминговых площадках и в соцсетях.</p>
+        <h3><i class="nw">Инфлюенс-маркетинг</i></h3>
+        <p class="intro">Планируем и ведём кампании с инфлюенсерами: показываем бренд нужной аудитории на стримах и в соцсетях.</p>
         <span class="tag">Основная услуга</span>
       </div>
       <ul class="ticks">
-        <li>Доступ к нашей сети стримеров и авторов</li>
-        <li>Подбор инфлюенсеров под каждый проект</li>
-        <li>Выбор аудитории и каналов под ГЕО и цели кампании</li>
-        <li>Координация кампании и спонсорские интеграции</li>
-        <li>Отслеживание результатов и отчёты</li>
+        <li>Наша сеть стримеров и блогеров</li>
+        <li>Подбор инфлюенсеров под проект</li>
+        <li>Подбор аудитории и каналов под ГЕО и задачи кампании</li>
+        <li>Координация кампании и рекламные интеграции</li>
+        <li>Аналитика и отчёты</li>
       </ul>
     </article>
     <div class="svc-pair">
       <article class="rv">
         <h3>Креативный продакшен</h3>
-        <p class="intro">Делаем рекламные материалы под ваш бренд, цели кампании и каналы размещения.</p>
+        <p class="intro">Делаем креативы под ваш бренд, задачи кампании и каналы.</p>
         <ul class="ticks">
           <li>Статичные и анимированные баннеры</li>
           <li>Рекламные креативы и концепции</li>
-          <li><i class="nw">Промо-видео</i></li>
+          <li>Проморолики</li>
           <li>Варианты креативов для тестов</li>
         </ul>
       </article>
       <article class="rv">
         <h3>Привлечение трафика</h3>
-        <p class="intro">Полный цикл привлечения трафика для iGaming, крипты и других цифровых проектов.</p>
+        <p class="intro">Трафик под ключ для iGaming, крипты и других <i class="nw">онлайн-продуктов</i>.</p>
         <ul class="ticks">
-          <li>Платный трафик через Meta Ads</li>
-          <li>Стратегии трафика под ГЕО и цели бизнеса</li>
+          <li>Платный трафик из Meta<i class="fn">**</i> Ads</li>
+          <li>Стратегия закупки трафика под ГЕО и <i class="nw">бизнес-задачи</i></li>
           <li>Настройка рекламных кабинетов и ведение кампаний</li>
           <li>Производство и тесты креативов</li>
-          <li>Оптимизация кампаний и анализ результатов</li>
-          <li>Гибкие стратегии на разных источниках трафика</li>
+          <li>Оптимизация кампаний и разбор результатов</li>
+          <li>Гибкая работа с разными источниками трафика</li>
         </ul>
       </article>
     </div>
     <div class="creatives rv">
-      <p>Нужны только креативы? Сделаем баннеры и видео для ваших собственных кампаний.</p>
+      <p>Нужны только креативы? Сделаем баннеры и видео для кампаний, которые вы ведёте сами.</p>
       <a class="btn btn-ghost" href="#contact">Заказать креативы</a>
     </div>
   </div>
@@ -529,31 +532,31 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 <section class="paper" id="metrics">
   <div class="wrap">
     <div class="m-head">
-      <h2 class="h2 rv">С какими цифрами работаем</h2>
-      <p class="note rv">Средние результаты наших кампаний. Итог зависит от ГЕО, вертикали и источника трафика.</p>
+      <h2 class="h2 rv">Цифры из практики</h2>
+      <p class="note rv">Средние показатели наших кампаний. Итог зависит от ГЕО, вертикали и источника трафика.</p>
     </div>
     <div class="mbento rv">
       <div class="mt mt-main">
         <div class="k">ROAS</div>
         <div class="v"><span data-count="200">200</span>%</div>
-        <p>Окупаемость рекламных расходов</p>
+        <p>Окупаемость рекламы</p>
         <div class="roas" aria-hidden="true">
           <div class="roas-plot">
             <svg></svg>
-            <div class="roas-tip"><b>200%</b><span>Масштабирование</span></div>
+            <div class="roas-tip"><b>200%</b><span>Рост</span></div>
           </div>
           <div class="roas-leg"><span>Депозиты игроков</span><span>Расходы на рекламу</span></div>
         </div>
       </div>
       <div class="mt">
-        <div class="k">Стоимость FTD</div>
+        <div class="k">Цена FTD</div>
         <div class="v">$<span data-count="45">45</span></div>
-        <p>Средняя стоимость одного первого депозита</p>
+        <p>Сколько в среднем стоит один игрок с первым депозитом</p>
       </div>
       <div class="mt mt-acc">
         <div class="k">LTV</div>
         <div class="v">$<span data-count="90">90</span></div>
-        <p>Доход с игрока за всё время, примерно вдвое больше стоимости привлечения</p>
+        <p>Сколько приносит игрок за всё время: примерно вдвое больше, чем стоит его привлечь</p>
       </div>
     </div>
   </div>
@@ -561,15 +564,15 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 
 <section id="process">
   <div class="wrap">
-    <h2 class="h2 rv">Как мы работаем</h2>
+    <h2 class="h2 rv">Как работаем</h2>
     <div class="steps" id="steps">
       <div class="bar"></div>
-      <div class="step" style="--i:0"><div class="n">1</div><h3>Бриф</h3><p>Вы рассказываете о продукте, целевом ГЕО, бюджете и целях.</p></div>
-      <div class="step" style="--i:1"><div class="n">2</div><h3>Стратегия</h3><p>Выбираем площадки, форматы авторов и модель KPI.</p></div>
-      <div class="step" style="--i:2"><div class="n">3</div><h3>Подбор</h3><p>Берём авторов из своей сети и находим новых под вашу аудиторию.</p></div>
+      <div class="step" style="--i:0"><div class="n">1</div><h3>Бриф</h3><p>Вы рассказываете о продукте, ГЕО, бюджете и целях.</p></div>
+      <div class="step" style="--i:1"><div class="n">2</div><h3>Стратегия</h3><p>Выбираем площадки, форматы интеграций и KPI.</p></div>
+      <div class="step" style="--i:2"><div class="n">3</div><h3>Подбор</h3><p>Подбираем блогеров из своей сети и ищем новых под вашу аудиторию.</p></div>
       <div class="step" style="--i:3"><div class="n">4</div><h3>Креативы</h3><p>Готовим баннеры, сценарии и видео для интеграций.</p></div>
-      <div class="step" style="--i:4"><div class="n">5</div><h3>Запуск</h3><p>Координируем публикации и спонсорские стримы.</p></div>
-      <div class="step" style="--i:5"><div class="n">6</div><h3>Аналитика</h3><p>Считаем FTD, депозиты и ROAS, отчитываемся по каждому размещению.</p></div>
+      <div class="step" style="--i:4"><div class="n">5</div><h3>Запуск</h3><p>Организуем выход публикаций и рекламных стримов.</p></div>
+      <div class="step" style="--i:5"><div class="n">6</div><h3>Трекинг</h3><p>Считаем FTD, депозиты и ROAS, отчитываемся по каждому размещению.</p></div>
     </div>
   </div>
 </section>
@@ -579,8 +582,8 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
     <div class="cases-head">
       <h2 class="h2 rv">Избранные кейсы</h2>
       <div class="rv">
-        <p class="lead" style="color:var(--white)">Настоящие кампании. Результаты в цифрах.</p>
-        <p class="cases-intro" style="margin-top:16px">Несколько проектов: как мы работаем с инфлюенсерами, ведём кампании и делаем креативы. В каждом кейсе есть цели, целевое ГЕО, выбранные авторы и площадки, ключевые показатели.</p>
+        <p class="lead" style="color:var(--white)">Реальные кампании. Результаты в цифрах.</p>
+        <p class="cases-intro" style="margin-top:16px">Проекты, в которых мы работали с инфлюенсерами, вели кампании и делали креативы. В каждом кейсе указаны цели, ГЕО, блогеры, площадки и KPI.</p>
       </div>
     </div>
     <div class="cases rv">
@@ -590,8 +593,8 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
           <div class="top"><span>Казино</span><span>Бразилия, Мексика, Чили, Аргентина</span></div>
           <h3>Привлечение игроков в <i class="nw">онлайн-казино</i> через стримеров</h3>
           <dl>
-            <dt>Цель</dt><dd>Нарастить первые депозиты и измерить каждое размещение</dd>
-            <dt>Авторы</dt><dd>61 стример, от нишевых авторов до инфлюенсеров, известных по всей Латинской Америке</dd>
+            <dt>Цель</dt><dd>Нарастить первые депозиты и оценить каждое размещение</dd>
+            <dt>Инфлюенсеры</dt><dd>61 стример, от нишевых до известных на всю Латинскую Америку</dd>
             <dt>Площадки</dt><dd>Kick, Twitch, YouTube</dd>
             <dt>Срок</dt><dd>10 месяцев</dd>
           </dl>
@@ -606,19 +609,19 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
       <article class="case">
         <img class="shot" src="../img/case-metaverse-800.webp" srcset="../img/case-metaverse-800.webp 800w, ../img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Аватар показывает на башню в конце неоновой улицы, над крышами светятся метки, над дорогой парят токены" loading="lazy" decoding="async">
         <div class="body">
-          <div class="top"><span>Крипто, Web3, GameFi</span><span>ОАЭ</span></div>
-          <h3>Запуск <i class="nw">play-to-earn</i> метавселенной через Stories авторов</h3>
+          <div class="top"><span>Крипта, Web3, GameFi</span><span>ОАЭ</span></div>
+          <h3>Запуск метавселенной <i class="nw">play-to-earn</i> через сторис блогеров</h3>
           <dl>
             <dt>Цель</dt><dd>Привести новых пользователей и увеличить покупки токенов</dd>
-            <dt>Авторы</dt><dd>30 авторов от 18 до 30 лет, аудитория в основном мужская</dd>
-            <dt>Формат</dt><dd>Серия из 3 Stories от каждого автора, всего 90 Stories</dd>
+            <dt>Инфлюенсеры</dt><dd>30 блогеров от 18 до 30 лет, аудитория в основном мужская</dd>
+            <dt>Формат</dt><dd>Серия из 3 сторис от каждого, всего 90</dd>
             <dt>Аудитория</dt><dd>Криптоинвесторы и игроки GameFi от 25 до 40 лет</dd>
           </dl>
           <ul class="kpis">
             <li><b>2 900</b><span>регистраций</span></li>
-            <li class="hot"><b>$45 тыс.</b><span>покупки токенов</span></li>
+            <li class="hot"><b>$45 тыс.</b><span>сумма покупок токенов</span></li>
             <li><b>$15 тыс.</b><span>рекламный бюджет</span></li>
-            <li><b>$5,17</b><span>цена пользователя</span></li>
+            <li><b>$5,17</b><span>цена регистрации</span></li>
           </ul>
         </div>
       </article>
@@ -629,8 +632,8 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
 <section class="cta" id="contact">
   <div class="wrap cta-grid">
     <div class="rv">
-      <h2 class="display">Запустим вашу следующую кампанию</h2>
-      <p class="t">Ищете подходящих авторов, креативы посильнее или стратегию под ваш продукт? Расскажите о проекте, целевом ГЕО и целях кампании. Подскажем, с чего начать.</p>
+      <h2 class="display">Соберём кампанию под задачу</h2>
+      <p class="t">Ищете подходящих блогеров, более сильные креативы или стратегию <i class="nw">инфлюенс-маркетинга</i> под ваш продукт? Расскажите о проекте, ГЕО и целях кампании, и мы поможем выбрать подход.</p>
     </div>
     <form id="form" class="rv" novalidate>
       <div class="f"><label for="f-name">Имя</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -640,7 +643,7 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
           <input type="hidden" name="vertical" value="Casino">
           <button type="button" class="dd-btn" id="f-vert" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="l-vert f-vert"><span>Казино</span></button>
           <ul class="dd-list" role="listbox" aria-labelledby="l-vert" tabindex="-1" hidden>
-            <li role="option" aria-selected="true">Казино</li><li role="option">Гейминг</li><li role="option">Крипто</li><li role="option">GameFi</li><li role="option">Другое</li>
+            <li role="option" aria-selected="true">Казино</li><li role="option">Гейминг</li><li role="option">Крипта</li><li role="option">GameFi</li><li role="option">Другое</li>
           </ul>
         </div></div>
       <div class="f"><label for="f-geo">Целевое ГЕО</label><input id="f-geo" name="geo" placeholder="например, Бразилия, Мексика"></div>
@@ -660,12 +663,17 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
       <a href="#top" class="logo">MAKROS<br><span>DIGITAL</span></a>
       <nav aria-label="Подвал">
         <a href="#about">О нас</a><a href="#" data-todo>Telegram</a>
-        <a href="#services">Услуги</a><a href="#" data-todo>Email</a>
-        <a href="#process">Процесс</a><a href="#contact">Контакты</a>
+        <a href="#services">Услуги</a><a href="#" data-todo>Почта</a>
+        <a href="#process">Как работаем</a><a href="#contact">Контакты</a>
         <a href="#cases">Кейсы</a>
       </nav>
     </div>
     <div class="ftr-bot"><span>© 2026 Makros Digital</span><span>makrosmedia.com</span></div>
+    <div class="ftr-notes">
+      <p><i class="fn">*</i> <span>Комментарии, депозиты и активность на карте на этой странице приведены для иллюстрации.</span></p>
+      <p><i class="fn">**</i> <span>Деятельность Meta (соцсети Facebook и Instagram) запрещена в России как экстремистская.</span></p>
+      <p>18+. <span>Услуги только для бизнеса. Мы не предлагаем частным лицам азартные игры и инвестиционные услуги. Кампании зависят от правил каждого рынка.</span></p>
+    </div>
   </div>
 </footer>
 
@@ -850,20 +858,20 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
     if (!box) return;
     var ol = box.querySelector('ol');
     var msgs = [
-      ['Twitch', 'lucas_br', 'код сработал, бонус уже на счёте'],
+      ['Twitch', 'lucas_br', 'код сработал, бонус уже упал'],
       ['Kick', 'mxspins', 'что за казино?'],
-      ['YouTube', 'Deniz K.', 'посмотрел обзор до конца, регистрируюсь'],
-      ['Telegram', 'crypto_ae', 'перешёл по ссылке из поста, закинул депозит'],
-      ['Instagram', 'ana.lima', 'увидел в сторис, вечером попробую'],
+      ['YouTube', 'Deniz K.', 'досмотрел обзор, регистрируюсь'],
+      ['Telegram', 'crypto_ae', 'зашёл по ссылке из поста, депнул'],
+      ['Instagram', 'ana.lima', 'видел у тебя в сторис, вечером попробую'],
       ['Twitch', 'kuba_pl', 'gg, первый депозит есть'],
       ['Kick', 'santi.ar', 'промо ещё работает?'],
-      ['YouTube', 'Rahul M.', 'код работает в Индии?'],
-      ['Telegram', 'trader_kz', 'новый листинг из канала, я в деле'],
-      ['Instagram', 'nina.es', 'ссылка в био сработала'],
-      ['Twitch', 'jp_neko', 'пришёл со стрима'],
-      ['Kick', 'manila_bet', 'фриспины пришли, спасибо'],
+      ['YouTube', 'Rahul M.', 'а в Индии код работает?'],
+      ['Telegram', 'trader_kz', 'увидел листинг в канале, зашёл'],
+      ['Instagram', 'nina.es', 'ссылка в шапке сработала'],
+      ['Twitch', 'jp_neko', 'я со стрима'],
+      ['Kick', 'manila_bet', 'фриспины упали, спс'],
       ['YouTube', 'Lukas', 'как забрать приветственный бонус?'],
-      ['Telegram', 'vn_holder', 'подключил кошелёк, всё гладко']
+      ['Telegram', 'vn_holder', 'подключил кошелёк, всё ок']
     ];
     var n = 0;
     function item(m, anim){
@@ -911,7 +919,7 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
     var f = ev.target, msg = document.getElementById('form-msg');
-    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Укажите имя и контакт.'; return; }
+    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Укажите имя и Telegram или почту.'; return; }
     msg.textContent = 'Предпросмотр: форма пока не подключена.';
   });
 
@@ -953,7 +961,7 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
   var NS = 'http://www.w3.org/2000/svg';
   var dep = [0,.03,.08,.16,.28,.45,.66,.9,1.22,1.6,2];
   var n = dep.length - 1, ymax = 2.2;
-  var phases = ['Запуск','Тесты','Оптимизация','Масштаб'];
+  var phases = ['Запуск','Тесты','Оптимизация','Рост'];
   var W, H, top = 8, bot = 28, cur = n;
   function X(i){ return i / n * W; }
   function Y(v){ return top + (1 - v / ymax) * (H - top - bot); }
@@ -1004,7 +1012,7 @@ body{font-family:'Roboto Flex',system-ui,sans-serif}
     var bx = X(k - 1 + f), by = Y(spend(k - 1 + f));
     var be = el('g', {'class':'be late'});
     el('circle', {cx:bx, cy:by, r:5}, be);
-    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Окупаемость';
+    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Точка окупаемости';
     var hov = el('g', {'class':'late'});
     xh = el('line', {'class':'xh', y1:top, y2:H - bot}, hov);
     hs = el('circle', {'class':'hs', r:5}, hov);

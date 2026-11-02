@@ -251,7 +251,7 @@ form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:star
 .dd-list li:hover,.dd-list li.act{background:var(--g800)}
 .dd-list li[aria-selected="true"]{color:var(--acid)}
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
-.f ::placeholder{color:rgba(20,21,23,.45)}
+.f ::placeholder{color:rgba(20,21,23,.6)}
 .form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
 .form-msg{font-size:15px}
 
@@ -369,14 +369,16 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 .mlang a{display:grid;place-items:center;min-width:48px;height:48px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g200);font-size:16px;font-weight:600}
 .mlang a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
 .mmenu .btn{flex:none}
+.fn{font-style:normal}
+.ftr-notes{margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--g400)}
 @media (max-height:620px){
   .mmenu{padding:88px var(--pad) 24px;gap:0}
   .mmenu a.l{font-size:32px;padding:4px 0}
   .mlang{margin-top:16px}
   .mlang a{min-width:44px;height:44px}
 }
-@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 10.9))}}
-@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6.35))}}
+@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 8.3))}}
+@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6.3))}}
 @media (min-width:861px) and (max-width:1199px){.kpis span{white-space:normal}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
@@ -412,13 +414,13 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   <canvas></canvas>
   <canvas id="sig" hidden></canvas>
   <div class="wrap">
-    <h1 class="display hx"><span class="ln">Donde la influencia</span><span class="ln">da resultados.</span></h1>
+    <h1 class="display hx"><span class="ln">La influencia</span><span class="ln">que convierte.</span></h1>
     <div class="hero-foot">
-      <div class="hv-slot hv-count"><div><b data-k="d">$1.240.500</b><span>Depósitos de jugadores</span></div><div><b data-k="f" class="acc">4.828</b><span>Primeros depositantes</span></div></div>
+      <div class="hv-slot hv-count"><div><b data-k="d">US$1.240.500</b><span>Depósitos de jugadores<i class="fn">*</i></span></div><div><b data-k="f" class="acc">4.828</b><span>Nuevos depositantes<i class="fn">*</i></span></div></div>
       <div class="hero-side">
         <p class="sub">Marketing de influencers y producción creativa para marcas de gaming, casino y cripto.</p>
-        <p class="t">Conectamos marcas con los creadores adecuados y ejecutamos campañas con planificación estratégica, seguimiento de resultados y una producción creativa de alto impacto.</p>
-        <a class="btn" href="#contact">Hablemos de tu proyecto</a>
+        <p class="t">Encontramos a los creadores que tu marca necesita y nos encargamos de la campaña de principio a fin: estrategia, medición de resultados y creativos que llaman la atención.</p>
+        <a class="btn" href="#contact">Hablemos de tu proyecto</a>
       </div>
     </div>
   </div>
@@ -434,33 +436,33 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
 <section class="paper" id="about">
   <div class="wrap about-grid">
-    <h2 class="h2 rv">Sobre Makros Digital</h2>
+    <h2 class="h2 rv">Quiénes somos</h2>
     <div class="rv">
-      <p class="lead">Makros Digital es una agencia de marketing digital especializada en marketing de influencers y producción creativa para marcas de gaming, casino y cripto.</p>
-      <p class="t">Con nuestra propia red de streamers y creadores de contenido, y una búsqueda a medida para cada proyecto, construimos campañas en torno a tu público objetivo, tu GEO y tus objetivos de negocio. Desde colaboraciones con influencers hasta tráfico de pago y creatividades publicitarias, ayudamos a las marcas a ampliar su alcance y reforzar su presencia en el mercado.</p>
+      <p class="lead">Makros Digital es una agencia de marketing digital especializada en influencers y producción creativa para marcas de gaming, casino y cripto.</p>
+      <p class="t">Tenemos nuestra propia red de streamers y creadores de contenido, y para cada proyecto buscamos además los perfiles que mejor encajan. Así armamos campañas pensadas para tu audiencia, tu GEO y tus objetivos de negocio. Desde colaboraciones con influencers hasta tráfico pago y creativos publicitarios, ayudamos a las marcas a ampliar su alcance y ganar presencia en el mercado.</p>
     </div>
   </div>
 </section>
 
-<figure class="band" id="photo-stream"><img src="../img/stream-1200.webp" srcset="../img/stream-1200.webp 1200w, ../img/stream-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Streamer en directo con un stream de slots y el chat en el monitor principal" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+<figure class="band" id="photo-stream"><img src="../img/stream-1200.webp" srcset="../img/stream-1200.webp 1200w, ../img/stream-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Streamer transmitiendo slots en vivo, con el chat en el monitor principal" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
 
 <section id="verticals">
   <div class="wrap">
-    <h2 class="h2 rv">Hechos para verticales de alta competencia</h2>
+    <h2 class="h2 rv">Expertos en verticales de alta competencia</h2>
     <div class="verts">
-      <div class="vrow rv"><h3>Casino</h3><p>Captación de jugadores con streams e integraciones patrocinadas.</p></div>
-      <div class="vrow rv"><h3>Gaming</h3><p>Lanzamientos, actualizaciones y crecimiento de la comunidad con creadores que los jugadores ya siguen.</p></div>
+      <div class="vrow rv"><h3>Casino</h3><p>Captamos jugadores con streams e integraciones patrocinadas.</p></div>
+      <div class="vrow rv"><h3>Gaming</h3><p>Lanzamientos, actualizaciones y crecimiento de comunidad, con los creadores que los jugadores ya siguen.</p></div>
       <div class="vrow rv"><h3>Cripto</h3><p>Exchanges, wallets y proyectos donde la confianza es lo primero.</p></div>
-      <div class="vrow rv"><h3>GameFi</h3><p>Jugadores y holders en una sola campaña.</p></div>
+      <div class="vrow rv"><h3>GameFi</h3><p>Jugadores y holders en una sola campaña.</p></div>
     </div>
     <div class="geo geo-x">
       <div class="rv">
-        <h4>GEO en todo el mundo</h4>
-        <p>Trabajamos con cualquier GEO y elegimos creadores que de verdad llegan a tu mercado.</p>
+        <h4>Todos los GEO<i class="fn">*</i></h4>
+        <p>Trabajamos en cualquier GEO y elegimos creadores que de verdad llegan a tu mercado.</p>
         <div class="vis globe" aria-hidden="true"><canvas></canvas></div>
       </div>
       <div class="rv">
-        <h4>Todas las plataformas clave</h4>
+        <h4>Todas las plataformas clave<i class="fn">*</i></h4>
         <p>Twitch, Kick, YouTube, Telegram, Instagram y otros canales.</p>
         <div class="vis feed" aria-hidden="true"><ol></ol></div>
       </div>
@@ -478,61 +480,61 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <article class="svc-main rv">
       <div>
         <h3>Marketing de influencers</h3>
-        <p class="intro">Planificamos y gestionamos campañas de influencers que conectan a las marcas con las audiencias adecuadas en plataformas de streaming y redes sociales.</p>
+        <p class="intro">Planificamos y gestionamos campañas de influencers que ponen tu marca frente a la audiencia adecuada en plataformas de streaming y redes sociales.</p>
         <span class="tag">Servicio principal</span>
       </div>
       <ul class="ticks">
         <li>Acceso a nuestra red de streamers y creadores</li>
-        <li>Búsqueda de influencers a medida para cada proyecto</li>
-        <li>Selección de audiencia y canales según el GEO y los objetivos</li>
-        <li>Coordinación de campañas e integraciones patrocinadas</li>
-        <li>Seguimiento de resultados e informes</li>
+        <li>Búsqueda de influencers a la medida de cada proyecto</li>
+        <li>Selección de audiencia y canales según GEO y objetivos</li>
+        <li>Coordinación de la campaña e integraciones patrocinadas</li>
+        <li>Medición de resultados y reportes</li>
       </ul>
     </article>
     <div class="svc-pair">
       <article class="rv">
         <h3>Producción creativa</h3>
-        <p class="intro">Creamos materiales publicitarios a medida de tu marca, tus objetivos de campaña y tus canales de distribución.</p>
+        <p class="intro">Creamos piezas publicitarias a la medida de tu marca, tus objetivos y tus canales.</p>
         <ul class="ticks">
           <li>Banners estáticos y animados</li>
-          <li>Creatividades y conceptos publicitarios</li>
-          <li>Vídeos promocionales</li>
-          <li>Variantes creativas para probar campañas</li>
+          <li>Conceptos y creativos publicitarios</li>
+          <li>Videos promocionales</li>
+          <li>Variantes de creativos para testear campañas</li>
         </ul>
       </article>
       <article class="rv">
         <h3>Captación de tráfico</h3>
-        <p class="intro">Captación de tráfico de ciclo completo para iGaming, cripto y otros proyectos digitales.</p>
+        <p class="intro">Captación de tráfico de punta a punta para iGaming, cripto y otros proyectos digitales.</p>
         <ul class="ticks">
-          <li>Tráfico de pago a través de Meta Ads</li>
-          <li>Estrategias de tráfico según el GEO y los objetivos de negocio</li>
+          <li>Tráfico pago en Meta Ads</li>
+          <li>Estrategias de tráfico según GEO y objetivos de negocio</li>
           <li>Configuración de cuentas publicitarias y gestión de campañas</li>
-          <li>Producción y prueba de creatividades</li>
+          <li>Producción y testeo de creativos</li>
           <li>Optimización de campañas y análisis de resultados</li>
-          <li>Estrategias flexibles en distintas fuentes de tráfico</li>
+          <li>Estrategias de captación flexibles en distintas fuentes de tráfico</li>
         </ul>
       </article>
     </div>
     <div class="creatives rv">
-      <p>¿Solo necesitas creatividades? También hacemos banners y vídeos para tus campañas internas.</p>
-      <a class="btn btn-ghost" href="#contact">Pedir creatividades</a>
+      <p>¿Solo necesitas creativos? También hacemos banners y videos para las campañas que maneja tu equipo.</p>
+      <a class="btn btn-ghost" href="#contact">Cotizar creativos</a>
     </div>
   </div>
 </section>
 
-<figure class="band" id="photo-desk"><img src="../img/desk-1200.webp" srcset="../img/desk-1200.webp 1200w, ../img/desk-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Mesa de compra de medios con panel de resultados de campaña e informes" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+<figure class="band" id="photo-desk"><img src="../img/desk-1200.webp" srcset="../img/desk-1200.webp 1200w, ../img/desk-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Escritorio de media buying con el panel de resultados de la campaña y reportes" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
 
 <section class="paper" id="metrics">
   <div class="wrap">
     <div class="m-head">
-      <h2 class="h2 rv">Las cifras con las que trabajamos</h2>
-      <p class="note rv">Resultados medios de nuestras campañas. Las cifras finales dependen del GEO, la vertical y la fuente de tráfico.</p>
+      <h2 class="h2 rv">Nuestros números</h2>
+      <p class="note rv">Resultados promedio de nuestras campañas. Las cifras finales dependen del GEO, la vertical y la fuente de tráfico.</p>
     </div>
     <div class="mbento rv">
       <div class="mt mt-main">
         <div class="k">ROAS</div>
         <div class="v"><span data-count="200">200</span>%</div>
-        <p>Retorno de la inversión publicitaria</p>
+        <p>Retorno de la inversión publicitaria</p>
         <div class="roas" aria-hidden="true">
           <div class="roas-plot">
             <svg></svg>
@@ -542,14 +544,14 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         </div>
       </div>
       <div class="mt">
-        <div class="k">Coste por FTD</div>
-        <div class="v">$<span data-count="45">45</span></div>
-        <p>Coste medio de conseguir un primer depositante</p>
+        <div class="k">Costo por FTD</div>
+        <div class="v">US$<span data-count="45">45</span></div>
+        <p>Lo que cuesta en promedio captar a un jugador con primer depósito</p>
       </div>
       <div class="mt mt-acc">
         <div class="k">LTV</div>
-        <div class="v">$<span data-count="90">90</span></div>
-        <p>Valor de vida por jugador, cerca del doble del coste de captarlo</p>
+        <div class="v">US$<span data-count="90">90</span></div>
+        <p>Valor por jugador en todo su ciclo de vida, cerca del doble de su costo de adquisición</p>
       </div>
     </div>
   </div>
@@ -560,12 +562,12 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <h2 class="h2 rv">Cómo trabajamos</h2>
     <div class="steps" id="steps">
       <div class="bar"></div>
-      <div class="step" style="--i:0"><div class="n">1</div><h3>Brief</h3><p>Nos cuentas el producto, el GEO objetivo, el presupuesto y las metas.</p></div>
-      <div class="step" style="--i:1"><div class="n">2</div><h3>Estrategia</h3><p>Elegimos plataformas, formatos de creadores y el modelo de KPI.</p></div>
-      <div class="step" style="--i:2"><div class="n">3</div><h3>Selección</h3><p>Elegimos creadores de nuestra red y buscamos otros nuevos para tu audiencia.</p></div>
-      <div class="step" style="--i:3"><div class="n">4</div><h3>Creatividades</h3><p>Preparamos banners, guiones y vídeos para las integraciones.</p></div>
+      <div class="step" style="--i:0"><div class="n">1</div><h3>Brief</h3><p>Nos presentas el producto, el GEO al que apuntas, el presupuesto y los objetivos.</p></div>
+      <div class="step" style="--i:1"><div class="n">2</div><h3>Estrategia</h3><p>Elegimos las plataformas, los formatos con creadores y el modelo de KPI.</p></div>
+      <div class="step" style="--i:2"><div class="n">3</div><h3>Selección</h3><p>Elegimos creadores de nuestra red y sumamos nuevos según tu audiencia.</p></div>
+      <div class="step" style="--i:3"><div class="n">4</div><h3>Creativos</h3><p>Preparamos banners, guiones y videos para las integraciones con creadores.</p></div>
       <div class="step" style="--i:4"><div class="n">5</div><h3>Lanzamiento</h3><p>Coordinamos publicaciones y streams patrocinados.</p></div>
-      <div class="step" style="--i:5"><div class="n">6</div><h3>Seguimiento</h3><p>Medimos FTD, depósitos y ROAS, e informamos de cada colocación.</p></div>
+      <div class="step" style="--i:5"><div class="n">6</div><h3>Medición</h3><p>Medimos FTD, depósitos y ROAS, con reportes de cada placement.</p></div>
     </div>
   </div>
 </section>
@@ -576,45 +578,45 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       <h2 class="h2 rv">Casos destacados</h2>
       <div class="rv">
         <p class="lead" style="color:var(--white)">Campañas reales. Resultados medibles.</p>
-        <p class="cases-intro" style="margin-top:16px">Mira una selección de proyectos con nuestras colaboraciones con influencers, la ejecución de campañas y las soluciones creativas. Cada caso muestra los objetivos, el GEO objetivo, los creadores y plataformas elegidos y los indicadores clave.</p>
+        <p class="cases-intro" style="margin-top:16px">Una selección de proyectos: colaboraciones con influencers, campañas y soluciones creativas. En cada caso verás los objetivos, el GEO, los creadores y las plataformas que elegimos, y los principales KPI.</p>
       </div>
     </div>
     <div class="cases rv">
       <article class="case">
-        <img class="shot" src="../img/case-casino-800.webp" srcset="../img/case-casino-800.webp 800w, ../img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Teléfono con un stream de slots y una ganancia x250, un chat lleno de espectadores usando el código de bono y un pulgar sobre el botón Claim bonus" loading="lazy" decoding="async">
+        <img class="shot" src="../img/case-casino-800.webp" srcset="../img/case-casino-800.webp 800w, ../img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Celular con un stream de slots y un multiplicador x250, un chat lleno de espectadores que usan el código de bono y un pulgar sobre el botón Claim bonus" loading="lazy" decoding="async">
         <div class="body">
           <div class="top"><span>Casino</span><span>Brasil, México, Chile, Argentina</span></div>
-          <h3>Captación de jugadores para un casino online con streamers</h3>
+          <h3>Captación de jugadores con streamers para un casino online</h3>
           <dl>
-            <dt>Objetivo</dt><dd>Aumentar los primeros depósitos y medir cada colocación</dd>
+            <dt>Objetivo</dt><dd>Aumentar los primeros depósitos y medir cada placement</dd>
             <dt>Creadores</dt><dd>61 streamers, desde creadores de nicho hasta influencers conocidos en toda Latinoamérica</dd>
             <dt>Plataformas</dt><dd>Kick, Twitch, YouTube</dd>
             <dt>Duración</dt><dd>10 meses</dd>
           </dl>
           <ul class="kpis">
-            <li><b>4.828</b><span>primeros depositantes</span></li>
-            <li><b>$1,24 M</b><span>depósitos totales</span></li>
+            <li><b>4.828</b><span>nuevos depositantes</span></li>
+            <li><b>US$1,24 M</b><span>depósitos totales</span></li>
             <li class="hot"><b>275%</b><span>ROAS</span></li>
-            <li><b>$568</b><span>LTV</span></li>
+            <li><b>US$568</b><span>LTV</span></li>
           </ul>
         </div>
       </article>
       <article class="case">
-        <img class="shot" src="../img/case-metaverse-800.webp" srcset="../img/case-metaverse-800.webp 800w, ../img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Avatar señalando una torre en una avenida de neón, marcadores luminosos sobre los tejados y tokens flotando sobre la calzada" loading="lazy" decoding="async">
+        <img class="shot" src="../img/case-metaverse-800.webp" srcset="../img/case-metaverse-800.webp 800w, ../img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Avatar señalando una torre en forma de aguja al final de una avenida de neón, marcadores luminosos sobre los techos y tokens flotando sobre la calle" loading="lazy" decoding="async">
         <div class="body">
-          <div class="top"><span>Cripto, Web3, GameFi</span><span>EAU</span></div>
-          <h3>Lanzamiento de un metaverso <i class="nw">play-to-earn</i> con Stories de creadores</h3>
+          <div class="top"><span>Cripto, Web3, GameFi</span><span>Emiratos</span></div>
+          <h3>Lanzamiento de un metaverso <i class="nw">play-to-earn</i> con Stories de creadores</h3>
           <dl>
             <dt>Objetivo</dt><dd>Atraer nuevos usuarios e impulsar la compra de tokens</dd>
-            <dt>Creadores</dt><dd>30 creadores de 18 a 30 años con una audiencia mayoritariamente masculina</dd>
-            <dt>Formato</dt><dd>Una serie de 3 Stories por creador, 90 Stories en total</dd>
-            <dt>Audiencia</dt><dd>Inversores en cripto y jugadores de GameFi de 25 a 40 años</dd>
+            <dt>Creadores</dt><dd>30 creadores de 18 a 30 años con audiencia mayormente masculina</dd>
+            <dt>Formato</dt><dd>Serie de 3 Stories por creador, 90 en total</dd>
+            <dt>Audiencia</dt><dd>Inversionistas cripto y jugadores de GameFi de 25 a 40 años</dd>
           </dl>
           <ul class="kpis">
             <li><b>2.900</b><span>usuarios registrados</span></li>
-            <li class="hot"><b>$45 mil</b><span>compras de tokens</span></li>
-            <li><b>$15 mil</b><span>presupuesto publicitario</span></li>
-            <li><b>$5,17</b><span>coste por usuario</span></li>
+            <li class="hot"><b>US$45 mil</b><span>en compras de tokens</span></li>
+            <li><b>US$15 mil</b><span>presupuesto publicitario</span></li>
+            <li><b>US$5,17</b><span>costo por usuario</span></li>
           </ul>
         </div>
       </article>
@@ -625,8 +627,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 <section class="cta" id="contact">
   <div class="wrap cta-grid">
     <div class="rv">
-      <h2 class="display">Creemos tu próxima campaña</h2>
-      <p class="t">¿Buscas los creadores adecuados, creatividades más potentes o una estrategia de influencers a medida? Cuéntanos tu proyecto, tu GEO objetivo y tus metas de campaña. Te ayudaremos a encontrar el enfoque correcto.</p>
+      <h2 class="display">Armemos tu próxima campaña</h2>
+      <p class="t">¿Buscas a los creadores indicados, creativos más potentes o una estrategia de influencers a tu medida? Cuéntanos de tu proyecto, tu GEO y tus objetivos, y te ayudamos a definir el mejor camino.</p>
     </div>
     <form id="form" class="rv" novalidate>
       <div class="f"><label for="f-name">Nombre</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -636,13 +638,13 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           <input type="hidden" name="vertical" value="Casino">
           <button type="button" class="dd-btn" id="f-vert" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="l-vert f-vert"><span>Casino</span></button>
           <ul class="dd-list" role="listbox" aria-labelledby="l-vert" tabindex="-1" hidden>
-            <li role="option" aria-selected="true">Casino</li><li role="option">Gaming</li><li role="option">Cripto</li><li role="option">GameFi</li><li role="option">Otro</li>
+            <li role="option" aria-selected="true">Casino</li><li role="option">Gaming</li><li role="option">Cripto</li><li role="option">GameFi</li><li role="option">Otra</li>
           </ul>
         </div></div>
-      <div class="f"><label for="f-geo">GEO objetivo</label><input id="f-geo" name="geo" placeholder="p. ej., Brasil, México"></div>
+      <div class="f"><label for="f-geo">GEO objetivo</label><input id="f-geo" name="geo" placeholder="Ej.: Brasil, México"></div>
       <div class="f full"><label for="f-msg">Sobre el proyecto</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
       <div class="form-foot">
-        <button class="btn btn-dark" type="submit">Hablemos de tu proyecto</button>
+        <button class="btn btn-dark" type="submit">Hablemos de tu proyecto</button>
         <span class="form-msg" id="form-msg" role="status"></span>
       </div>
     </form>
@@ -662,6 +664,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       </nav>
     </div>
     <div class="ftr-bot"><span>© 2026 Makros Digital</span><span>makrosmedia.com</span></div>
+    <div class="ftr-notes">
+      <p><i class="fn">*</i> <span>Los comentarios, los depósitos y la actividad del mapa en esta página son ilustrativos.</span></p>
+      <p>18+. <span>Nuestros servicios son solo para empresas. No ofrecemos juegos de azar ni servicios de inversión al público. Las campañas dependen de las normas de cada mercado.</span></p>
+    </div>
   </div>
 </footer>
 
@@ -744,7 +750,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       ['Brasil', -23.5, -46.6, 'Twitch'], ['México', 19.4, -99.1, 'Kick'], ['Argentina', -34.6, -58.4, 'Kick'],
       ['Chile', -33.4, -70.6, 'YouTube'], ['Perú', -12, -77, 'Instagram'], ['Colombia', 4.7, -74, 'Twitch'],
       ['Canadá', 43.7, -79.4, 'Twitch'], ['España', 40.4, -3.7, 'Instagram'], ['Alemania', 52.5, 13.4, 'Twitch'],
-      ['Polonia', 52.2, 21, 'Kick'], ['Turquía', 41, 29, 'YouTube'], ['EAU', 25.2, 55.3, 'Telegram'],
+      ['Polonia', 52.2, 21, 'Kick'], ['Turquía', 41, 29, 'YouTube'], ['Emiratos', 25.2, 55.3, 'Telegram'],
       ['Kazajistán', 43.2, 76.9, 'Telegram'], ['India', 19.1, 72.9, 'YouTube'], ['Nigeria', 6.5, 3.4, 'Instagram'],
       ['Sudáfrica', -26.2, 28, 'YouTube'], ['Tailandia', 13.8, 100.5, 'YouTube'], ['Filipinas', 14.6, 121, 'Kick'],
       ['Indonesia', -6.2, 106.8, 'Instagram'], ['Japón', 35.7, 139.7, 'YouTube'], ['Corea', 37.6, 127, 'Twitch'],
@@ -797,7 +803,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     // pin = channel, result, country
     function tagHtml(s){
       var ic = icons[s.plat] || '';
-      var res = Math.random() < .5 ? '1 FTD' : '$' + pick(AMOUNTS);
+      var res = Math.random() < .5 ? '1 FTD' : 'US$' + pick(AMOUNTS);
       return '<span class="tag"><i>' + ic + '</i><b>' + res + '</b><em>' + s.name + '</em></span>';
     }
     function pinEl(s){
@@ -846,19 +852,19 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     if (!box) return;
     var ol = box.querySelector('ol');
     var msgs = [
-      ['Twitch', 'lucas_br', 'el código funcionó, ya tengo el bono'],
-      ['Kick', 'mxspins', '¿qué casino es este?'],
-      ['YouTube', 'Deniz K.', 'vi la reseña completa, me registro'],
-      ['Telegram', 'crypto_ae', 'entré por el enlace del post, ya deposité'],
-      ['Instagram', 'ana.lima', 'lo vi en tus stories, lo pruebo esta noche'],
-      ['Twitch', 'kuba_pl', 'gg, primer depósito hecho'],
-      ['Kick', 'santi.ar', '¿sigue activa la promo?'],
-      ['YouTube', 'Rahul M.', '¿el código vale en India?'],
-      ['Telegram', 'trader_kz', 'nuevo listado del canal, dentro'],
-      ['Instagram', 'nina.es', 'el enlace de la bio funcionó'],
-      ['Twitch', 'jp_neko', 'entré desde el stream'],
-      ['Kick', 'manila_bet', 'ya llegaron los giros gratis, gracias'],
-      ['YouTube', 'Lukas', '¿cómo reclamo el bono de bienvenida?'],
+      ['Twitch', 'lucas_br', 'funcionó el código, ya me cayó el bono'],
+      ['Kick', 'mxspins', 'qué casino es ese?'],
+      ['YouTube', 'Deniz K.', 'vi la review completa, ya me registro'],
+      ['Telegram', 'crypto_ae', 'entré por el link del post y ya deposité'],
+      ['Instagram', 'ana.lima', 'lo vi en tus historias, esta noche lo pruebo'],
+      ['Twitch', 'kuba_pl', 'gg, primer depósito listo'],
+      ['Kick', 'santi.ar', 'sigue activa la promo?'],
+      ['YouTube', 'Rahul M.', 'el código sirve en India?'],
+      ['Telegram', 'trader_kz', 'nuevo listing en el canal, ya entré'],
+      ['Instagram', 'nina.es', 'funcionó el link de la bio'],
+      ['Twitch', 'jp_neko', 'vengo del stream'],
+      ['Kick', 'manila_bet', 'ya cayeron los giros gratis, gracias'],
+      ['YouTube', 'Lukas', 'cómo reclamo el bono de bienvenida?'],
       ['Telegram', 'vn_holder', 'conecté la wallet, sin problemas']
     ];
     var n = 0;
@@ -907,8 +913,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
     var f = ev.target, msg = document.getElementById('form-msg');
-    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Indica tu nombre y un contacto.'; return; }
-    msg.textContent = 'Vista previa: el formulario aún no está conectado.';
+    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Déjanos tu nombre y un dato de contacto.'; return; }
+    msg.textContent = 'Vista previa: el formulario todavía no está conectado.';
   });
 
   // hero signal grid: cells near the cursor light up and fade
@@ -949,7 +955,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   var NS = 'http://www.w3.org/2000/svg';
   var dep = [0,.03,.08,.16,.28,.45,.66,.9,1.22,1.6,2];
   var n = dep.length - 1, ymax = 2.2;
-  var phases = ['Lanzamiento','Pruebas','Optimización','Escalado'];
+  var phases = ['Lanzamiento','Testeo','Optimización','Escalado'];
   var W, H, top = 8, bot = 28, cur = n;
   function X(i){ return i / n * W; }
   function Y(v){ return top + (1 - v / ymax) * (H - top - bot); }
@@ -1000,7 +1006,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var bx = X(k - 1 + f), by = Y(spend(k - 1 + f));
     var be = el('g', {'class':'be late'});
     el('circle', {cx:bx, cy:by, r:5}, be);
-    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Equilibrio';
+    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Punto de equilibrio';
     var hov = el('g', {'class':'late'});
     xh = el('line', {'class':'xh', y1:top, y2:H - bot}, hov);
     hs = el('circle', {'class':'hs', r:5}, hov);
@@ -1046,7 +1052,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   var V = {};
 
   // 4. депозиты вспыхивают в клетках и летят в счётчик
-  var GEO = ['Brasil','México','Chile','Perú','Argentina','Canadá','Alemania','Turquía','India','EAU','Colombia','Polonia'];
+  var GEO = ['Brasil','México','Chile','Perú','Argentina','Canadá','Alemania','Turquía','India','Emiratos','Colombia','Polonia'];
   V.dep = {
     layout: function(st){
       var S = st.S, sec = st.sec;
@@ -1068,7 +1074,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           var cx = Math.floor(Math.random() * (st.w / S)), cy = Math.floor(Math.random() * (st.h / S));
           if(!V.dep.free(st, cx, cy) || st.ev.some(function(e){ return e.cx === cx && e.cy === cy; })) continue;
           var ftd = Math.random() < .45, amt = [40,60,80,120,150,200,250,300,450,600][Math.floor(Math.random() * 10)];
-          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '1 FTD' : '$' + amt, geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
+          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '1 FTD' : 'US$' + amt, geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
           st.light(cx, cy, 1);
           break;
         }
@@ -1084,7 +1090,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         if(f.t >= 700){
           if(f.e.ftd){ st.f++; st.elF.textContent = fmt(st.f); bump(st.elF); st.d += 120; }
           else st.d += f.e.amt;
-          st.elD.textContent = '$' + fmt(st.d); bump(st.elD);
+          st.elD.textContent = 'US$' + fmt(st.d); bump(st.elD);
           return false;
         }
         return true;

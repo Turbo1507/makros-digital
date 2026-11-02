@@ -251,7 +251,7 @@ form{display:grid;grid-template-columns:1fr 1fr;gap:24px 24px;align-content:star
 .dd-list li:hover,.dd-list li.act{background:var(--g800)}
 .dd-list li[aria-selected="true"]{color:var(--acid)}
 .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--ink)}
-.f ::placeholder{color:rgba(20,21,23,.45)}
+.f ::placeholder{color:rgba(20,21,23,.6)}
 .form-foot{grid-column:1/-1;display:flex;align-items:center;gap:24px;margin-top:8px}
 .form-msg{font-size:15px}
 
@@ -369,15 +369,18 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 .mlang a{display:grid;place-items:center;min-width:48px;height:48px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g200);font-size:16px;font-weight:600}
 .mlang a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
 .mmenu .btn{flex:none}
+.fn{font-style:normal}
+.ftr-notes{margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--g400)}
 @media (max-height:620px){
   .mmenu{padding:88px var(--pad) 24px;gap:0}
   .mmenu a.l{font-size:32px;padding:4px 0}
   .mlang{margin-top:16px}
   .mlang a{min-width:44px;height:44px}
 }
-@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 9.3))}}
-@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6.4))}}
+@media (min-width:861px){.hv .hx{font-size:min(132px,calc((min(100vw,1280px) - 48px) / 10))}}
+@media (max-width:860px){.hv .hx{font-size:min(clamp(56px,11.2vw,152px),calc((100vw - 32px) / 6.5))}}
 @media (min-width:861px) and (max-width:1199px){.kpis span{white-space:normal}}
+@media (max-width:380px){.mt-main .v{font-size:76px}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -386,24 +389,24 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 <header class="hdr" id="hdr">
   <div class="wrap">
     <a href="#top" class="logo">MAKROS <span>DIGITAL</span></a>
-    <nav class="nav" aria-label="Principal">
-      <a class="l" href="#about">À propos</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="l" href="#about">L’agence</a>
       <a class="l" href="#services">Services</a>
       <a class="l" href="#process">Méthode</a>
-      <a class="l" href="#cases">Études de cas</a>
+      <a class="l" href="#cases">Réalisations</a>
       <div class="lang" id="lang"><button type="button" class="lang-btn" aria-expanded="false" aria-label="Langue">FR</button><ul class="lang-list" hidden><li><a data-lang="en" hreflang="en" lang="en" href="../">English</a></li><li><a data-lang="es" hreflang="es" lang="es" href="../es/">Español</a></li><li><a data-lang="fr" hreflang="fr" lang="fr" href="./" aria-current="true">Français</a></li><li><a data-lang="tr" hreflang="tr" lang="tr" href="../tr/">Türkçe</a></li><li><a data-lang="ru" hreflang="ru" lang="ru" href="../ru/">Русский</a></li></ul></div>
-      <a class="btn" href="#contact"><i class="nw">Parlons-en</i></a>
+      <a class="btn" href="#contact">Discutons</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
 <div class="mmenu" id="mmenu" aria-hidden="true" inert>
-  <a class="l" href="#about">À propos</a>
+  <a class="l" href="#about">L’agence</a>
   <a class="l" href="#services">Services</a>
   <a class="l" href="#process">Méthode</a>
-  <a class="l" href="#cases">Études de cas</a>
+  <a class="l" href="#cases">Réalisations</a>
   <div class="mlang"><a data-lang="en" hreflang="en" lang="en" aria-label="English" href="../">EN</a><a data-lang="es" hreflang="es" lang="es" aria-label="Español" href="../es/">ES</a><a data-lang="fr" hreflang="fr" lang="fr" aria-label="Français" href="./" aria-current="true">FR</a><a data-lang="tr" hreflang="tr" lang="tr" aria-label="Türkçe" href="../tr/">TR</a><a data-lang="ru" hreflang="ru" lang="ru" aria-label="Русский" href="../ru/">RU</a></div>
-  <a class="btn" href="#contact"><i class="nw">Parlons-en</i></a>
+  <a class="btn" href="#contact">Discutons</a>
 </div>
 
 <main id="top">
@@ -412,12 +415,12 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   <canvas></canvas>
   <canvas id="sig" hidden></canvas>
   <div class="wrap">
-    <h1 class="display hx"><span class="ln">Là où l’influence</span><span class="ln">performe.</span></h1>
+    <h1 class="display hx"><span class="ln">Quand l’influence</span><span class="ln">rapporte.</span></h1>
     <div class="hero-foot">
-      <div class="hv-slot hv-count"><div><b data-k="d">$1 240 500</b><span>Dépôts des joueurs</span></div><div><b data-k="f" class="acc">4 828</b><span>Nouveaux déposants</span></div></div>
+      <div class="hv-slot hv-count"><div><b data-k="d">1 240 500 $</b><span>Dépôts des joueurs<i class="fn">*</i></span></div><div><b data-k="f" class="acc">4 828</b><span>Nouveaux déposants<i class="fn">*</i></span></div></div>
       <div class="hero-side">
-        <p class="sub">Marketing d’influence et production créative pour les marques du gaming, du casino et de la crypto.</p>
-        <p class="t">Nous mettons les marques en relation avec les bons créateurs et menons des campagnes appuyées par une stratégie claire, un suivi des performances et une production créative percutante.</p>
+        <p class="sub">Marketing d’influence et production créative pour les marques du gaming, du casino et de la crypto.</p>
+        <p class="t">Nous trouvons les bons créateurs pour votre marque et menons vos campagnes de A à Z : stratégie, suivi des performances et créations percutantes.</p>
         <a class="btn" href="#contact">Parlons de votre projet</a>
       </div>
     </div>
@@ -434,33 +437,33 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
 <section class="paper" id="about">
   <div class="wrap about-grid">
-    <h2 class="h2 rv">À propos de Makros Digital</h2>
+    <h2 class="h2 rv">Qui <i class="nw">sommes-nous</i></h2>
     <div class="rv">
-      <p class="lead">Makros Digital est une agence de marketing digital spécialisée dans le marketing d’influence et la production créative pour les marques du gaming, du casino et de la crypto.</p>
-      <p class="t">Grâce à notre réseau de streamers et de créateurs de contenu, complété par une recherche sur mesure pour chaque projet, nous construisons des campagnes autour de votre audience cible, de votre GEO et de vos objectifs commerciaux. Des partenariats avec les influenceurs au trafic payant et aux créations publicitaires, nous aidons les marques à élargir leur portée et à renforcer leur présence sur le marché.</p>
+      <p class="lead">Makros Digital est une agence de marketing digital spécialisée dans l’influence et la production créative pour les marques du gaming, du casino et de la crypto.</p>
+      <p class="t">Notre propre réseau de streamers et de créateurs, complété pour chaque projet par un sourcing sur mesure, nous permet de bâtir vos campagnes autour de votre audience, de votre GEO et de vos objectifs commerciaux. Partenariats avec des influenceurs, trafic payant, créations publicitaires : nous aidons les marques à élargir leur portée et à renforcer leur présence sur le marché.</p>
     </div>
   </div>
 </section>
 
-<figure class="band" id="photo-stream"><img src="../img/stream-1200.webp" srcset="../img/stream-1200.webp 1200w, ../img/stream-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Streamer en direct avec un stream de machines à sous et le chat sur l’écran principal" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+<figure class="band" id="photo-stream"><img src="../img/stream-1200.webp" srcset="../img/stream-1200.webp 1200w, ../img/stream-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Streamer en direct, avec un stream de machines à sous et le chat sur l’écran principal" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
 
 <section id="verticals">
   <div class="wrap">
-    <h2 class="h2 rv">Pour les verticales à forte concurrence</h2>
+    <h2 class="h2 rv">Taillés pour les marchés très concurrentiels</h2>
     <div class="verts">
-      <div class="vrow rv"><h3>Casino</h3><p>Acquisition de joueurs via des streams et des intégrations sponsorisées.</p></div>
-      <div class="vrow rv"><h3>Gaming</h3><p>Lancements, mises à jour et croissance de la communauté avec les créateurs que les joueurs suivent déjà.</p></div>
-      <div class="vrow rv"><h3>Crypto</h3><p>Plateformes d’échange, portefeuilles et projets où la confiance passe avant tout.</p></div>
-      <div class="vrow rv"><h3>GameFi</h3><p>Joueurs et holders touchés par une seule campagne.</p></div>
+      <div class="vrow rv"><h3>Casino</h3><p>Acquisition de joueurs via les streams et les intégrations sponsorisées.</p></div>
+      <div class="vrow rv"><h3>Gaming</h3><p>Lancements, mises à jour et croissance de la communauté, avec les créateurs que les joueurs suivent déjà.</p></div>
+      <div class="vrow rv"><h3>Crypto</h3><p>Exchanges, wallets et projets où tout repose sur la confiance.</p></div>
+      <div class="vrow rv"><h3>GameFi</h3><p>Une seule campagne pour toucher joueurs et holders.</p></div>
     </div>
     <div class="geo geo-x">
       <div class="rv">
-        <h4>GEO dans le monde entier</h4>
-        <p>Nous travaillons sur tous les GEO et choisissons des créateurs qui touchent réellement votre marché.</p>
+        <h4>Tous les GEO<i class="fn">*</i></h4>
+        <p>Nous intervenons sur tous les GEO, avec des créateurs réellement suivis sur votre marché.</p>
         <div class="vis globe" aria-hidden="true"><canvas></canvas></div>
       </div>
       <div class="rv">
-        <h4>Toutes les plateformes utiles</h4>
+        <h4>Toutes les plateformes clés<i class="fn">*</i></h4>
         <p>Twitch, Kick, YouTube, Telegram, Instagram et d’autres canaux.</p>
         <div class="vis feed" aria-hidden="true"><ol></ol></div>
       </div>
@@ -473,83 +476,83 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 <section id="services" style="padding-top:0">
   <div class="wrap">
     <div class="svc-head">
-      <h2 class="h2 rv">Ce que nous faisons</h2>
+      <h2 class="h2 rv">Nos métiers</h2>
     </div>
     <article class="svc-main rv">
       <div>
         <h3>Marketing d’influence</h3>
-        <p class="intro">Nous planifions et pilotons des campagnes d’influence qui relient les marques aux bonnes audiences sur les plateformes de streaming et les réseaux sociaux.</p>
-        <span class="tag">Service principal</span>
+        <p class="intro">Nous concevons et pilotons des campagnes d’influence qui rapprochent votre marque de la bonne audience, sur les plateformes de streaming comme sur les réseaux sociaux.</p>
+        <span class="tag">Cœur de métier</span>
       </div>
       <ul class="ticks">
-        <li>Accès à notre réseau de streamers et de créateurs</li>
-        <li>Recherche d’influenceurs sur mesure pour chaque projet</li>
-        <li>Choix des audiences et des canaux selon le GEO et les objectifs</li>
-        <li>Coordination des campagnes et intégrations sponsorisées</li>
-        <li>Suivi des performances et rapports</li>
+        <li>Accès à notre réseau de streamers et de créateurs</li>
+        <li>Sourcing d’influenceurs sur mesure pour chaque projet</li>
+        <li>Choix des audiences et des canaux selon le GEO et vos objectifs</li>
+        <li>Coordination de la campagne et intégrations sponsorisées</li>
+        <li>Suivi des performances et reporting</li>
       </ul>
     </article>
     <div class="svc-pair">
       <article class="rv">
         <h3>Production créative</h3>
-        <p class="intro">Nous créons des supports publicitaires adaptés à votre marque, à vos objectifs de campagne et à vos canaux de diffusion.</p>
+        <p class="intro">Nous créons des supports publicitaires adaptés à votre marque, à vos objectifs et à vos canaux de diffusion.</p>
         <ul class="ticks">
           <li>Bannières statiques et animées</li>
           <li>Créations et concepts publicitaires</li>
           <li>Vidéos promotionnelles</li>
-          <li>Variantes créatives pour tester les campagnes</li>
+          <li>Déclinaisons créatives pour vos tests</li>
         </ul>
       </article>
       <article class="rv">
         <h3>Acquisition de trafic</h3>
-        <p class="intro">Acquisition de trafic de bout en bout pour l’iGaming, la crypto et d’autres projets digitaux.</p>
+        <p class="intro">Acquisition de trafic de A à Z pour l’iGaming, la crypto et d’autres projets digitaux.</p>
         <ul class="ticks">
           <li>Trafic payant via Meta Ads</li>
-          <li>Stratégies de trafic adaptées au GEO et aux objectifs commerciaux</li>
-          <li>Création des comptes publicitaires et gestion des campagnes</li>
-          <li>Production et test des créations publicitaires</li>
+          <li>Stratégies de trafic adaptées au GEO et à vos objectifs</li>
+          <li>Création des comptes publicitaires et pilotage des campagnes</li>
+          <li>Production et test des créations</li>
           <li>Optimisation des campagnes et analyse des performances</li>
-          <li>Stratégies flexibles sur différentes sources de trafic</li>
+          <li>Stratégies flexibles sur plusieurs sources de trafic</li>
         </ul>
       </article>
     </div>
     <div class="creatives rv">
-      <p>Besoin de créations uniquement ? Nous réalisons aussi des bannières et des vidéos pour vos campagnes internes.</p>
-      <a class="btn btn-ghost" href="#contact">Commander des créations</a>
+      <p>Besoin uniquement de créations ? Nous réalisons aussi des bannières et des vidéos pour les campagnes que vous gérez en interne.</p>
+      <a class="btn btn-ghost" href="#contact">Passer commande</a>
     </div>
   </div>
 </section>
 
-<figure class="band" id="photo-desk"><img src="../img/desk-1200.webp" srcset="../img/desk-1200.webp 1200w, ../img/desk-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Poste de media buying avec tableau de bord des campagnes et rapports" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
+<figure class="band" id="photo-desk"><img src="../img/desk-1200.webp" srcset="../img/desk-1200.webp 1200w, ../img/desk-2400.webp 2400w" sizes="100vw" width="2400" height="1018" alt="Poste de media buying avec le tableau de bord des performances de la campagne et des rapports" loading="lazy" decoding="async" style="object-position:50% 50%"></figure>
 
 <section class="paper" id="metrics">
   <div class="wrap">
     <div class="m-head">
-      <h2 class="h2 rv">Les chiffres avec lesquels nous travaillons</h2>
-      <p class="note rv">Résultats moyens de nos campagnes. Les chiffres finaux dépendent du GEO, de la verticale et de la source de trafic.</p>
+      <h2 class="h2 rv">Nos chiffres</h2>
+      <p class="note rv">Résultats moyens de nos campagnes. Les chiffres finaux dépendent du GEO, de la verticale et de la source de trafic.</p>
     </div>
     <div class="mbento rv">
       <div class="mt mt-main">
         <div class="k">ROAS</div>
-        <div class="v"><span data-count="200">200</span>%</div>
-        <p>Retour sur les dépenses publicitaires</p>
+        <div class="v"><span data-count="200">200</span> %</div>
+        <p>Retour sur dépenses publicitaires</p>
         <div class="roas" aria-hidden="true">
           <div class="roas-plot">
             <svg></svg>
-            <div class="roas-tip"><b>200%</b><span>Passage à l’échelle</span></div>
+            <div class="roas-tip"><b>200 %</b><span>Scaling</span></div>
           </div>
           <div class="roas-leg"><span>Dépôts des joueurs</span><span>Dépenses publicitaires</span></div>
         </div>
       </div>
       <div class="mt">
         <div class="k">Coût par FTD</div>
-        <div class="v">$<span data-count="45">45</span></div>
-        <p>Coût moyen pour obtenir un nouveau déposant</p>
+        <div class="v"><span data-count="45">45</span> $</div>
+        <p>Coût moyen d’acquisition d’un nouveau déposant</p>
       </div>
       <div class="mt mt-acc">
         <div class="k">LTV</div>
-        <div class="v">$<span data-count="90">90</span></div>
-        <p>Valeur vie par joueur, environ le double du coût d’acquisition</p>
+        <div class="v"><span data-count="90">90</span> $</div>
+        <p>Valeur vie d’un joueur, soit environ deux fois son coût d’acquisition</p>
       </div>
     </div>
   </div>
@@ -557,15 +560,15 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 
 <section id="process">
   <div class="wrap">
-    <h2 class="h2 rv">Comment nous travaillons</h2>
+    <h2 class="h2 rv">Notre méthode</h2>
     <div class="steps" id="steps">
       <div class="bar"></div>
-      <div class="step" style="--i:0"><div class="n">1</div><h3>Brief</h3><p>Vous nous présentez le produit, le GEO cible, le budget et les objectifs.</p></div>
-      <div class="step" style="--i:1"><div class="n">2</div><h3>Stratégie</h3><p>Nous choisissons les plateformes, les formats de créateurs et le modèle de KPI.</p></div>
-      <div class="step" style="--i:2"><div class="n">3</div><h3>Sélection</h3><p>Nous sélectionnons des créateurs de notre réseau et en trouvons de nouveaux pour votre audience.</p></div>
-      <div class="step" style="--i:3"><div class="n">4</div><h3>Créations</h3><p>Nous préparons les bannières, les scripts et les vidéos pour les intégrations.</p></div>
-      <div class="step" style="--i:4"><div class="n">5</div><h3>Lancement</h3><p>Nous coordonnons les publications et les streams sponsorisés.</p></div>
-      <div class="step" style="--i:5"><div class="n">6</div><h3>Suivi</h3><p>Nous suivons les FTD, les dépôts et le ROAS, et rendons compte de chaque placement.</p></div>
+      <div class="step" style="--i:0"><div class="n">1</div><h3>Brief</h3><p>Vous nous présentez votre produit, le GEO visé, votre budget et vos objectifs.</p></div>
+      <div class="step" style="--i:1"><div class="n">2</div><h3>Stratégie</h3><p>Nous choisissons les plateformes, les formats de contenu et les KPI à suivre.</p></div>
+      <div class="step" style="--i:2"><div class="n">3</div><h3>Sourcing</h3><p>Nous puisons dans notre réseau et trouvons de nouveaux créateurs pour votre audience.</p></div>
+      <div class="step" style="--i:3"><div class="n">4</div><h3>Créations</h3><p>Nous préparons les bannières, les scripts et les vidéos pour les intégrations.</p></div>
+      <div class="step" style="--i:4"><div class="n">5</div><h3>Lancement</h3><p>Nous coordonnons les publications et les streams sponsorisés.</p></div>
+      <div class="step" style="--i:5"><div class="n">6</div><h3>Suivi</h3><p>Nous suivons les FTD, les dépôts et le ROAS, avec un reporting par activation.</p></div>
     </div>
   </div>
 </section>
@@ -575,46 +578,46 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <div class="cases-head">
       <h2 class="h2 rv">Études de cas</h2>
       <div class="rv">
-        <p class="lead" style="color:var(--white)">Des campagnes réelles. Des résultats mesurables.</p>
-        <p class="cases-intro" style="margin-top:16px">Découvrez une sélection de projets qui montrent nos partenariats avec les influenceurs, l’exécution des campagnes et nos solutions créatives. Chaque étude présente les objectifs, le GEO cible, les créateurs et plateformes retenus et les principaux indicateurs.</p>
+        <p class="lead" style="color:var(--white)">Vraies campagnes. Résultats mesurables.</p>
+        <p class="cases-intro" style="margin-top:16px">Une sélection de projets : partenariats avec des influenceurs, campagnes, créations. Pour chacun, vous trouverez les objectifs, le GEO, les créateurs et les plateformes retenus, ainsi que les principaux KPI.</p>
       </div>
     </div>
     <div class="cases rv">
       <article class="case">
-        <img class="shot" src="../img/case-casino-800.webp" srcset="../img/case-casino-800.webp 800w, ../img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Téléphone affichant un stream de machines à sous avec un gain x250, un chat rempli de spectateurs utilisant le code bonus et un pouce sur le bouton Claim bonus" loading="lazy" decoding="async">
+        <img class="shot" src="../img/case-casino-800.webp" srcset="../img/case-casino-800.webp 800w, ../img/case-casino-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Téléphone affichant un stream de machines à sous avec un gain x250, un chat rempli de spectateurs qui utilisent le code bonus et un pouce sur le bouton Claim bonus" loading="lazy" decoding="async">
         <div class="body">
           <div class="top"><span>Casino</span><span>Brésil, Mexique, Chili, Argentine</span></div>
-          <h3>Acquisition de joueurs pour un casino en ligne via des streamers</h3>
+          <h3>Acquisition de joueurs via des streamers pour un casino en ligne</h3>
           <dl>
-            <dt>Objectif</dt><dd>Augmenter les premiers dépôts et mesurer chaque placement</dd>
+            <dt>Objectif</dt><dd>Générer plus de premiers dépôts et mesurer chaque activation</dd>
             <dt>Créateurs</dt><dd>61 streamers, des créateurs de niche aux influenceurs connus dans toute l’Amérique latine</dd>
             <dt>Plateformes</dt><dd>Kick, Twitch, YouTube</dd>
             <dt>Durée</dt><dd>10 mois</dd>
           </dl>
           <ul class="kpis">
             <li><b>4 828</b><span>nouveaux déposants</span></li>
-            <li><b>$1,24 M</b><span>dépôts au total</span></li>
-            <li class="hot"><b>275%</b><span>ROAS</span></li>
-            <li><b>$568</b><span>LTV</span></li>
+            <li><b>1,24 M$</b><span>de dépôts au total</span></li>
+            <li class="hot"><b>275 %</b><span>ROAS</span></li>
+            <li><b>568 $</b><span>LTV</span></li>
           </ul>
         </div>
       </article>
       <article class="case">
-        <img class="shot" src="../img/case-metaverse-800.webp" srcset="../img/case-metaverse-800.webp 800w, ../img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Avatar désignant une tour au bout d’une avenue néon, repères lumineux au-dessus des toits et tokens flottant au-dessus de la route" loading="lazy" decoding="async">
+        <img class="shot" src="../img/case-metaverse-800.webp" srcset="../img/case-metaverse-800.webp 800w, ../img/case-metaverse-1200.webp 1200w" sizes="(max-width:860px) 100vw, 620px" width="1200" height="900" alt="Avatar désignant une tour effilée au bout d’une avenue aux néons, repères lumineux sur les toits et tokens flottant au-dessus de la route" loading="lazy" decoding="async">
         <div class="body">
-          <div class="top"><span>Crypto, Web3, GameFi</span><span>EAU</span></div>
-          <h3>Lancement d’un métavers <i class="nw">play-to-earn</i> avec des Stories de créateurs</h3>
+          <div class="top"><span>Crypto, Web3, GameFi</span><span>Émirats</span></div>
+          <h3>Lancement d’un métavers <i class="nw">play-to-earn</i> via les Stories de créateurs</h3>
           <dl>
             <dt>Objectif</dt><dd>Attirer de nouveaux utilisateurs et stimuler l’achat de tokens</dd>
-            <dt>Créateurs</dt><dd>30 créateurs de 18 à 30 ans avec une audience majoritairement masculine</dd>
-            <dt>Format</dt><dd>Une série de 3 Stories par créateur, 90 Stories au total</dd>
+            <dt>Créateurs</dt><dd>30 créateurs de 18 à 30 ans, à l’audience majoritairement masculine</dd>
+            <dt>Format</dt><dd>Une série de 3 Stories par créateur, 90 au total</dd>
             <dt>Audience</dt><dd>Investisseurs crypto et joueurs GameFi de 25 à 40 ans</dd>
           </dl>
           <ul class="kpis">
-            <li><b>2 900</b><span>utilisateurs inscrits</span></li>
-            <li class="hot"><b>$45 k</b><span>achats de tokens</span></li>
-            <li><b>$15 k</b><span>budget publicitaire</span></li>
-            <li><b>$5,17</b><span>coût par utilisateur</span></li>
+            <li><b>2 900</b><span>inscrits</span></li>
+            <li class="hot"><b>45 k$</b><span>d’achats de tokens</span></li>
+            <li><b>15 k$</b><span>de budget publicitaire</span></li>
+            <li><b>5,17 $</b><span>coût par inscrit</span></li>
           </ul>
         </div>
       </article>
@@ -625,8 +628,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 <section class="cta" id="contact">
   <div class="wrap cta-grid">
     <div class="rv">
-      <h2 class="display">Créons votre prochaine campagne</h2>
-      <p class="t">Vous cherchez les bons créateurs, des créations plus fortes ou une stratégie d’influence sur mesure ? <i class="nw">Parlez-nous</i> de votre projet, de votre GEO cible et de vos objectifs. Nous vous aiderons à trouver la bonne approche.</p>
+      <h2 class="display">Lançons votre campagne</h2>
+      <p class="t">Vous cherchez les bons créateurs, des créations plus percutantes ou une stratégie d’influence sur mesure ? <i class="nw">Parlez-nous</i> de votre projet, de votre GEO et de vos objectifs : nous vous aiderons à trouver la bonne approche.</p>
     </div>
     <form id="form" class="rv" novalidate>
       <div class="f"><label for="f-name">Nom</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -639,10 +642,10 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
             <li role="option" aria-selected="true">Casino</li><li role="option">Gaming</li><li role="option">Crypto</li><li role="option">GameFi</li><li role="option">Autre</li>
           </ul>
         </div></div>
-      <div class="f"><label for="f-geo">GEO cible</label><input id="f-geo" name="geo" placeholder="par ex. Brésil, Mexique"></div>
-      <div class="f full"><label for="f-msg">À propos du projet</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="f"><label for="f-geo">GEO visé</label><input id="f-geo" name="geo" placeholder="Ex. : Brésil, Mexique"></div>
+      <div class="f full"><label for="f-msg">Votre projet</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
       <div class="form-foot">
-        <button class="btn btn-dark" type="submit">Parler de votre projet</button>
+        <button class="btn btn-dark" type="submit">Présenter mon projet</button>
         <span class="form-msg" id="form-msg" role="status"></span>
       </div>
     </form>
@@ -655,13 +658,17 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     <div class="ftr-top">
       <a href="#top" class="logo">MAKROS<br><span>DIGITAL</span></a>
       <nav aria-label="Pied de page">
-        <a href="#about">À propos</a><a href="#" data-todo>Telegram</a>
-        <a href="#services">Services</a><a href="#" data-todo>Email</a>
+        <a href="#about">L’agence</a><a href="#" data-todo>Telegram</a>
+        <a href="#services">Services</a><a href="#" data-todo><i class="nw">E-mail</i></a>
         <a href="#process">Méthode</a><a href="#contact">Contact</a>
-        <a href="#cases">Études de cas</a>
+        <a href="#cases">Réalisations</a>
       </nav>
     </div>
     <div class="ftr-bot"><span>© 2026 Makros Digital</span><span>makrosmedia.com</span></div>
+    <div class="ftr-notes">
+      <p><i class="fn">*</i> <span>Les commentaires, les dépôts et l’activité de la carte sur cette page sont donnés à titre d’illustration.</span></p>
+      <p>18+. <span>Nos services s’adressent uniquement aux professionnels. Nous ne proposons ni jeux d’argent ni services d’investissement au public. Les campagnes dépendent de la réglementation de chaque marché.</span></p>
+    </div>
   </div>
 </footer>
 
@@ -744,7 +751,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       ['Brésil', -23.5, -46.6, 'Twitch'], ['Mexique', 19.4, -99.1, 'Kick'], ['Argentine', -34.6, -58.4, 'Kick'],
       ['Chili', -33.4, -70.6, 'YouTube'], ['Pérou', -12, -77, 'Instagram'], ['Colombie', 4.7, -74, 'Twitch'],
       ['Canada', 43.7, -79.4, 'Twitch'], ['Espagne', 40.4, -3.7, 'Instagram'], ['Allemagne', 52.5, 13.4, 'Twitch'],
-      ['Pologne', 52.2, 21, 'Kick'], ['Turquie', 41, 29, 'YouTube'], ['EAU', 25.2, 55.3, 'Telegram'],
+      ['Pologne', 52.2, 21, 'Kick'], ['Turquie', 41, 29, 'YouTube'], ['Émirats', 25.2, 55.3, 'Telegram'],
       ['Kazakhstan', 43.2, 76.9, 'Telegram'], ['Inde', 19.1, 72.9, 'YouTube'], ['Nigeria', 6.5, 3.4, 'Instagram'],
       ['Afrique du Sud', -26.2, 28, 'YouTube'], ['Thaïlande', 13.8, 100.5, 'YouTube'], ['Philippines', 14.6, 121, 'Kick'],
       ['Indonésie', -6.2, 106.8, 'Instagram'], ['Japon', 35.7, 139.7, 'YouTube'], ['Corée', 37.6, 127, 'Twitch'],
@@ -797,7 +804,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     // pin = channel, result, country
     function tagHtml(s){
       var ic = icons[s.plat] || '';
-      var res = Math.random() < .5 ? '1 FTD' : '$' + pick(AMOUNTS);
+      var res = Math.random() < .5 ? '1 FTD' : pick(AMOUNTS) + '\u00A0$';
       return '<span class="tag"><i>' + ic + '</i><b>' + res + '</b><em>' + s.name + '</em></span>';
     }
     function pinEl(s){
@@ -846,19 +853,19 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     if (!box) return;
     var ol = box.querySelector('ol');
     var msgs = [
-      ['Twitch', 'lucas_br', 'le code a marché, le bonus est déjà sur mon compte'],
-      ['Kick', 'mxspins', 'c’est quel casino ?'],
-      ['YouTube', 'Deniz K.', 'j’ai vu tout le test, je m’inscris'],
-      ['Telegram', 'crypto_ae', 'lien du post, dépôt fait'],
-      ['Instagram', 'ana.lima', 'vu dans tes stories, j’essaie ce soir'],
+      ['Twitch', 'lucas_br', 'le code passe, j’ai déjà le bonus'],
+      ['Kick', 'mxspins', 'c’est quel casino ?'],
+      ['YouTube', 'Deniz K.', 'vu le test en entier, je m’inscris'],
+      ['Telegram', 'crypto_ae', 'passé par le lien du post, dépôt fait'],
+      ['Instagram', 'ana.lima', 'vu dans ta story, je teste ce soir'],
       ['Twitch', 'kuba_pl', 'gg, premier dépôt fait'],
-      ['Kick', 'santi.ar', 'la promo est encore active ?'],
-      ['YouTube', 'Rahul M.', 'le code marche en Inde ?'],
-      ['Telegram', 'trader_kz', 'nouveau listing de la chaîne, j’y suis'],
-      ['Instagram', 'nina.es', 'le lien en bio a marché'],
-      ['Twitch', 'jp_neko', 'venu depuis le stream'],
+      ['Kick', 'santi.ar', 'la promo est toujours dispo ?'],
+      ['YouTube', 'Rahul M.', 'le code marche en Inde ?'],
+      ['Telegram', 'trader_kz', 'nouveau listing vu sur le canal, j’y vais'],
+      ['Instagram', 'nina.es', 'lien en bio ok'],
+      ['Twitch', 'jp_neko', 'je viens du stream'],
       ['Kick', 'manila_bet', 'free spins reçus, merci'],
-      ['YouTube', 'Lukas', 'comment je récupère le bonus de bienvenue ?'],
+      ['YouTube', 'Lukas', 'comment on récupère le bonus de bienvenue ?'],
       ['Telegram', 'vn_holder', 'wallet connecté, nickel']
     ];
     var n = 0;
@@ -907,8 +914,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
     var f = ev.target, msg = document.getElementById('form-msg');
-    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Indiquez votre nom et un contact.'; return; }
-    msg.textContent = 'Aperçu : le formulaire n’est pas encore connecté.';
+    if (!document.getElementById('f-name').value.trim() || !document.getElementById('f-contact').value.trim()){ msg.textContent = 'Indiquez votre nom et vos coordonnées.'; return; }
+    msg.textContent = 'Aperçu : le formulaire n’est pas encore actif.';
   });
 
   // hero signal grid: cells near the cursor light up and fade
@@ -949,7 +956,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   var NS = 'http://www.w3.org/2000/svg';
   var dep = [0,.03,.08,.16,.28,.45,.66,.9,1.22,1.6,2];
   var n = dep.length - 1, ymax = 2.2;
-  var phases = ['Lancement','Tests','Optimisation','Échelle'];
+  var phases = ['Lancement','Tests','Optimisation','Scaling'];
   var W, H, top = 8, bot = 28, cur = n;
   function X(i){ return i / n * W; }
   function Y(v){ return top + (1 - v / ymax) * (H - top - bot); }
@@ -1000,7 +1007,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var bx = X(k - 1 + f), by = Y(spend(k - 1 + f));
     var be = el('g', {'class':'be late'});
     el('circle', {cx:bx, cy:by, r:5}, be);
-    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Rentabilité';
+    el('text', {x:bx - 12, y:by - 12, 'text-anchor':'end'}, be).textContent = 'Point mort';
     var hov = el('g', {'class':'late'});
     xh = el('line', {'class':'xh', y1:top, y2:H - bot}, hov);
     hs = el('circle', {'class':'hs', r:5}, hov);
@@ -1020,7 +1027,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     hs.style.display = i ? '' : 'none';
     var r = i ? Math.round(dep[i] / spend(i) * 100) : 0;
     var ph = phases[Math.min(phases.length - 1, Math.round(i / n * (phases.length - 1)))];
-    tip.innerHTML = '<b>' + r + '%</b><span>' + ph + '</span>';
+    tip.innerHTML = '<b>' + r + '\u00A0%</b><span>' + ph + '</span>';
     var tw = tip.offsetWidth / 2;
     tip.style.left = Math.max(tw, Math.min(W - tw, x)) + 'px';
     tip.style.top = Math.min(y, Y(spend(i))) + 'px';
@@ -1046,7 +1053,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   var V = {};
 
   // 4. депозиты вспыхивают в клетках и летят в счётчик
-  var GEO = ['Brésil','Mexique','Chili','Pérou','Argentine','Canada','Allemagne','Turquie','Inde','EAU','Colombie','Pologne'];
+  var GEO = ['Brésil','Mexique','Chili','Pérou','Argentine','Canada','Allemagne','Turquie','Inde','Émirats','Colombie','Pologne'];
   V.dep = {
     layout: function(st){
       var S = st.S, sec = st.sec;
@@ -1068,7 +1075,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
           var cx = Math.floor(Math.random() * (st.w / S)), cy = Math.floor(Math.random() * (st.h / S));
           if(!V.dep.free(st, cx, cy) || st.ev.some(function(e){ return e.cx === cx && e.cy === cy; })) continue;
           var ftd = Math.random() < .45, amt = [40,60,80,120,150,200,250,300,450,600][Math.floor(Math.random() * 10)];
-          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '1 FTD' : '$' + amt, geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
+          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '1 FTD' : amt + '\u00A0$', geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
           st.light(cx, cy, 1);
           break;
         }
@@ -1084,7 +1091,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         if(f.t >= 700){
           if(f.e.ftd){ st.f++; st.elF.textContent = fmt(st.f); bump(st.elF); st.d += 120; }
           else st.d += f.e.amt;
-          st.elD.textContent = '$' + fmt(st.d); bump(st.elD);
+          st.elD.textContent = fmt(st.d) + '\u00A0$'; bump(st.elD);
           return false;
         }
         return true;
