@@ -346,6 +346,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   html.js .roas .draw{clip-path:none}
   .roas .pulse{animation:none;opacity:0}
 }
+@media (min-width:861px) and (max-width:1399px){.hv .hx{font-size:min(132px,calc((100vw - 96px) / 9.3))}}
 
 /* переключатель вариантов хиро */
 .hvar{position:absolute;left:16px;top:calc(50% - 40px);transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:4px}
@@ -1158,14 +1159,14 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   V.dep = {
     layout: function(st){
       var S = st.S, sec = st.sec;
-      st.block = [sec.querySelector('.hx'), sec.querySelector('.hero-side'), sec.querySelector('.hv-count')].map(st.rel);
+      st.block = [].slice.call(sec.querySelectorAll('.hx,.hero-side,.hvar,.hv-count>div')).map(st.rel);
       var b = st.rel(sec.querySelector('.hv-count b')); st.target = [b.l + 8, b.t + b.h / 2];
       st.ev = st.ev || []; st.fly = st.fly || []; st.d = st.d || 1240500; st.f = st.f || 4828; st.next = 300;
       st.elD = sec.querySelector('[data-k="d"]'); st.elF = sec.querySelector('[data-k="f"]');
     },
     free: function(st, cx, cy){
-      var S = st.S, l = cx * S, t = cy * S, r = l + S * 2, b = t + S;
-      if(t < 96 || b > st.h - 24 || r > st.w - 24) return false;
+      var S = st.S, l = cx * S, t = cy * S, r = l + S, b = t + S;
+      if(t < 80 || b > st.h - 24 || r > st.w - 24) return false;
       return !st.block.some(function(q){ return l < q.r + 16 && r > q.l - 16 && t < q.b + 16 && b > q.t - 16; });
     },
     step: function(st, dt){
@@ -1174,16 +1175,16 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
         st.next = 900 + Math.random() * 900;
         for(var k = 0; k < 30; k++){
           var cx = Math.floor(Math.random() * (st.w / S)), cy = Math.floor(Math.random() * (st.h / S));
-          if(!V.dep.free(st, cx, cy)) continue;
+          if(!V.dep.free(st, cx, cy) || st.ev.some(function(e){ return e.cx === cx && e.cy === cy; })) continue;
           var ftd = Math.random() < .45, amt = [40,60,80,120,150,200,250,300,450,600][Math.floor(Math.random() * 10)];
-          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '+1 FTD' : '+$' + amt, geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
+          st.ev.push({cx:cx, cy:cy, t:0, ftd:ftd, amt:amt, txt: ftd ? '1 FTD' : '$' + amt, geo:GEO[Math.floor(Math.random() * GEO.length)], sent:false});
           st.light(cx, cy, 1);
           break;
         }
       }
       st.ev = st.ev.filter(function(e){
         e.t += dt;
-        if(e.t < 900) st.light(e.cx, e.cy, 1 - e.t / 2400);
+        st.light(e.cx, e.cy, e.t < 200 ? 1 : Math.max(0, 1 - (e.t - 1200) / 1000));
         if(!e.sent && e.t > 700){ e.sent = true; st.fly.push({x:e.cx * S, y:e.cy * S, t:0, e:e}); }
         return e.t < 2200;
       });
@@ -1203,9 +1204,9 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       st.ev.forEach(function(e){
         var a = e.t < 200 ? e.t / 200 : Math.max(0, 1 - (e.t - 1200) / 1000);
         x.font = '700 18px ' + FONT; x.fillStyle = 'rgba(' + A + ',' + a + ')';
-        x.fillText(e.txt, e.cx * S + 12, e.cy * S + 34);
+        x.textAlign = 'center'; x.fillText(e.txt, e.cx * S + 39.5, e.cy * S + 37);
         x.font = '500 14px ' + FONT; x.fillStyle = 'rgba(139,142,148,' + a + ')';
-        x.fillText(e.geo, e.cx * S + 12, e.cy * S + 56);
+        x.fillText(e.geo, e.cx * S + 39.5, e.cy * S + 55); x.textAlign = 'left';
       });
       st.fly.forEach(function(f){
         var k = f.t / 700, e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
@@ -1238,7 +1239,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
       for(var k in st.cells){
         var a = st.cells[k], p = k.split(',');
         ctx.fillStyle = 'rgba(' + A + ',' + (a * .07) + ')'; ctx.fillRect(p[0] * st.S, p[1] * st.S, st.S - 1, st.S - 1);
-        ctx.fillStyle = 'rgba(' + A + ',' + (a * .9) + ')'; ctx.fillRect(p[0] * st.S - 2, p[1] * st.S - 2, 4, 4);
+        ctx.fillStyle = 'rgba(' + A + ',' + (a * .9) + ')'; ctx.fillRect(p[0] * st.S - 3, p[1] * st.S - 3, 5, 5);
         st.cells[k] = a - dt * .0015; if(st.cells[k] <= 0) delete st.cells[k];
       }
       v.draw(st);
