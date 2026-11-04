@@ -68,7 +68,8 @@ section[id]{scroll-margin-top:72px}
 .nav{display:flex;align-items:center;gap:8px}
 .nav a.l{padding:8px 16px;border-radius:8px;color:var(--g200);font-size:16px;transition:background .2s,color .2s}
 .nav a.l:hover{background:var(--g850);color:var(--white)}
-.nav .btn{height:40px;padding:0 20px;font-size:15px;margin-left:8px}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.hdr-cta{height:40px;padding:0 20px;font-size:15px;margin-left:8px}
 .burger{display:none;width:40px;height:40px;border:0;background:none;cursor:pointer;position:relative}
 .burger i{position:absolute;left:8px;right:8px;height:2px;background:var(--white);transition:transform .25s}
 .burger i:first-child{top:15px}.burger i:last-child{top:23px}
@@ -325,7 +326,8 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   .verts,.svc-main,.mbento,.steps,.cases,.rail{margin-top:32px}
   .faq-grid{grid-template-columns:minmax(0,1fr);gap:16px}
   .faq summary{font-size:18px}
-  .nav{display:none}.burger{display:block}
+  .nav,.hdr-cta{display:none}.burger{display:block}
+  .hdr-r{gap:0}
   .hero-foot,.about-grid,.cases-head,.cta-grid,.svc-pair,.geo,.cases{grid-template-columns:1fr}
   .hero-foot{gap:32px;margin-top:40px}
   .about-grid,.cases-head,.cta-grid{gap:24px}
@@ -397,20 +399,29 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 .lang-btn:hover,.lang-btn[aria-expanded="true"]{background:var(--g850);color:var(--white)}
 .lang-btn[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
 .lang-list{position:absolute;right:0;top:calc(100% + 8px);min-width:160px;background:var(--g900);border:1px solid var(--g800);border-radius:8px;padding:8px;z-index:60}
-.nav .lang-list a{display:block;padding:8px 16px;border-radius:4px;color:var(--g200);font-size:16px;transition:background .15s,color .15s}
-.nav .lang-list a:hover{background:var(--g800);color:var(--white)}
-.nav .lang-list a[aria-current]{color:var(--acid)}
-.mlang{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.mlang a{display:grid;place-items:center;min-width:48px;height:48px;border-radius:8px;background:var(--g900);border:1px solid var(--g800);color:var(--g200);font-size:16px;font-weight:600}
-.mlang a[aria-current]{background:var(--white);border-color:var(--white);color:var(--g950)}
+.lang-list a{display:block;padding:8px 16px;border-radius:4px;color:var(--g200);font-size:16px;transition:background .15s,color .15s}
+.lang-list a:hover{background:var(--g800);color:var(--white)}
+.lang-list a[aria-current]{color:var(--acid)}
 .mmenu .btn{flex:none}
 .fn{font-style:normal}
 .ftr-notes{margin-top:24px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:var(--g400)}
 @media (max-height:620px){
   .mmenu{padding:88px var(--pad) 24px;gap:0}
   .mmenu a.l{font-size:32px;padding:4px 0}
-  .mlang{margin-top:16px}
-  .mlang a{min-width:44px;height:44px}
+}
+.hdr .logo{flex:none;white-space:nowrap}
+@media (min-width:861px) and (max-width:900px){
+  .nav a.l{padding:8px 12px}
+}
+@media (max-width:359px){
+  .hdr .logo{font-size:16px}
+}
+@media (max-width:860px){
+  .lang-btn{padding:0 8px}
+  .lang-list a{padding:12px 16px}
+}
+@media (hover:none){
+  .lang-btn:not([aria-expanded="true"]):hover{background:none;color:var(--g200)}
 }
 /* форма и цифры не шире экрана */
 .cta-grid>*,.f{min-width:0}
@@ -440,15 +451,17 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
 <header class="hdr" id="hdr">
   <div class="wrap">
     <a href="#top" class="logo">MAKROS <span>DIGITAL</span></a>
-    <nav class="nav" aria-label="Navigation principale">
+    <div class="hdr-r">
+      <nav class="nav" aria-label="Navigation principale">
       <a class="l" href="#about">L’agence</a>
       <a class="l" href="#services">Services</a>
       <a class="l" href="#process">Méthode</a>
       <a class="l" href="#cases">Réalisations</a>
-      <div class="lang" id="lang"><button type="button" class="lang-btn" aria-expanded="false" aria-label="Langue">FR</button><ul class="lang-list" hidden><li><a data-lang="en" hreflang="en" lang="en" href="../">English</a></li><li><a data-lang="es" hreflang="es" lang="es" href="../es/">Español</a></li><li><a data-lang="fr" hreflang="fr" lang="fr" href="./" aria-current="true">Français</a></li><li><a data-lang="tr" hreflang="tr" lang="tr" href="../tr/">Türkçe</a></li><li><a data-lang="ru" hreflang="ru" lang="ru" href="../ru/">Русский</a></li></ul></div>
-      <a class="btn" href="#contact">Discutons</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+      <div class="lang" id="lang"><button type="button" class="lang-btn" aria-expanded="false" aria-label="Langue">FR</button><ul class="lang-list" hidden><li><a data-lang="en" hreflang="en" lang="en" href="../">English</a></li><li><a data-lang="es" hreflang="es" lang="es" href="../es/">Español</a></li><li><a data-lang="fr" hreflang="fr" lang="fr" href="./" aria-current="true">Français</a></li><li><a data-lang="tr" hreflang="tr" lang="tr" href="../tr/">Türkçe</a></li><li><a data-lang="ru" hreflang="ru" lang="ru" href="../ru/">Русский</a></li></ul></div>
+      <a class="btn hdr-cta" href="#contact">Discutons</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
   </div>
 </header>
 <div class="mmenu" id="mmenu" aria-hidden="true" inert>
@@ -456,7 +469,6 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
   <a class="l" href="#services">Services</a>
   <a class="l" href="#process">Méthode</a>
   <a class="l" href="#cases">Réalisations</a>
-  <div class="mlang"><a data-lang="en" hreflang="en" lang="en" aria-label="English" href="../">EN</a><a data-lang="es" hreflang="es" lang="es" aria-label="Español" href="../es/">ES</a><a data-lang="fr" hreflang="fr" lang="fr" aria-label="Français" href="./" aria-current="true">FR</a><a data-lang="tr" hreflang="tr" lang="tr" aria-label="Türkçe" href="../tr/">TR</a><a data-lang="ru" hreflang="ru" lang="ru" aria-label="Русский" href="../ru/">RU</a></div>
   <a class="btn" href="#contact">Discutons</a>
 </div>
 
@@ -1233,7 +1245,7 @@ html.js .hero.in h1 .ln:nth-child(2)>span{transition-delay:.12s}
     var btn = box.querySelector('.lang-btn'), list = box.querySelector('.lang-list');
     var close = function(focus){ list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if(focus) btn.focus(); };
     btn.addEventListener('click', function(){ var open = list.hidden; list.hidden = !open; btn.setAttribute('aria-expanded', open); });
-    document.addEventListener('click', function(e){ if(!box.contains(e.target)) close(); });
+    document.addEventListener('pointerdown', function(e){ if(!box.contains(e.target)) close(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !list.hidden) close(true); });
   }
   document.querySelectorAll('a[data-lang]').forEach(function(a){
